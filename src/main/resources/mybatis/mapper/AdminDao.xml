@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.port.springboot.dao.IAdminDao"> 
+
+	<select id="userList" resultType="com.port.springboot.dto.UserDto">
+		select * from tb_user order by user_no desc
+	</select>
+	
+	<select id="orderList" resultType="com.port.springboot.dto.OrderDto">
+		select b.bil_id, b.order_date, b.user_id, i.item_nm, b.order_state from tb_bil b, tb_cart c, tb_item i where b.bil_id = c.bil_id and c.item_id = i.item_id
+	</select>
+	
+	<insert id="itemAdd" parameterType="com.port.springboot.dto.ItemDto">
+		INSERT INTO tb_item (item_id, item_nm, price, stock, item_img, de_fee, con_img) values (tb_item_seq.nextval, #{item_nm}, #{price}, #{stock}, null, null, #{con_img})
+	</insert>
+	
+	<select id="itemList" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item
+	</select>
+
+</mapper>
