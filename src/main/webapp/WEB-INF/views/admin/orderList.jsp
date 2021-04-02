@@ -127,7 +127,19 @@
               <td>${ dto.order_date }</td>
               <td>${ dto.user_id }</td>
               <td>${ dto.item_nm }</td>
-              <td>${ dto.order_state }</td>
+              <td>
+				<c:choose>
+					<c:when test="${dto.order_state == '1' }">
+						결제중
+					</c:when>
+					<c:when test="${dto.order_state == '2' }">
+						결제 완료
+					</c:when>
+					<c:when test="${dto.order_state == '3' }">
+						배송중
+					</c:when>
+				</c:choose>
+              </td>
               <td><button id="orderListDeliveryButton" style="margin: 0 auto;">배송출발</button></td>
             </tr>
         </c:forEach>
