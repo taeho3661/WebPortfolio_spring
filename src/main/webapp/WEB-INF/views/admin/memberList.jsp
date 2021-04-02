@@ -124,7 +124,7 @@
               <td>${ dto.user_id }</td>
               <td>${ dto.user_nm }</td>
               <td>${ dto.phone1 } - ${ dto.phone2 } - ${ dto.phone3 }</td>
-              <td><button id="memberListDeleteButton">삭제</button></td>
+              <td><a href="userDelete?user_id=${dto.user_id }"><button id="memberListDeleteButton">삭제</button></a></td>
             </tr>
         </c:forEach>
 		

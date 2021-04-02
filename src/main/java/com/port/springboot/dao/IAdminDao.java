@@ -15,6 +15,7 @@ import com.port.springboot.dto.UserDto;
 public interface IAdminDao 
 {
 	public List<UserDto>userList();
+	public int userDelete(String user_id);
 	public List<OrderDto>orderList();
 	public int itemAdd(ItemDto dto);
 	public List<ItemDto>itemList();

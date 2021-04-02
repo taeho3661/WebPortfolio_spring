@@ -10,6 +10,10 @@
 		select * from tb_user order by user_no desc
 	</select>
 	
+	<delete id="userDelete" parameterType="com.port.springboot.dto.UserDto">
+		delete from tb_user where user_id = #{user_id}
+	</delete>
+	
 	<select id="orderList" resultType="com.port.springboot.dto.OrderDto">
 		select b.bil_id, b.order_date, b.user_id, i.item_nm, b.order_state from tb_bil b, tb_cart c, tb_item i where b.bil_id = c.bil_id and c.item_id = i.item_id
 	</select>

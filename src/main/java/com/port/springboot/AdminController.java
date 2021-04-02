@@ -26,6 +26,14 @@ public class AdminController
 		return "/admin/memberList";
 	}
 	
+	@RequestMapping("/userDelete")
+	public String userDelete(HttpServletRequest request, Model model)
+	{
+		String user_id = request.getParameter("user_id");
+		AdminDao.userDelete(user_id);
+		return "redirect:memberList";
+	}
+	
 	//주문 목록
 	@RequestMapping("/orderList")
 	public String orderList(Model model)
