@@ -41,4 +41,9 @@ public class MainController
 	{
 		return "order/order";
 	}
+	@RequestMapping("/list")
+	public String order_list(Model model)
+	{
+		return "order/list";
+	}
 }
