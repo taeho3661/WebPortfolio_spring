@@ -143,7 +143,7 @@
       <!-- tr -->
       <c:forEach var="dto" items="${ list }">
           <tr>
-            <td><input type="checkbox" name="itemSelect" value=""></th></td>
+            <td><input type="checkbox" name="itemSelect" value=""></th>
             <td>이미지</td>
             <td style="text-align: left;">상품명</td>
             <td>x개</td>
