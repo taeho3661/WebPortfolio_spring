@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +128,7 @@
 	              <td>${ dto.item_nm }</td>
 	              <td>${ dto.board_nm }</td>
 	              <td>${ dto.writer }</td>
-	              <td>${ dto.write_date }</td>
+	              <td><fmt:formatDate value="${dto.write_date}" pattern="yyyy/MM/dd"/></td>
 	              <%-- <td>${ dto.board_no }</td> --%>
 	              <td><input type="submit" value="답변" id="productQnaReplyButton" onclick="javascript:replyButton();"></td>
 	            </tr>

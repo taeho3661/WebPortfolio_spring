@@ -74,6 +74,7 @@ public class AdminController
 	@RequestMapping("/itemQna")
 	public String productQna(Model model)
 	{
+		model.addAttribute("list", AdminDao.itemQna());
 		return "/admin/itemQna";
 	}
 	

@@ -25,5 +25,10 @@
 	<select id="itemList" resultType="com.port.springboot.dto.ItemDto">
 		select * from tb_item
 	</select>
+	
+	<select id="itemQna" resultType="com.port.springboot.dto.AdminQnaDto">
+		select i.item_nm, q.board_nm, q.writer, q.write_date, q.board_no from tb_item i, tb_board q where i.item_id = q.item_id
+		<!-- select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id -->
+	</select>
 
 </mapper>

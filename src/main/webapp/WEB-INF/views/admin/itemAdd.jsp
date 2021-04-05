@@ -58,6 +58,7 @@ a {
 .aside a:hover {
 	background-color: #CE6D39;
 	color: lavender;
+	text-decoration: none;
 }
 
 #selected {
