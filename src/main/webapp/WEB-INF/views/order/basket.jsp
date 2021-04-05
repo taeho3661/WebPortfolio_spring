@@ -1,0 +1,167 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장바구니</title>
+</head>
+<style>
+  *{
+    padding: 0;
+    margin: 0 auto;
+    /* border:1px solid red; */
+  }
+  input[type="button"], button{
+    cursor:pointer;
+  }
+  .section1, .section2, .section3{
+    width: 1280px;
+  }
+  .section1{
+    width: 1280px;
+    /* margin-top: 50px; */
+  }
+  .section1_con{
+    padding: 10px;
+
+    border-top: 2px solid black;
+    border-bottom: 0.5px solid lightgray;
+
+    height: 40px;
+    background-color: rgb(250, 255, 240);
+  }
+  .section1_con > div{
+    padding: 0 20px;
+
+    height: 30px;
+    float: left;
+  }
+  .section1_con > div:first-child{
+    border-right: 1px solid lightgray;
+  }
+  .section2{
+    /* border: 1px solid red; */
+    margin-top: 50px;
+  }
+  .section2_title{
+    /* padding-bottom: 1px; */
+    width: 1280px;
+    height: 50px;
+  }
+  .section2_title > div:first-child{
+    width: 10%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+
+    padding: 0 30px;
+    float:left;
+
+    border: 1px solid lightgray;
+    border-bottom: none;
+    /* background-color: red; */
+  }
+  .section2_title > div:last-child{
+    float: left;
+    height: 30px;
+    width: 84%;
+    /* background-color: blue; */
+    border-bottom: 1px solid lightgray;
+  }
+  .section2_table{
+    margin-top: 20px;
+    clear: both;
+    width: 1280px;
+    
+    /* border: 1px solid lightgray; */
+    border-collapse: collapse;
+
+    text-align: center;
+  }
+  .section2_table tr{
+    height: 80px;
+  }
+  .section2_table th, .section2_table td{
+    margin: 0;
+    padding: 0;
+    border-bottom: .5px solid lightgray;
+  }
+  .section2_buttonArea{
+    text-align: center;
+    margin: 50px;
+  }
+  .section2_buttonArea input[type="button"]{
+    width: 200px;
+    height: 50px;
+    border: 1px solid gray;
+  }
+  #totalOrderButton{
+    background-color: rgb(85, 85, 85);
+    color: white;
+  }
+  #selectOrderButton{
+    background-color: rgb(161, 161, 161);
+    color: rgb(255, 255, 255);
+  }
+  #turnToShopping{
+    background-color: white;
+    color: rgb(82, 82, 82);
+  }
+  .section3{
+    height: 300px;
+    border: 1px solid red;
+  }
+</style>
+<body>
+  <div class="section1">
+    <h4>장바구니</h4>
+    <div class="section1_con">
+      <div>혜택정보</div>
+      <div>[temp]님은 [temp]회원이십니다.</div>
+    </div>
+  </div>
+  <div class="section2">
+    <div class="section2_title">
+      <div>배송상품</div>
+      <div></div>
+    </div>
+    <table class="section2_table">
+      <!-- th -->
+      <tr>
+        <th><input type="checkbox" name="itemSelect" value="total"></th>
+        <th style="width: 20%;">item</th>
+        <th style="width: 35%;"></th>
+        <th>수량</th>
+        <th style="width: 15%;">가격</th>
+        <th></th>
+      </tr>
+      <!-- tr -->
+      <c:forEach var="dto" items="${ list }">
+          <tr>
+            <td><input type="checkbox" name="itemSelect" value=""></th></td>
+            <td>이미지</td>
+            <td style="text-align: left;">상품명</td>
+            <td>x개</td>
+            <td>100,000원</td>
+            <td><button id="orderButton" 
+              style="margin: 0 auto; border-radius: 10px; background-color: white; 
+              border: 1px solid lightgray; width: 35%; height: 25px;">삭제</button></td>
+          </tr>
+      </c:forEach>  
+    </table>
+    <div class="section2_buttonArea">
+      <a href="./order"><input type="button" value="전체상품주문" id="totalOrderButton"/></a>
+      <a href="./order"><input type="button" value="선택상품주문" id="selectOrderButton"/></a>
+      <a href="./main"><input type="button" value="쇼핑계속하기" id="turnToShopping"/></a>
+    </div>
+  </div>
+  <div class="section3">
+    <div>이용안내</div>
+  </div>
+</body>
+</html>

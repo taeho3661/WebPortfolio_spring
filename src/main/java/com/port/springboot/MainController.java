@@ -24,4 +24,21 @@ public class MainController
 	{
 		return "main/main";
 	}
+	
+	//order페이지
+	@RequestMapping("/item")
+	public String order_item(Model model)
+	{
+		return "order/item";
+	}
+	@RequestMapping("/basket")
+	public String order_basket(Model model)
+	{
+		return "order/basket";
+	}
+	@RequestMapping("/order")
+	public String order_order(Model model)
+	{
+		return "order/order";
+	}
 }
