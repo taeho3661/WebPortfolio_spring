@@ -1,0 +1,19 @@
+package com.port.springboot.dto;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class BoardDto 
+{
+	private int		board_no;
+	private int		board_kind;
+    private String 	board_name;
+    private String 	board_content;
+    private String 	board_writer;
+	private Date 	board_write_date;
+	private int		board_hit;
+	private String 	board_secret_yn;
+	private int 	item_no;
+}
