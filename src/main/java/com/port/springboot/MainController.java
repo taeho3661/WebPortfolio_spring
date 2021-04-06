@@ -46,4 +46,9 @@ public class MainController
 	{
 		return "order/list";
 	}
+	@RequestMapping("/orderHistory")
+	public String order_history(Model model)
+	{
+		return "mypage/orderHistory";
+	}
 }
