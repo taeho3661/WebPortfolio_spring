@@ -75,8 +75,8 @@ public class AdminController
 	@RequestMapping("/itemDelete")
 	public String itemDelete(HttpServletRequest request, Model model)
 	{
-		int item_id = Integer.parseInt(request.getParameter("item_id"));
-		AdminDao.itemDelete(item_id);
+		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		AdminDao.itemDelete(item_no);
 		return "redirect:itemList";
 	}
 	

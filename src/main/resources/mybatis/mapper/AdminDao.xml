@@ -38,7 +38,7 @@
 	</select>
 	
 	<delete id="itemDelete" parameterType="com.port.springboot.dto.ItemDto">
-		delete from tb_item where item_id = #{item_id}
+		delete from tb_item where item_no = #{item_no}
 	</delete>
 
 </mapper>
