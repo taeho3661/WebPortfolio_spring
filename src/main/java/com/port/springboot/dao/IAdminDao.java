@@ -21,4 +21,5 @@ public interface IAdminDao
 	public int itemAdd(ItemDto dto);
 	public List<ItemDto>itemList();
 	public List<AdminQnaDto>itemQna();
+	public int itemDelete(int item_id);
 }

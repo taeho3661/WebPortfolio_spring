@@ -30,5 +30,9 @@
 		select i.item_nm, q.board_nm, q.writer, q.write_date, q.board_no from tb_item i, tb_board q where i.item_id = q.item_id
 		<!-- select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id -->
 	</select>
+	
+	<delete id="itemDelete" parameterType="com.port.springboot.dto.ItemDto">
+		delete from tb_item where item_id = #{item_id}
+	</delete>
 
 </mapper>

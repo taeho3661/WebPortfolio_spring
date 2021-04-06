@@ -51,7 +51,7 @@ public class AdminController
 	
 	//상품 추가 액션
 	@RequestMapping("/itemAdd")
-	public String productAdd(HttpServletRequest request, Model model)
+	public String itemAdd(HttpServletRequest request, Model model)
 	{
 		ItemDto dto = new ItemDto();
 		dto.setItem_nm(request.getParameter("item_nm"));
@@ -64,15 +64,24 @@ public class AdminController
 	
 	//상품 목록
 	@RequestMapping("/itemList")
-	public String productList(Model model)
+	public String itemList(Model model)
 	{
 		model.addAttribute("list", AdminDao.itemList());
 		return "/admin/itemList";
 	}
 	
+	//상품 삭제
+	@RequestMapping("/itemDelete")
+	public String itemDelete(HttpServletRequest request, Model model)
+	{
+		int item_id = Integer.parseInt(request.getParameter("item_id"));
+		AdminDao.itemDelete(item_id);
+		return "redirect:itemList";
+	}
+	
 	//문의 목록
 	@RequestMapping("/itemQna")
-	public String productQna(Model model)
+	public String itemQna(Model model)
 	{
 		model.addAttribute("list", AdminDao.itemQna());
 		return "/admin/itemQna";

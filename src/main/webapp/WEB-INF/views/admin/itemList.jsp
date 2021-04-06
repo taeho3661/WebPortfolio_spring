@@ -136,7 +136,7 @@
               <td>${ dto.stock }</td>
               <td id="buttons" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px;">
                 <button id="btn1">변경</button>
-                <button id="btn2">삭제</button>
+                <a href="itemDelete?item_id=${dto.item_id }"><button id="btn2">삭제</button></a>
               </td>
             </tr>
         </c:forEach>
