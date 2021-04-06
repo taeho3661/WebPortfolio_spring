@@ -5,20 +5,20 @@ import lombok.Data;
 @Data
 public class UserDto 
 {
-	private int user_no;
-    private String user_id;
-    private String user_pw;
-    private String user_nm;
-    private int post;
-    private String adr1 ;
-    private String adr2;
-    private String phone1;
-    private int phone2;
-    private int phone3;
-    private String email;
-    private int email_yn;
-    private int score;
-    private int rank;
-    private int login_type;
-    private int del_yn;
+	private int 	user_no;
+    private String 	user_id;
+    private String 	user_pw;
+    private String 	user_name;
+    private int 	user_post;
+    private String 	adr1 ;
+    private String 	adr2;
+    private String 	adr3;
+    private String 	adr4;
+    private String 	user_phone;
+    private String 	user_email;
+    private int 	user_email_yn;
+    private int 	user_score;
+    private int 	user_rank;
+    private int 	user_login_type;
+    private int 	user_del_yn;
 }

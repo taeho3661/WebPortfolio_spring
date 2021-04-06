@@ -122,8 +122,8 @@
         <c:forEach var="dto" items="${ list }">
             <tr>
               <td>${ dto.user_id }</td>
-              <td>${ dto.user_nm }</td>
-              <td>${ dto.phone1 } - ${ dto.phone2 } - ${ dto.phone3 }</td>
+              <td>${ dto.user_name }</td>
+              <td>${ dto.user_phone }</td>
               <td><a href="userDelete?user_id=${dto.user_id }"><button id="memberListDeleteButton">삭제</button></a></td>
             </tr>
         </c:forEach>

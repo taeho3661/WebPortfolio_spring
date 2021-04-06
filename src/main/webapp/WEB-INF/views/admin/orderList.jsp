@@ -121,7 +121,7 @@ a {
 				<!-- th -->
 				<tr>
 					<th>주문번호</th>
-					<th>일자</th>
+					<th>주문날짜</th>
 					<th>고객명</th>
 					<th>상품명</th>
 					<th>상품상태</th>
@@ -130,12 +130,13 @@ a {
 				<!-- tr -->
 				<c:forEach var="dto" items="${ list }">
 					<tr>
-						<td>${ dto.bil_id }</td>
+						<td>${ dto.order_no }</td>
 						<!-- <td>${ dto.order_date }</td> -->
 						<td><fmt:formatDate value="${dto.order_date}"
 								pattern="yyyy/MM/dd" /></td>
+						<td><fmt:formatDate value="${dto.order_date }" pattern="yyyy/MM/dd"/></td>
 						<td>${ dto.user_id }</td>
-						<td>${ dto.item_nm }</td>
+						<td>${ dto.item_name }</td>
 						<td><c:choose>
 							<c:when test="${dto.order_state == '1' }">
 								결제중

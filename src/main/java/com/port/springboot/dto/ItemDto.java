@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class ItemDto
 {
-	private int item_id;
-    private String item_nm;
-    private int price;
-    private int stock;
+	private int item_no;
+	private String item_type;
+    private String item_name;
+    private int item_price;
+    private int item_stock;
     private String item_img;
-    private int de_fee ;
-    private String con_img;
+    private String item_info_img;
 }

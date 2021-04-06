@@ -143,35 +143,44 @@ a {
 			<div class="sectionTitle">
 				<h1>상품 등록</h1>
 			</div>
-			<table class="table">
-				<form action="itemAdd" method="post">
+			<form action="itemAdd" method="post">
+				<table class="table">
+					<tr>
+						<td>카테고리</td>
+						<td>
+							<select name="item_type">
+							  <option value="디저트">디저트</option>
+							  <option value="음료">음료</option>
+							</select>
+						</td>
+					</tr>
 					<tr>
 						<td>상품명</td>
-						<td><input type="text" name="item_nm"
+						<td><input type="text" name="item_name"
 							placeholder="상품명을 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
 						<td>판매가</td>
-						<td><input type="text" name="price"
+						<td><input type="text" name="item_price"
 							placeholder="상품 가격을 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
 						<td>재고</td>
-						<td><input type="text" name="stock"
+						<td><input type="text" name="item_stock"
 							placeholder="상품 갯수를 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
 						<!-- <td><input type="textarea" name ="product_info" placeholder="세부 내용을 입력해주세요." class="inputBox"></td> -->
-						<td><textarea id="summernote" name="con_img" placeholder="세부 내용을 입력해주세요."></textarea></td>
+						<td><textarea id="summernote" name="item_info_img" placeholder="세부 내용을 입력해주세요."></textarea></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td style="text-align: right;"><input type="submit"
 							value="제품등록" id="productAddSubmitButton"></td>
 					</tr>
-				</form>
-			</table>
+				</table>
+			</form>
 		</div>
 	</div>
 	<script>

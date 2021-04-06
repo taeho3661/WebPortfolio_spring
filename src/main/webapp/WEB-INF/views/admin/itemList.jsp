@@ -130,13 +130,13 @@
         <c:forEach var="dto" items="${ list }">
             <tr>
               <td><img alt="" src="${ dto.item_img }"></td>
-              <td>${ dto.item_nm }</td>
-              <td>${ dto.price }</td>
+              <td>${ dto.item_name }</td>
+              <td>${ dto.item_price }</td>
               <td>판매량</td>
-              <td>${ dto.stock }</td>
+              <td>${ dto.item_stock }</td>
               <td id="buttons" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px;">
                 <button id="btn1">변경</button>
-                <a href="itemDelete?item_id=${dto.item_id }"><button id="btn2">삭제</button></a>
+                <a href="itemDelete?item_id=${dto.item_no }"><button id="btn2">삭제</button></a>
               </td>
             </tr>
         </c:forEach>

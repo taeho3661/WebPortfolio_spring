@@ -131,10 +131,10 @@ a {
 					<c:forEach var="dto" items="${ list }">
 						<input type="hidden" name="board_no" value="${dto.board_no}" />
 						<tr>
-							<td>${ dto.item_nm }</td>
-							<td>${ dto.board_nm }</td>
-							<td>${ dto.writer }</td>
-							<td><fmt:formatDate value="${dto.write_date}" pattern="yyyy/MM/dd" /></td>
+							<td>${ dto.item_name }</td>
+							<td>${ dto.board_name }</td>
+							<td>${ dto.board_writer }</td>
+							<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
 							<td><a href="javascript:replyButton();"><input type="button" value="답변" id="productQnaReplyButton"></a></td>
 						</tr>
 					</c:forEach>
@@ -142,6 +142,49 @@ a {
 			</table>
 		</div>
 	</div>
+<jsp:include page="adminHeader.jsp"/>
+
+  <div class="wrap">
+    <div class="aside">
+      <a href="memberList">회원 목록</a>
+      <a href="itemList">상품 목록</a>
+      <a href="itemAddForm">상품 등록</a>
+      <a href="orderList">주문 목록</a>
+      <a href="itemQna" id="selected">문의 목록</a>
+    </div>
+    <div class="section">
+      <div class="sectionTitle">
+        <h1>문의 목록</h1>
+      </div>
+       <form action="qnaReply.do" method="post">
+      <table class="table">
+        <!-- th -->
+        <tr>
+          <th>상품명</th>
+          <th>문의제목</th>
+          <th>문의자</th>
+          <th>날짜</th>
+          <th></th>
+        </tr>	
+        <!-- tr -->
+	        <c:forEach var="dto" items="${ list }">
+	            <input type="hidden" name="board_no" value="${dto.board_no}"/>
+	            <tr>
+	              <td>${ dto.item_name }</td>
+	              <td>${ dto.board_name }</td>
+	              <td>${ dto.board_writer }</td>
+	              <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd"/></td>
+	              <%-- <td>${ dto.board_no }</td> --%>
+	              <td><input type="submit" value="답변" id="productQnaReplyButton" onclick="javascript:replyButton();"></td>
+	            </tr>
+	            <%-- <a href="content_view.do?board_idx=${ dto.board_idx }">
+						${ dto.board_title }</a> --%>
+	        </c:forEach>
+      </table>
+	</form>
+    </div>
+  </div>
+>>>>>>> Stashed changes
 </body>
 </html>
 

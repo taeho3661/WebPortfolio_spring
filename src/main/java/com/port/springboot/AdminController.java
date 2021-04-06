@@ -54,10 +54,11 @@ public class AdminController
 	public String itemAdd(HttpServletRequest request, Model model)
 	{
 		ItemDto dto = new ItemDto();
-		dto.setItem_nm(request.getParameter("item_nm"));
-		dto.setPrice(Integer.parseInt(request.getParameter("price")));
-		dto.setStock(Integer.parseInt(request.getParameter("stock")));
-		dto.setCon_img(request.getParameter("con_img"));
+		dto.setItem_type(request.getParameter("item_type"));
+		dto.setItem_name(request.getParameter("item_name"));
+		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
+		dto.setItem_stock(Integer.parseInt(request.getParameter("item_stock")));
+		dto.setItem_img(request.getParameter("item_img"));
 		AdminDao.itemAdd(dto);
 		return "redirect:itemList";
 	}

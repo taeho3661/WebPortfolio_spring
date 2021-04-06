@@ -15,11 +15,15 @@
 	</delete>
 	
 	<select id="orderList" resultType="com.port.springboot.dto.OrderDto">
-		select b.bil_id, b.order_date, b.user_id, i.item_nm, b.order_state from tb_bil b, tb_cart c, tb_item i where b.bil_id = c.bil_id and c.item_id = i.item_id
+		select o.order_no, o.order_date, u.user_id, i.item_name, o.order_state 
+		from tb_order o, tb_item i, tb_user u 
+		where o.user_no = u.user_no  and o.item_no = i.item_no
+		order by o.order_no desc
 	</select>
 	
 	<insert id="itemAdd" parameterType="com.port.springboot.dto.ItemDto">
-		INSERT INTO tb_item (item_id, item_nm, price, stock, item_img, de_fee, con_img) values (tb_item_seq.nextval, #{item_nm}, #{price}, #{stock}, null, null, #{con_img})
+		INSERT INTO tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+		values (tb_item_seq.nextval, #{item_type}, #{item_name}, #{item_price}, #{item_stock}, null, null)
 	</insert>
 	
 	<select id="itemList" resultType="com.port.springboot.dto.ItemDto">
@@ -27,7 +31,9 @@
 	</select>
 	
 	<select id="itemQna" resultType="com.port.springboot.dto.AdminQnaDto">
-		select i.item_nm, q.board_nm, q.writer, q.write_date, q.board_no from tb_item i, tb_board q where i.item_id = q.item_id
+		select i.item_name, b.board_name, b.board_writer, b.board_write_date 
+		from tb_item i, tb_board b
+		where i.item_no = b.item_no
 		<!-- select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id -->
 	</select>
 	
