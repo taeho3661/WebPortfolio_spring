@@ -198,8 +198,8 @@
   
   <div class="header">
     <div class="header_topnav">
-      <a href="">로그인</a>
-      <a href="">회원가입</a>
+      <a href="login">로그인</a>
+      <a href="register">회원가입</a>
     </div>
     <div class="img">
       <img style="width: 220px;" src="https://ifh.cc/g/5Gy0b5.png" alt="">

@@ -51,4 +51,14 @@ public class MainController
 	{
 		return "mypage/orderHistory";
 	}
+	@RequestMapping("/login")
+	public String login(Model model)
+	{
+		return "member/login";
+	}
+	@RequestMapping("/register")
+	public String register(Model model)
+	{
+		return "member/register";
+	}
 }
