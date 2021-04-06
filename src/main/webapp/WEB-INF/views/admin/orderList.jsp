@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,29 +125,33 @@ a {
 					<th>고객명</th>
 					<th>상품명</th>
 					<th>상품상태</th>
-					<th>비고</th>
+					<th>상태 변경</th>
 				</tr>
 				<!-- tr -->
 				<c:forEach var="dto" items="${ list }">
 					<tr>
 						<td>${ dto.bil_id }</td>
 						<!-- <td>${ dto.order_date }</td> -->
-						<td><fmt:formatDate value="${dto.order_date}" pattern="yyyy/MM/dd"/></td>
+						<td><fmt:formatDate value="${dto.order_date}"
+								pattern="yyyy/MM/dd" /></td>
 						<td>${ dto.user_id }</td>
 						<td>${ dto.item_nm }</td>
 						<td><c:choose>
-								<c:when test="${dto.order_state == '1' }">
-						결제중
-					</c:when>
-								<c:when test="${dto.order_state == '2' }">
-						결제 완료
-					</c:when>
-								<c:when test="${dto.order_state == '3' }">
-						배송중
-					</c:when>
+							<c:when test="${dto.order_state == '1' }">
+								결제중
+							</c:when>
+							<c:when test="${dto.order_state == '2' }">
+								결제 완료
+							</c:when>
+							<c:when test="${dto.order_state == '3' }">
+								배송중
+							</c:when>
+							<c:when test="${dto.order_state == '4' }">
+								배송 완료
+							</c:when>
 							</c:choose></td>
 						<td><button id="orderListDeliveryButton"
-								style="margin: 0 auto;">배송출발</button></td>
+								style="margin: 0 auto;">변경</button></td>
 					</tr>
 				</c:forEach>
 
