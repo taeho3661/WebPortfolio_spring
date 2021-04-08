@@ -86,7 +86,18 @@ public class MainController
 			session.setAttribute("user", user);
 		}
 		
-		return "redirect:/main";
+		//로그인 타입에따른 관리자, 회원 분리
+		//User_login_type = 0 이면 회원, User_login_type = 1이면 관리자
+		System.out.println("user.getUser_login_type() : " + user.getUser_login_type());
+		
+		if(user.getUser_login_type() == 0)
+		{
+			return "redirect:/main";			
+		}
+		else
+		{
+			return "redirect:/admin/memberList";			
+		}
 	}
 	
 	
