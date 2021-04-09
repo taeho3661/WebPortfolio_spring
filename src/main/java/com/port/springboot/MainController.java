@@ -26,10 +26,25 @@ public class MainController
 	}
 	
 	@RequestMapping("/main")
-	public String admin_member_list(Model model)
+	public String main_main(Model model)
 	{
 		return "main/main";
 	}
+	
+	//company 페이지
+	@RequestMapping("/map")
+	public String company_map(Model model)
+	{
+		return "company/map";
+	}
+	
+	//service 페이지 
+	@RequestMapping("/inquiry")
+	public String service_inquiry(Model model)
+	{
+		return "service/inquiry";
+	}
+	
 	
 	//order페이지
 	@RequestMapping("/item")
