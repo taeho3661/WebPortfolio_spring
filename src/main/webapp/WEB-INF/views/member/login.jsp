@@ -18,7 +18,11 @@
 <title>Document</title>
 
 <style>
-* {
+
+
+.login {
+	margin-top: 200px;
+	font-size: 30px;
 	font-family: 'Noto Sans JP', sans-serif; /* 목록에 점없는거. */
 	list-style: none; /* 밑줄점없앰. */
 	text-decoration: none; /* 테이블 붙임 */
@@ -26,19 +30,6 @@
 	margin: 0px;
 	padding: 0px;
 	color: black;
-}
-
-.header {
-	height: 400px;
-	width: 1280px;
-	text-align: center;
-	margin: auto;
-	
-}
-
-.login {
-	margin-top: 200px;
-	font-size: 30px;
 }
 
 .login_ID {
