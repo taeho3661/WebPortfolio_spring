@@ -31,6 +31,12 @@ public class MainController
 		return "main/main";
 	}
 	
+	@RequestMapping("/header")
+	public String main_header(Model model)
+	{
+		return "main/header";
+	}
+	
 	//company 페이지
 	@RequestMapping("/map")
 	public String company_map(Model model)

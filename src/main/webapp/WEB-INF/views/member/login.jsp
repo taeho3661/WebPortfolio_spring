@@ -33,7 +33,7 @@
 	width: 1280px;
 	text-align: center;
 	margin: auto;
-	background-color: blanchedalmond;
+	
 }
 
 .login {
@@ -97,6 +97,8 @@
 </head>
 
 <body>
+    <jsp:include page="../main/header.jsp" />
+   
 	<div class="wrap">
 		<div class="header"></div>
 		<div class="login">
@@ -119,5 +121,7 @@
 			</div>
 		</div>
 	</div>
+	
+	 <jsp:include page="../main/footer.jsp" />
 </body>
 </html>

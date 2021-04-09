@@ -92,8 +92,8 @@
 </head>
 <body>
   
- 
-</div>
+ <jsp:include page="../main/header.jsp" />
+
   <!--캐러샐  -->
 <div class="car">
 <div id="demo" class="carousel slide align-center" data-ride="carousel" > 
@@ -224,6 +224,7 @@
 </div>
 
 
+<jsp:include page="footer.jsp" />
 
 
 

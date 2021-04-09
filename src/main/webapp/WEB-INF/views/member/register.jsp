@@ -30,7 +30,7 @@
 
       text-align: center;
       margin: auto;
-      background-color: blanchedalmond;
+      
     }
     .joinheader{
       margin: 46px 0 9px;
@@ -176,7 +176,7 @@
 
   
 
-
+ <jsp:include page="../main/header.jsp" />
 
 
 <div class= "wrap">
@@ -397,6 +397,6 @@
     </div> <!-- join main 부분-->
 </form>
 </div> <!-- wrap-->
-
+ <jsp:include page="../main/footer.jsp" />
 </body>
 </html>
