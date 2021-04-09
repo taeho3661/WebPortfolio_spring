@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,12 +108,22 @@
 <body>
   
   <div class="header">
-    <div class="header_topnav">
-      <a href="login">로그인</a>
-      <a href="register">회원가입</a>
-    </div>
+    <c:if test="${user == null}">
+    	<div class="header_topnav">
+    		<a href="login">로그인</a>
+    		<a href="register">회원가입</a>
+    	</div>
+    </c:if>
+    
+    <c:if test="${user != null}">
+    	<div class="header_topnav">
+    		<label>환영합니다 ${user.user_name }님</label>
+    		<a href="logout">로그아웃</a>
+    	</div>
+    </c:if>
+    
     <div class="img">
-      <img style="width: 220px;" src="https://ifh.cc/g/5Gy0b5.png" alt="">
+      <a href="main"><img style="width: 220px;" src="https://ifh.cc/g/5Gy0b5.png" alt=""></a>
     </div>
   </div>
   <!-- 드롭다운 -->
