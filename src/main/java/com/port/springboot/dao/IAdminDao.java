@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
-import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
+import com.port.springboot.dto.QnaDto;
 import com.port.springboot.dto.UserDto;
 
 @Mapper
@@ -19,6 +19,6 @@ public interface IAdminDao
 	public List<OrderDto>orderList();
 	public int itemAdd(ItemDto dto);
 	public List<ItemDto>itemList();
-	public List<BoardDto>itemQna();
+	public List<QnaDto>itemQna();
 	public int itemDelete(int item_id);
 }

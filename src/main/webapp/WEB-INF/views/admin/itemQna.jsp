@@ -129,7 +129,7 @@ a {
 				<!-- tr -->
 				<form method="post" name="answer">
 					<c:forEach var="dto" items="${ list }">
-						<input type="hidden" name="board_no" value="${dto.board_no}" />
+						<input type="hidden" name="item_no" value="${dto.item_no}" />
 						<tr>
 							<td>${ dto.item_no }</td>
 							<td>${ dto.board_name }</td>

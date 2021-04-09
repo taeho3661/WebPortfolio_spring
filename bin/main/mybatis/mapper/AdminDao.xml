@@ -30,7 +30,7 @@
 		select * from tb_item
 	</select>
 	
-	<select id="itemQna" resultType="com.port.springboot.dto.BoardDto">
+	<select id="itemQna" resultType="com.port.springboot.dto.QnaDto">
 		select i.item_no, b.board_name, b.board_writer, b.board_write_date 
 		from tb_item i, tb_board b
 		where i.item_no = b.item_no
