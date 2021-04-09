@@ -131,7 +131,7 @@ a {
 					<c:forEach var="dto" items="${ list }">
 						<input type="hidden" name="board_no" value="${dto.board_no}" />
 						<tr>
-							<td>${ dto.item_name }</td>
+							<td>${ dto.item_no }</td>
 							<td>${ dto.board_name }</td>
 							<td>${ dto.board_writer }</td>
 							<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
