@@ -71,7 +71,7 @@
       display: flex;
       
     }
-    .login_Member  > a{
+    .login_Member  > input{
       margin-top: 15px;
       margin-left: 8px;
       height: 50px;
@@ -89,9 +89,26 @@
       height: auto;
       justify-content: center;
     }
+    .login_input {
+    display: block;
+    
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+   
   </style>
 
 
+<jsp:include page="../main/header.jsp" />
 
 
 
@@ -105,18 +122,19 @@
       <div class="login_ID">
         <div class="login_IDbutton">
           <div class="login_text">이름</div>
-          <input type="text" class="form-control" placeholder="이름">
+          <input type="text" class="login_input" placeholder="이름">
         </div>
         <div class="login_IDbutton">
           <div class="login_text">이메일 찾기</div>
-          <input type="password" class="form-control login_paasword" placeholder="이메일">
+          <input type="password" class="login_input login_paasword" placeholder="이메일">
         </div>
       </div>
     
 
     <div class="login_Member">
       
-        <a class="btn btn-secondary btn-lg" a href="main.jsp">확인</a>
+        
+         <input type="submit" class="btn btn-secondary btn-lg " value="확인"></input>
         
         
       
@@ -130,7 +148,7 @@
   
 </div>
 
-
+<jsp:include page="../main/footer.jsp" />
 
 
 </body>

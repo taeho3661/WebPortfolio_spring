@@ -10,33 +10,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-</head>
-<body>
+
+
   <style>
-    *{ 
+    .login
+    { 
       font-family: 'Noto Sans JP', sans-serif; /* 목록에 점없는거. */
       list-style: none;   /* 밑줄점없앰. */
       text-decoration: none; /* 테이블 붙임 */
       border-collapse: collapse ;
-      margin:0px;
+      margin: 200px 0px 0px 0px;
       padding:0px;
       color:black;
     }
 
     .header{
-      height: 400px;
-      width: 1280px;
-
-      text-align: center;
-      margin: auto;
-      background-color: blanchedalmond;
+      
     }
     .login{
       margin-top: 200px;
       font-size: 30px;
     }
     .login_ID{
-      
+ 
       justify-content: center;
       
     }
@@ -51,25 +47,13 @@
     }
     
     
-    .form-control{
-      width: 300px;
-      height: 39px;
-      
-      /* 로그인 비번 아이디 텍스트상자 */
-    }
-    .login_IDlogin{
-      margin-left: 10px;
-      height: 80px;
-      width: 149px;
-      
-
-    }
+   
     .login_Member{
       justify-content: center;
       display: flex;
       
     }
-    .login_Member  > a{
+    .login_Member  > input{
       margin-top: 15px;
       margin-left: 8px;
       height: 50px;
@@ -88,39 +72,56 @@
       justify-content: center;
       
     }
+    
+    .login_input {
+    display: block;
+    
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+   
   </style>
+  </head>
+<body>
 
-
-
+<jsp:include page="../main/header.jsp" />
 
 
 <div class= "wrap">
   <div class="header">
-
+	
   </div>
   
   <div class="login">
-    <form action="aaa.jsp" method="POST"></form>
+    <form action="aaa.jsp" method="POST">
       <div class="login_ID">
         <div class="login_IDbutton">
           <div class="login_text">아이디</div>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="login_input" placeholder="">
         </div>
         <div class="login_IDbutton">
           <div class="login_text">이름</div>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="login_input" placeholder="">
         </div>
         <div class="login_IDbutton">
           <div class="login_text">이메일 찾기</div>
-          <input type="password" class="form-control " placeholder="">
+          <input type="email" class="login_input" placeholder="">
         </div>
       </div>
     
 
     <div class="login_Member">
-      
-        <a class="btn btn-secondary btn-lg" a href="main.jsp">확인</a>
-        
+    
+        <input type="submit" class="btn btn-secondary btn-lg " value="확인"></input>
         
       
     </div>
@@ -129,12 +130,12 @@
 
   </div>
 
-
+	
   
 </div>
 
 
-
+<jsp:include page="../main/footer.jsp" />
 
 </body>
 </html>

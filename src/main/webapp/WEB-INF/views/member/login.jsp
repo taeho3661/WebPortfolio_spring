@@ -21,13 +21,13 @@
 
 
 .login {
-	margin-top: 200px;
+	
 	font-size: 30px;
 	font-family: 'Noto Sans JP', sans-serif; /* 목록에 점없는거. */
 	list-style: none; /* 밑줄점없앰. */
 	text-decoration: none; /* 테이블 붙임 */
 	border-collapse: collapse;
-	margin: 0px;
+	margin: 200px 0px 0px 0px;
 	padding: 0px;
 	color: black;
 }
