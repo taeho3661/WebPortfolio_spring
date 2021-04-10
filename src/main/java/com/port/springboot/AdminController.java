@@ -1,11 +1,17 @@
 package com.port.springboot;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.filechooser.FileSystemView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.port.springboot.dao.IAdminDao;
 import com.port.springboot.dto.ItemDto;
@@ -51,14 +57,42 @@ public class AdminController
 	
 	//상품 추가 액션
 	@RequestMapping("/itemAdd")
-	public String itemAdd(HttpServletRequest request, Model model)
+	public String itemAdd(HttpServletRequest request, @RequestParam("item_img")MultipartFile item_img, @RequestParam("item_info_img")MultipartFile item_info_img)
 	{
+		
+		String rootPath = request.getSession().getServletContext().getRealPath("");
+		String basePath = rootPath + "/" + "img";
+		
+		String filePath1 = basePath + "/" + item_img.getOriginalFilename();
+		String filePath2 = basePath + "/" + item_info_img.getOriginalFilename();
+		
+		File dest1 = new File(filePath1);
+		File dest2 = new File(filePath2);
+		
+		System.out.println("dest1 : "+dest1);
+		
+		try 
+		{
+			item_img.transferTo(dest1);
+			item_info_img.transferTo(dest2);
+		}
+		catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 		ItemDto dto = new ItemDto();
 		dto.setItem_type(request.getParameter("item_type"));
 		dto.setItem_name(request.getParameter("item_name"));
 		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
 		dto.setItem_stock(Integer.parseInt(request.getParameter("item_stock")));
-		dto.setItem_img(request.getParameter("item_img"));
+		dto.setItem_img(item_img.getOriginalFilename());
+		dto.setItem_info_img(item_info_img.getOriginalFilename());
 		AdminDao.itemAdd(dto);
 		return "redirect:itemList";
 	}

@@ -23,7 +23,7 @@
 	
 	<insert id="itemAdd" parameterType="com.port.springboot.dto.ItemDto">
 		INSERT INTO tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
-		values (tb_item_seq.nextval, #{item_type}, #{item_name}, #{item_price}, #{item_stock}, null, null)
+		values (tb_item_seq.nextval, #{item_type}, #{item_name}, #{item_price}, #{item_stock}, #{item_img}, #{item_info_img})
 	</insert>
 	
 	<select id="itemList" resultType="com.port.springboot.dto.ItemDto">
