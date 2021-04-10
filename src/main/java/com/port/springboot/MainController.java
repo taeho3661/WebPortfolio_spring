@@ -85,6 +85,18 @@ public class MainController
 	{
 		return "member/login";
 	}
+	//아이디찾기
+	@RequestMapping("/FindID")
+	public String FindID()
+	{
+		return "member/FindID";
+	}
+	//비빌번호찾기
+	@RequestMapping("/FindPassword")
+	public String FindPasswor()
+	{
+		return "member/FindPassword";
+	}
 	
 	//로그인 기능
 	@RequestMapping(value="/loginAction", method= RequestMethod.POST)
