@@ -22,6 +22,10 @@
   .wrap{
     width: 1280px;
     height: 1000px;
+    
+    margin: 0 auto;
+    margin-top: 50px;
+    
     background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
@@ -91,6 +95,10 @@
   }
 </style>
 <body>
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
   <div class="wrap">
     <div class="section1">
       <div class="section_con">
@@ -281,6 +289,9 @@
 
     </div>
   </div>
+  
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
   
 </body>
 </html>

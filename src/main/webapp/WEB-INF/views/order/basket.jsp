@@ -118,6 +118,11 @@
   }
 </style>
 <body>
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
+<div style="width: 1280px; margin:0 auto; margin-top: 50px;">
   <div class="section1">
     <h4>장바구니</h4>
     <div class="section1_con">
@@ -163,5 +168,9 @@
   <div class="section3">
     <div>이용안내</div>
   </div>
+</div>
+
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

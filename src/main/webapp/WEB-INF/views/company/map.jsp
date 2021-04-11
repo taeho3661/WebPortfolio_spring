@@ -67,7 +67,10 @@
   </style>
 </head>
 <body>
- 
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
   <div class="dir">Direction </div>
   <div class="wrap">
     <div class="aside">
@@ -85,6 +88,10 @@
 
 
   </div>
+  
+  
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
   
 </body>
 </html>

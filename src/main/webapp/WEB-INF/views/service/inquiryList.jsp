@@ -38,6 +38,11 @@
 
 </head>
 <body>
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
+
   <h2 class="inquiry_title">1:1 문의</h2>
 
   <table class="inquiry_table">
@@ -67,5 +72,9 @@
        </c:forEach>
     </form>
   </table>
+  
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
+
 </body>
 </html>

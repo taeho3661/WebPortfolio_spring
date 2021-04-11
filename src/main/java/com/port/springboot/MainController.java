@@ -44,6 +44,12 @@ public class MainController
 		return "company/map";
 	}
 	
+	@RequestMapping("/introduce")
+	public String company_introduce(Model model)
+	{
+		return "company/introduce";
+	}
+	
 	//service 페이지 
 	@RequestMapping("/inquiry")
 	public String service_inquiry(Model model)

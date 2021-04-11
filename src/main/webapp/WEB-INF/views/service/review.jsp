@@ -38,6 +38,9 @@
 </head>
 <body>
 
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
 
 <script>
 //id가 description인 것을 summernote 방식으로 적용하라는 의미이다.
@@ -48,47 +51,49 @@ $(function(){
         width : 800
     });
 });
- 
-
 </script>
  
+<div style="width: 1280px; margin: 0 auto; margin-top: 50px;">
+	<h2 class="inquiry_h2">리뷰 등록</h2>
+	<form class="inquiry_table" name="form1" method="post"
+	    enctype="multipart/form-data">
+	<table>
+	    <tr>
+	        <td>상품명</td>
+	        <td><input name="product_name" id="product_name"></td>
+	    </tr>
+	    <tr>
+	        <td>가격</td>
+	        <td><input name="price" id="price"></td>
+	    </tr>
+	    <tr>
+	        <td>상품설명</td>
+	        <td><textarea rows="5" cols="60" 
+	            name="description" id="description"></textarea>
+	          
+	        </td>
+	    </tr>
+	    <tr>
+	        <td>상품이미지</td>
+	        <td>
+	            <input type="file" name="file1" id="file1"> 
+	        </td>
+	    </tr>
+	    <tr>
+	        <td colspan="2" align="center">
+	            <input type="button" value="등록" 
+	                onclick="javascript:product_write()">
+	            <input type="button" value="목록"
+	onclick="location.href='${path}/shop/product/list.do'">
+	        </td>
+	    </tr>
+	</table>    
+	</form>
+</div>
  
-<h2 class="inquiry_h2">리뷰 등록</h2>
-<form class="inquiry_table" name="form1" method="post"
-    enctype="multipart/form-data">
-<table>
-    <tr>
-        <td>상품명</td>
-        <td><input name="product_name" id="product_name"></td>
-    </tr>
-    <tr>
-        <td>가격</td>
-        <td><input name="price" id="price"></td>
-    </tr>
-    <tr>
-        <td>상품설명</td>
-        <td><textarea rows="5" cols="60" 
-            name="description" id="description"></textarea>
-          
-        </td>
-    </tr>
-    <tr>
-        <td>상품이미지</td>
-        <td>
-            <input type="file" name="file1" id="file1"> 
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <input type="button" value="등록" 
-                onclick="javascript:product_write()">
-            <input type="button" value="목록"
-onclick="location.href='${path}/shop/product/list.do'">
-        </td>
-    </tr>
-</table>    
-</form>
- 
+ <!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
+
 </body>
 </html>
 

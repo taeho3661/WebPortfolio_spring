@@ -21,7 +21,8 @@
   }
   .wrap{
     width: 1280px;
-    /* margin-top: 50px; */
+    margin: 0 auto;
+    margin-top: 50px;
     /* height: 200px; */
   }
   .item_info{
@@ -96,6 +97,10 @@
   }
 </style>
 <body>
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
+
   <div class="wrap">
     <div class="item_info">
       <div class="section1">
@@ -172,5 +177,8 @@
     </div>
 
   </div>
+  
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

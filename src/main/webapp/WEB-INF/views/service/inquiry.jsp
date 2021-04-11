@@ -53,6 +53,9 @@
 
 </style>
 <body>
+
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
    
   <div class="editor">
 
@@ -74,14 +77,16 @@
     </div>
   </div>
   
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
     
 
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>

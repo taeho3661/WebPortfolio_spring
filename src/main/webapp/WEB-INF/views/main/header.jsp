@@ -151,30 +151,30 @@
        <div class="dropdown">
           <a class="dropbtn" href="">ABOUT</a>
           <div class="dropdown-content">
-            <a href="https://www.website.com">공지사항</a>
-            <a href="https://www.website.com">회사소개</a>
+            <a href="#">공지사항</a>
+            <a href="introduce">회사소개</a>
             <a href="map">오시는길</a>
-            <a href="https://www.website.com">이벤트</a>
+            <a href="#">이벤트</a>
           </div>
       </div>
 
       <div class="dropdown">
         <a class="dropbtn" href="">DESSERT</a>
         <div class="dropdown-content">
-          <a href="https://www.website.com">마카롱</a>
-          <a href="https://www.website.com">머핀</a>
-          <a href="https://www.website.com">CAKE</a>
-          <a href="https://www.website.com">BREAD</a>
+          <a href="list">마카롱</a>
+          <a href="list">머핀</a>
+          <a href="list">CAKE</a>
+          <a href="list">BREAD</a>
         </div>
     </div>
 
     <div class="dropdown">
       <a class="dropbtn" href="">DRINK</a>
       <div class="dropdown-content">
-        <a href="https://www.website.com">Name1</a>
-        <a href="https://www.website.com">Name1</a>
-        <a href="https://www.website.com">Name1</a>
-        <a href="https://www.website.com">Name1</a>
+        <a href="#">Name1</a>
+        <a href="#">Name1</a>
+        <a href="#">Name1</a>
+        <a href="#">Name1</a>
       </div>
   </div>
 
@@ -183,8 +183,8 @@
     <div class="dropdown-content">
       <a href="review">상품후기</a>
       <a href="inquiryList">상품문의</a>
-      <a href="https://www.website.com">이용약관</a>
-      <a href="https://www.website.com">개인정보</a>
+      <a href="#">이용약관</a>
+      <a href="#">개인정보</a>
     </div>
 </div>
                    
