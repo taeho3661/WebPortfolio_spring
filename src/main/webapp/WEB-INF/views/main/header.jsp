@@ -18,6 +18,9 @@
     text-decoration: none;
     /* border: 1px solid red; */
     }
+    body{
+    overflow-y:scroll;
+    }
     
     .header {
     width: 1480px;
