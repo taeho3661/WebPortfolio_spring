@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Header</title>
   <style>
@@ -57,20 +59,8 @@
       font-weight: bold;
       font-size: 18px;
     }
-    .input {
-      margin: 5px;
-      margin-left: 40px;
-      background-color: rgb(231, 218, 218);
-      border-radius: 15px;
-    }
-    .serch {
-      margin: 0 6px;
-      height: 20px;
-      border: none;
-      background-color: rgb(231, 218, 218);
-      border-bottom: 0.5px solid #c9c2c2;
-      outline: none;
-    }
+   
+ 
 /* 드롭다운 */
 .dropdown {
     position: relative;
@@ -102,7 +92,33 @@
 .dropdown:hover .dropbtn:hover {
   background-color: white;
   }
+  
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/* search */
+.serch {
+  padding: 5px;
+  margin-top: 3px;
+  height: 28px;
+  border: 1px solid rgb(176, 170, 170);
+  border-right: none;
+  background-color: rgb(231, 218, 218);
+  border-bottom: 0.5px solid #c9c2c2;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+}
+.searchButton {
+  margin-top: 3px;
+  width: 35px;
+  height: 28px;
+  border: 1px solid rgb(176, 170, 170);
+  border-left: none;
+  background: rgb(231, 218, 218);
+  color: rgb(135, 135, 152);
+  border-radius: 0 10px 10px 0 ;
 
+ 
+  
+}
 
  </style>
 </head>
@@ -134,7 +150,7 @@
           <div class="dropdown-content">
             <a href="https://www.website.com">공지사항</a>
             <a href="https://www.website.com">회사소개</a>
-            <a href="https://www.website.com">오시는길</a>
+            <a href="map">오시는길</a>
             <a href="https://www.website.com">이벤트</a>
           </div>
       </div>
@@ -162,23 +178,21 @@
   <div class="dropdown">
     <a class="dropbtn" href="">고객센터</a>
     <div class="dropdown-content">
-      <a href="https://www.website.com">상품후기</a>
-      <a href="https://www.website.com">상품문의</a>
+      <a href="review">상품후기</a>
+      <a href="inquiryList">상품문의</a>
       <a href="https://www.website.com">이용약관</a>
-      <a href="https://www.website.com">이용약관</a>
+      <a href="https://www.website.com">개인정보</a>
     </div>
 </div>
-          
-          
+                   
    
-
-<div class="input"><input class="serch"  type="text" value=""></div>
+  
+  <input class="serch"  type="text" value="">
+<button type="submit" class="searchButton" ><i class="fa fa-search"></i>
+</button>
+  
 
 </div>
- 
-
-
-
 
 
 </body>

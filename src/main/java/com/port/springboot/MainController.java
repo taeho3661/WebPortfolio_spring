@@ -51,6 +51,19 @@ public class MainController
 		return "service/inquiry";
 	}
 	
+	@RequestMapping("/inquiryList")
+	public String service_inquiryList(Model model)
+	{
+		return "service/inquiryList";
+	}
+	
+	@RequestMapping("/review")
+	public String service_review(Model model)
+	{
+		return "service/review";
+	}
+	
+	
 	
 	//order페이지
 	@RequestMapping("/item")
