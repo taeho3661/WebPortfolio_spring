@@ -16,6 +16,7 @@
     text-decoration: none;
     /* border: 1px solid red; */
     }
+    
     .header {
     width: 1480px;
     margin: 0 auto;
