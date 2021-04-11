@@ -17,6 +17,7 @@
     padding: 0;
     text-decoration: none;
     /* border: 1px solid red; */
+    overflow: hidden;
     }
     
     .header {
