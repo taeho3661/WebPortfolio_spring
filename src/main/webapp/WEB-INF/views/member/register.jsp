@@ -11,9 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <style>
-    *{ 
+    .wrap
+    { 
       font-family: 'Noto Sans JP', sans-serif; /* 목록에 점없는거. */
       list-style: none;   /* 밑줄점없앰. */
       text-decoration: none; /* 테이블 붙임 */
@@ -24,14 +26,7 @@
       
     }
 
-    .header{
-      height: 400px;
-      width: 1280px;
-
-      text-align: center;
-      margin: auto;
-      
-    }
+ 
     .joinheader{
       margin: 46px 0 9px;
       color: #4e4748;

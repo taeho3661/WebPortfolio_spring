@@ -16,7 +16,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-
+</head>
+ <jsp:include page="../main/header.jsp" />
+<body>
 <style>
 
 
@@ -85,10 +87,10 @@
 	width: 121px;
 }
 </style>
-</head>
 
-<body>
-    <jsp:include page="../main/header.jsp" />
+
+
+   
    
 	<div class="wrap">
 		<div class="header"></div>

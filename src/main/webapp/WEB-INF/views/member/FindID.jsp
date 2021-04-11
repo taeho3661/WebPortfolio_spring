@@ -23,14 +23,7 @@
       color:black;
     }
 
-    .header{
-      height: 400px;
-      width: 1280px;
-
-      text-align: center;
-      margin: auto;
-      background-color: blanchedalmond;
-    }
+   
     .login{
       margin-top: 200px;
       font-size: 30px;
