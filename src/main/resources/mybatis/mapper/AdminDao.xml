@@ -44,5 +44,14 @@
 	<update id="orderStateChange" parameterType="com.port.springboot.dto.OrderDto">
 		update tb_order set order_state = #{order_state} where order_no = #{order_no}
 	</update>
+	
+	<select id="itemModify" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_no = #{item_no}
+	</select>
+	
+	<update id="itemModifyAction" parameterType="com.port.springboot.dto.ItemDto">
+		update tb_item set item_type = #{item_type}, item_name = #{item_name}, item_price = #{item_price}, item_stock = #{item_stock}, item_img = #{item_img}, item_info_img = #{item_info_img}
+		where item_no = #{item_no}
+	</update>
 
 </mapper>

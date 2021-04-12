@@ -20,6 +20,8 @@ public interface IAdminDao
 	public int itemAdd(ItemDto dto);
 	public List<ItemDto>itemList();
 	public List<QnaDto>itemQna();
-	public int itemDelete(int item_id);
+	public int itemDelete(int item_no);
 	public int orderStateChange(OrderDto dto);
+	public ItemDto itemModify(int item_no);
+	public int itemModifyAction(ItemDto dto);
 }
