@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.port.springboot.dao.IAdminDao;
 import com.port.springboot.dto.ItemDto;
+import com.port.springboot.dto.OrderDto;
 
 @Controller
 @RequestMapping("/admin")
@@ -46,6 +47,35 @@ public class AdminController
 	{
 		model.addAttribute("list", AdminDao.orderList());
 		return "/admin/orderList";
+	}
+	
+	//주문 상태 변경
+	@RequestMapping("/orderStateChange")
+	public String orderStateChange(HttpServletRequest request)
+	{
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		int order_state = Integer.parseInt(request.getParameter("order_state"));
+		
+		System.out.println("order no : "+order_no);
+		System.out.println("order_state : "+order_state);
+		
+		if(order_state<=3)
+		{
+			++order_state;
+		}
+		else
+		{
+			order_state = 4;
+		}
+		
+		System.out.println("order_state changed : "+order_state);
+		
+		OrderDto dto = new OrderDto();
+		dto.setOrder_no(order_no);
+		dto.setOrder_state(order_state);
+		
+		AdminDao.orderStateChange(dto);
+		return "redirect:orderList";
 	}
 	
 	//상품 추가 페이지

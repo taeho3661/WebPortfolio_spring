@@ -132,9 +132,7 @@ a {
 					<tr>
 						<td>${ dto.order_no }</td>
 						<!-- <td>${ dto.order_date }</td> -->
-						<td><fmt:formatDate value="${dto.order_date}"
-								pattern="yyyy/MM/dd" /></td>
-						<td><fmt:formatDate value="${dto.order_date }" pattern="yyyy/MM/dd"/></td>
+						<td><fmt:formatDate value="${dto.order_date}" pattern="yyyy/MM/dd" /></td>
 						<td>${ dto.user_id }</td>
 						<td>${ dto.item_name }</td>
 						<td><c:choose>
@@ -151,8 +149,7 @@ a {
 								배송 완료
 							</c:when>
 							</c:choose></td>
-						<td><button id="orderListDeliveryButton"
-								style="margin: 0 auto;">변경</button></td>
+						<td><a href="orderStateChange?order_no=${dto.order_no}&order_state=${dto.order_state}"><button id="orderListDeliveryButton" style="margin: 0 auto;">변경</button></a></td>
 					</tr>
 				</c:forEach>
 

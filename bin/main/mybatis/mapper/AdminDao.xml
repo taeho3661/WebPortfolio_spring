@@ -40,5 +40,9 @@
 	<delete id="itemDelete" parameterType="com.port.springboot.dto.ItemDto">
 		delete from tb_item where item_no = #{item_no}
 	</delete>
+	
+	<update id="orderStateChange" parameterType="com.port.springboot.dto.OrderDto">
+		update tb_order set order_state = #{order_state} where order_no = #{order_no}
+	</update>
 
 </mapper>
