@@ -31,7 +31,7 @@
 </style>
 <body>
   <div class="logOutButton headerDiv">
-    <button>로그아웃</button>
+  	<a href="adminLogOut"><button>로그아웃</button></a>
   </div>
   <div class="headerDiv" style="text-align: center;">
     <img src="https://ifh.cc/g/5Gy0b5.png" alt="" style="height: 150px;">

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.filechooser.FileSystemView;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -126,5 +126,13 @@ public class AdminController
 	public String qnaReply(Model model)
 	{
 		return "/admin/qnaReply";
+	}
+	
+	//로그아웃
+	@RequestMapping("/adminLogOut")
+	public String adminLogOut(HttpSession session)
+	{
+		session.invalidate();
+		return "redirect:/main";
 	}
 }

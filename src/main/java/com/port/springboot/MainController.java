@@ -152,6 +152,14 @@ public class MainController
 		}
 	}
 	
+	//로그아웃
+	@RequestMapping("/Logout")
+	public String Logout(HttpSession session)
+	{
+		session.invalidate();
+		return "redirect:/main";
+	}
+	
 	
 	@RequestMapping("/register")
 	public String register(Model model)

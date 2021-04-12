@@ -21,4 +21,5 @@ public interface IAdminDao
 	public List<ItemDto>itemList();
 	public List<QnaDto>itemQna();
 	public int itemDelete(int item_id);
+	public int orderStateChange(int order_no);
 }

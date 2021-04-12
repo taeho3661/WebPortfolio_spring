@@ -138,7 +138,7 @@
     <c:if test="${user != null}">
     	<div class="header_topnav">
     		<label>환영합니다 ${user.user_name }님</label>
-    		<a href="logout">로그아웃</a>
+    		<a href="Logout">로그아웃</a>
     	</div>
     </c:if>
     
