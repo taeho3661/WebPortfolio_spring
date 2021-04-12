@@ -13,7 +13,7 @@
 </head>
 <body>
   <style>
-    *{ 
+    #wrap{ 
       font-family: 'Noto Sans JP', sans-serif; /* 목록에 점없는거. */
       list-style: none;   /* 밑줄점없앰. */
       text-decoration: none; /* 테이블 붙임 */
@@ -105,7 +105,7 @@
 
 
 
-<div class= "wrap">
+<div id= "wrap">
   <div class="header">
 
   </div>
