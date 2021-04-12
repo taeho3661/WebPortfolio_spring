@@ -22,8 +22,7 @@
       padding:0px;
       color:black;
     }
-
-   
+    
     .login{
       margin-top: 200px;
       font-size: 30px;
