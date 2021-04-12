@@ -20,10 +20,11 @@
       list-style: none;   /* 밑줄점없앰. */
       text-decoration: none; /* 테이블 붙임 */
       border-collapse: collapse ;
-      margin:0px;
+      margin:auto;
       padding:0px;
       color:black;
-      
+      height: auto;
+      width: 1200px;
     }
 
  
@@ -66,7 +67,7 @@
       width: 168px;
       height: 24px;
     }
-    .join_ID_Check{
+    #join_ID_Check{
       display: inline-block;
       text-align: center;
       color: #fff;
@@ -76,7 +77,7 @@
       height: 22px;
       line-height: 22px;
       font-size: 7px;
-
+	  text-decoration: none;
     }
 
     .join_Password > input{
@@ -138,7 +139,7 @@
       height: 24px;
       margin-left: 15px;
     }
-    .phonetext{
+    .phonetext > input{
       width: 60px;
       height: 24px;
       margin: 0 4px;
@@ -149,7 +150,7 @@
       width: 60px;
       height: 24px;
     }
-    .email{
+    #exampleInputEmail1{
       margin-left: 15px;
       height: 24px;
       width: 500px;
@@ -175,16 +176,14 @@
 
 
 <div class= "wrap">
-  <div class="header">  
-  </div>
+  
   <form action="aaa.jsp" method="POST">
-
     <div class="join ">
       <div class="joinheader">필수항목입니다</div>
       <div class="join_ID main Line ">
         <div class="join_textside">아이디 </div>
         <input type="text" class="form-control textbox">
-        <a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" class="btn btn-secondary btn-lg join_ID_Check ">아이디 중복체크</a>
+        <a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">아이디 중복체크</a>
       </div>
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
@@ -296,7 +295,7 @@
     
 
       </div>
-      <div class="main Line">
+      <div class="main Line phonetext">
         <div class="join_textside">휴대전화</div>
         <div>
           <select id="phone1" name="phone[]" fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화" fw-alone="N" fw-msg="">
@@ -333,8 +332,8 @@
             <option value="0508">0508</option>
             </select>
         </div>
-        <input type="text" class="form-control textbox phonetext" >
-        <input type="text" class="form-control textbox phonetext" >
+        <input type="text" class="form-control textbox " >
+        <input type="text" class="form-control textbox " >
 
 
       </div>
