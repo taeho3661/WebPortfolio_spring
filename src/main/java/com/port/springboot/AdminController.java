@@ -208,8 +208,11 @@ public class AdminController
 	}
 	
 	@RequestMapping("/qnaReply")
-	public String qnaReply(Model model)
+	public String qnaReply(HttpServletRequest request, Model model)
 	{
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		System.out.println("board_no : "+board_no);
+		model.addAttribute("dto", AdminDao.qnaView(board_no));
 		return "/admin/qnaReply";
 	}
 	

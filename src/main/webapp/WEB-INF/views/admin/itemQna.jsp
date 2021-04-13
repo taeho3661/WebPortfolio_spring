@@ -120,36 +120,26 @@ a {
 			<table class="table">
 				<!-- th -->
 				<tr>
-					<th>상품명</th>
+					<th>문의상품</th>
 					<th>문의제목</th>
 					<th>문의자</th>
 					<th>날짜</th>
 					<th></th>
 				</tr>
-				<!-- tr -->
-				<form method="post" name="answer">
 					<c:forEach var="dto" items="${ list }">
-						<input type="hidden" name="item_no" value="${dto.item_no}" />
-						<tr>
-							<td>${ dto.item_no }</td>
-							<td>${ dto.board_name }</td>
-							<td>${ dto.board_writer }</td>
-							<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
-							<td><a href="javascript:replyButton();"><input type="button" value="답변" id="productQnaReplyButton"></a></td>
-						</tr>
+						<form method="get" name="answer">
+							<input type="hidden" name="board_no" value="${dto.board_no}" />
+							<tr>
+								<td>${ dto.item_name }</td>
+								<td>${ dto.board_name }</td>
+								<td>${ dto.board_writer }</td>
+								<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
+								<td><a href="/admin/qnaReply?board_no=${dto.board_no }" onclick="window.open(this.href, '_blank', 'width=780, height=850'); return false;"><input type="button" value="답변" id="productQnaReplyButton"></a></td>
+							</tr>
+						</form>
 					</c:forEach>
-				</form>
 			</table>
 		</div>
 	</div>
 </body>
 </html>
-
-<script>
-	function replyButton()
-	{
-		window.open("", "새창", "width=780, height=850, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );
-		var form = document.getElementById("answer");
-		form.action = qnaReply;
-	}
-</script>
