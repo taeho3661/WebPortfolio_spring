@@ -144,7 +144,8 @@ create table  tb_board(
     board_write_date    date default sysdate,
     board_hit     	    number(4) default 0,
     board_secret_yn     varchar2(1), -- 0:비밀 1:공개
-    item_no     	    number(4)
+    item_no     	    number(4),
+    board_reply         varchar2(200)
 );
 
 drop sequence tb_board_seq;
@@ -154,21 +155,21 @@ select * from tb_board;
 
 -- -- -- 샘플 -- -- --
 insert into tb_board(board_no, board_kind, board_name, board_content, 
-board_writer, board_write_date, board_secret_yn, item_no)
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 2, '샌드위치 맛있나요?', '샌드위치 얼마나 맛있나요?', 
-'아이디1', sysdate, 1, 1);
+'아이디1', sysdate, 1, 1, null);
 insert into tb_board(board_no, board_kind, board_name, board_content, 
-board_writer, board_write_date, board_secret_yn, item_no)
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 2, '문의입니다.', '테스트~~~~~', 
-'아이디1', sysdate, 1, 1);
+'아이디1', sysdate, 1, 1, null);
 insert into tb_board(board_no, board_kind, board_name, board_content, 
-board_writer, board_write_date, board_secret_yn, item_no)
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '후기입니다.', '후기내용입니다~', 
-'아이디2', sysdate, 1, 1);
+'아이디2', sysdate, 1, 1, null);
 insert into tb_board(board_no, board_kind, board_name, board_content, 
-board_writer, board_write_date, board_secret_yn, item_no)
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '후기입니다22.', '후기내용입니다~22', 
-'아이디2', sysdate, 1, 2);
+'아이디2', sysdate, 1, 2, null);
 
 
 --테스트

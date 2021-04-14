@@ -15,5 +15,5 @@ public class BoardDto
 	private Date 	board_write_date;
 	private int 	item_no;
 	private String 	board_content;
-	
+	private String	board_reply;
 }
