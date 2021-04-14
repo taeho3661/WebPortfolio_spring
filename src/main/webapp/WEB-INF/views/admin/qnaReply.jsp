@@ -75,10 +75,10 @@
       <h1>상품 문의</h1>
     </div>
     <table class="table">
-      <form action="productAdd.do" method="post">
+      <form action="replySend" method="post">
         <tr>
           <td>상품명</td>
-          <td>${dto.item_name}</td>
+          <td>${dto.item_name} </td>
         </tr>
         <tr>
           <td>문의제목</td>
@@ -95,10 +95,10 @@
         <tr>
           <td>답변</td>
           <!-- <td><input type="textarea" name ="product_info" placeholder="세부 내용을 입력해주세요." class="inputBox"></td> -->
-          <td><textarea name ="board_content" placeholder="답변 내용을 입력해주세요." id="productAddTextarea"></textarea></td>
+          <td><textarea name ="board_reply" placeholder="답변 내용을 입력해주세요." id="productAddTextarea"></textarea></td>
         </tr>
         <tr>
-          <td></td>
+          <td><input type="hidden" name="board_no" value="${dto.board_no }"></td>
           <td style="text-align: right;">
             <input type="submit" value="답변하기" id="productAddSubmitButton">
           </td>
