@@ -30,15 +30,30 @@
 		select * from tb_item
 	</select>
 	
-	<select id="itemQna" resultType="com.port.springboot.dto.QnaDto">
-		select i.item_no, b.board_name, b.board_writer, b.board_write_date 
-		from tb_item i, tb_board b
-		where i.item_no = b.item_no
+	<select id="itemQna" resultType="com.port.springboot.dto.BoardDto">
+		select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_kind = 2
 		<!-- select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id -->
 	</select>
 	
 	<delete id="itemDelete" parameterType="com.port.springboot.dto.ItemDto">
 		delete from tb_item where item_no = #{item_no}
 	</delete>
+	
+	<update id="orderStateChange" parameterType="com.port.springboot.dto.OrderDto">
+		update tb_order set order_state = #{order_state} where order_no = #{order_no}
+	</update>
+	
+	<select id="itemModify" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_no = #{item_no}
+	</select>
+	
+	<update id="itemModifyAction" parameterType="com.port.springboot.dto.ItemDto">
+		update tb_item set item_type = #{item_type}, item_name = #{item_name}, item_price = #{item_price}, item_stock = #{item_stock}, item_img = #{item_img}, item_info_img = #{item_info_img}
+		where item_no = #{item_no}
+	</update>
+	
+	<select id="qnaView" resultType="com.port.springboot.dto.BoardDto">
+		select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_no = #{baord_no}
+	</select>
 
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.port.springboot.dao.IAdminDao;
 import com.port.springboot.dto.ItemDto;
+import com.port.springboot.dto.OrderDto;
 
 @Controller
 @RequestMapping("/admin")
@@ -32,6 +33,7 @@ public class AdminController
 		return "/admin/memberList";
 	}
 	
+	//회원 삭제
 	@RequestMapping("/userDelete")
 	public String userDelete(HttpServletRequest request, Model model)
 	{
@@ -46,6 +48,35 @@ public class AdminController
 	{
 		model.addAttribute("list", AdminDao.orderList());
 		return "/admin/orderList";
+	}
+	
+	//주문 상태 변경
+	@RequestMapping("/orderStateChange")
+	public String orderStateChange(HttpServletRequest request)
+	{
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		int order_state = Integer.parseInt(request.getParameter("order_state"));
+		
+		System.out.println("order no : "+order_no);
+		System.out.println("order_state : "+order_state);
+		
+		if(order_state<=3)
+		{
+			++order_state;
+		}
+		else
+		{
+			order_state = 4;
+		}
+		
+		System.out.println("order_state changed : "+order_state);
+		
+		OrderDto dto = new OrderDto();
+		dto.setOrder_no(order_no);
+		dto.setOrder_state(order_state);
+		
+		AdminDao.orderStateChange(dto);
+		return "redirect:orderList";
 	}
 	
 	//상품 추가 페이지
@@ -105,9 +136,63 @@ public class AdminController
 		return "/admin/itemList";
 	}
 	
+	//상품 수정 조회
+	@RequestMapping("/itemModify")
+	public String itemModify(HttpServletRequest request, Model model)
+	{
+		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		
+		System.out.println("select item no : "+item_no);
+		
+		model.addAttribute("dto", AdminDao.itemModify(item_no));
+		return "/admin/itemModify";
+	}
+	
+	//상품 수정 액션
+	@RequestMapping("/itemModifyAction")
+	public String itemModifyAction(HttpServletRequest request, @RequestParam("item_img")MultipartFile item_img, @RequestParam("item_info_img")MultipartFile item_info_img)
+	{
+		String rootPath = request.getSession().getServletContext().getRealPath("");
+		String basePath = rootPath + "/" + "img";
+		
+		String filePath1 = basePath + "/" + item_img.getOriginalFilename();
+		String filePath2 = basePath + "/" + item_info_img.getOriginalFilename();
+		
+		File dest1 = new File(filePath1);
+		File dest2 = new File(filePath2);
+		
+		System.out.println("dest1 : "+dest1);
+		
+		try 
+		{
+			item_img.transferTo(dest1);
+			item_info_img.transferTo(dest2);
+		}
+		catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ItemDto dto = new ItemDto();
+		dto.setItem_no(Integer.parseInt(request.getParameter("item_no")));
+		dto.setItem_type(request.getParameter("item_type"));
+		dto.setItem_name(request.getParameter("item_name"));
+		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
+		dto.setItem_stock(Integer.parseInt(request.getParameter("item_stock")));
+		dto.setItem_img(item_img.getOriginalFilename());
+		dto.setItem_info_img(item_info_img.getOriginalFilename());
+		AdminDao.itemModifyAction(dto);
+		
+		return "redirect:itemList";
+	}
+	
 	//상품 삭제
 	@RequestMapping("/itemDelete")
-	public String itemDelete(HttpServletRequest request, Model model)
+	public String itemDelete(HttpServletRequest request)
 	{
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		AdminDao.itemDelete(item_no);
@@ -123,8 +208,11 @@ public class AdminController
 	}
 	
 	@RequestMapping("/qnaReply")
-	public String qnaReply(Model model)
+	public String qnaReply(HttpServletRequest request, Model model)
 	{
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		System.out.println("board_no : "+board_no);
+		model.addAttribute("dto", AdminDao.qnaView(board_no));
 		return "/admin/qnaReply";
 	}
 	

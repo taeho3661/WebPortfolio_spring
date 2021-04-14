@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상품등록</title>
+<title>상품수정</title>
 
 </head>
 <style>
@@ -134,8 +135,16 @@ a {
 			<div class="sectionTitle">
 				<h1>상품 등록</h1>
 			</div>
-			<form action="itemAdd" method="post" enctype="multipart/form-data">
+			<form action="itemModifyAction" method="post" enctype="multipart/form-data">
 				<table class="table">
+					<tr>
+						<td>
+							상품번호
+						</td>
+						<td>
+							<input type="text" name="item_no" value="${dto.item_no }" readonly>
+						</td>
+					</tr>
 					<tr>
 						<td>카테고리</td>
 						<td>
@@ -147,17 +156,17 @@ a {
 					</tr>
 					<tr>
 						<td>상품명</td>
-						<td><input type="text" name="item_name"
+						<td><input type="text" name="item_name" value="${dto.item_name }"
 							placeholder="상품명을 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
 						<td>판매가</td>
-						<td><input type="text" name="item_price"
+						<td><input type="text" name="item_price" value="${dto.item_price }"
 							placeholder="상품 가격을 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
 						<td>재고</td>
-						<td><input type="text" name="item_stock"
+						<td><input type="text" name="item_stock" value= "${dto.item_stock }"
 							placeholder="상품 갯수를 입력해주세요." class="inputBox"></td>
 					</tr>
 					<tr>
