@@ -127,7 +127,11 @@
     <h4>장바구니</h4>
     <div class="section1_con">
       <div>혜택정보</div>
-      <div>[temp]님은 [temp]회원이십니다.</div>
+      <div>
+	    <c:if test="${user != null}">
+	   		${ user.user_name }님은 ${ user.user_rank }입니다.
+	   	</c:if>
+	  </div>
     </div>
   </div>
   <div class="section2">
@@ -149,10 +153,10 @@
       <c:forEach var="dto" items="${ list }">
           <tr>
             <td><input type="checkbox" name="itemSelect" value=""></th>
-            <td>이미지</td>
-            <td style="text-align: left;">상품명</td>
-            <td>x개</td>
-            <td>100,000원</td>
+            <td>${ dto.item_img }</td>
+            <td style="text-align: left;">${ dto.item_name }</td>
+            <td>${ dto.order_count }</td>
+            <td>${ dto.order_price }</td>
             <td><button id="orderButton" 
               style="margin: 0 auto; border-radius: 10px; background-color: white; 
               border: 1px solid lightgray; width: 35%; height: 25px;">삭제</button></td>

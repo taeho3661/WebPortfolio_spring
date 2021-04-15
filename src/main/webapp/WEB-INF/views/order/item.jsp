@@ -113,7 +113,12 @@
           <h4 style="display: inline; font-weight: lighter;">판매가</h4>
           <h4 style="display: inline; float: right; font-weight: lighter;">${ itemDto.item_price }원</h4>
         </div>
-        <div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="./basket"><input type="button" value="장바구니"/></a></div>
+        <c:if test="${user != null}">
+        	<div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basket?user_no=${ user.user_no }"><input type="button" value="장바구니"/></a></div>
+        </c:if>
+        <c:if test="${user == null}">
+        	<div id="basketButton" onclick="alert('로그인페이지로 이동합니다.')"><a href="login"><input type="button" value="장바구니"/></a></div>
+        </c:if>
         <div id="orderButton" onclick="alert('구매 페이지로 이동합니다.')"><a href="./order"><input type="button" value="구매하기"/></a></div>        
         <div style="clear:both; padding-top: 30px; padding-bottom: 5px; margin-bottom: 20px; border-bottom: 1px solid rgb(133, 133, 133);">
         	<c:if test="${user != null}">

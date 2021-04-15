@@ -88,8 +88,14 @@ public class MainController
 		return "order/item";
 	}
 	@RequestMapping("/basket")
-	public String order_basket(Model model)
+	public String order_basket(HttpServletRequest request, Model model)
 	{
+		int user_no = Integer.parseInt(request.getParameter("user_no"));
+		
+		System.out.println("select user_no : " + user_no);
+		
+		model.addAttribute("list", ItemDao.basket(user_no));
+		
 		return "order/basket";
 	}
 	@RequestMapping("/order")
