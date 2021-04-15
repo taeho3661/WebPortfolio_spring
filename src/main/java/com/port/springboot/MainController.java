@@ -2,6 +2,7 @@ package com.port.springboot;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IUserDao;
 import com.port.springboot.dto.UserDto;
 
 @Controller
 public class MainController 
 {
+	
+	@Autowired
+	private IItemDao ItemDao;
 	
 	@Autowired
 	private IUserDao UserDao;
@@ -70,11 +75,16 @@ public class MainController
 	}
 	
 	
-	
 	//order페이지
 	@RequestMapping("/item")
-	public String order_item(Model model)
-	{
+	public String order_item(HttpServletRequest request, Model model)
+	{		
+		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		
+		System.out.println("select item_type : " + item_no);
+		
+		model.addAttribute("list", ItemDao.item(item_no));
+		
 		return "order/item";
 	}
 	@RequestMapping("/basket")
@@ -88,10 +98,23 @@ public class MainController
 		return "order/order";
 	}
 	@RequestMapping("/list")
-	public String order_list(Model model)
+	public String order_list(HttpServletRequest request, Model model)
 	{
+		HttpSession session = request.getSession();		
+		
+		String item_type = request.getParameter("item_type");
+		
+		session.setAttribute("item_type", item_type);
+		
+		System.out.println("select item_type : " + item_type);
+		
+		model.addAttribute("list", ItemDao.itemTypeList(item_type));
+		
 		return "order/list";
 	}
+	
+	
+	//MyPage
 	@RequestMapping("/orderHistory")
 	public String order_history(Model model)
 	{

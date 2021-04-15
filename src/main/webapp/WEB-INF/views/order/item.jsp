@@ -101,21 +101,26 @@
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
 
+<c:forEach var="itemDto" items="${ list }">
   <div class="wrap">
     <div class="item_info">
       <div class="section1">
         <img src="https://ifh.cc/g/SkXbo6.jpg" alt="">
       </div>
       <div class="section2">
-        <div style="padding-bottom: 20px; font-size: 30px;">[상품명]</div>
+        <div style="padding-bottom: 20px; font-size: 30px;">${ itemDto.item_name }</div>
         <div style="padding-top: 20px; padding-bottom: 5px; border-bottom: 1px solid rgb(133, 133, 133);">
           <h4 style="display: inline; font-weight: lighter;">판매가</h4>
-          <h4 style="display: inline; float: right; font-weight: lighter;">50,000원</h4>
+          <h4 style="display: inline; float: right; font-weight: lighter;">${ itemDto.item_price }원</h4>
         </div>
         <div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="./basket"><input type="button" value="장바구니"/></a></div>
         <div id="orderButton" onclick="alert('구매 페이지로 이동합니다.')"><a href="./order"><input type="button" value="구매하기"/></a></div>        
-        <div style="clear:both; padding-top: 30px; padding-bottom: 5px; margin-bottom: 20px; 
-        border-bottom: 1px solid rgb(133, 133, 133);">[구매자명]님은 [일반회원]이십니다.</div>
+        <div style="clear:both; padding-top: 30px; padding-bottom: 5px; margin-bottom: 20px; border-bottom: 1px solid rgb(133, 133, 133);">
+        	<c:if test="${user != null}">
+        		${ user.user_name }님은 ${ user.user_rank }입니다.
+        	</c:if>
+        </div>
+        
       </div>
     </div>
     <div class="section3">
@@ -139,10 +144,10 @@
           <!-- tr -->
           <c:forEach var="dto" items="${ list }">
               <tr>
-                <td>${ dto.review1 }</td>
-                <td>${ dto.review2 }</td>
-                <td>${ dto.review3 }</td>
-                <td>${ dto.review4 }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
               </tr>            
           </c:forEach>     
         </table>
@@ -166,10 +171,10 @@
           <!-- tr -->
           <c:forEach var="dto" items="${ list }">
               <tr>
-                <td>${ dto.qna1 }</td>
-                <td>${ dto.qna2 }</td>
-                <td>${ dto.qna3 }</td>
-                <td>${ dto.qna4 }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
+                <td>${ dto }</td>
               </tr>            
           </c:forEach>     
         </table>
@@ -177,7 +182,7 @@
     </div>
 
   </div>
-  
+</c:forEach>
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />
 </body>

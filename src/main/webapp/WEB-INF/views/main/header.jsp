@@ -161,8 +161,8 @@
       <div class="dropdown">
         <a class="dropbtn" href="">DESSERT</a>
         <div class="dropdown-content">
-          <a href="list">마카롱</a>
-          <a href="list">머핀</a>
+          <a href="list?item_type=디저트">마카롱</a>
+          <a href="list?item_type=음료">머핀</a>
           <a href="list">CAKE</a>
           <a href="list">BREAD</a>
         </div>
