@@ -8,6 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1:1문의</title>
+  <script type="text/javascript">
+	  function send() 
+	  {
+		  var board_no = document.getElementsByName("board_no");
+		  var board_reply = document.getElementsByName("board_reply");
+		  var url = "/admin/replySend?board_no=" + board_no[0].value + "&board_reply=" + board_reply[0].value;
+		      opener.document.location.href=url;
+		  window.close();
+		}
+  </script>
 </head>
 <style>
   *{
@@ -75,7 +85,7 @@
       <h1>상품 문의</h1>
     </div>
     <table class="table">
-      <form action="replySend" method="post">
+      <form method="post" name="send_form">
         <tr>
           <td>상품명</td>
           <td>${dto.item_name} </td>
@@ -100,7 +110,7 @@
         <tr>
           <td><input type="hidden" name="board_no" value="${dto.board_no }"></td>
           <td style="text-align: right;">
-            <input type="submit" value="답변하기" id="productAddSubmitButton">
+            <input type="button" value="답변하기" id="productAddSubmitButton" onclick="send()">
           </td>
         </tr>		
       </form>

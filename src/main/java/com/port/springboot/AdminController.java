@@ -226,7 +226,7 @@ public class AdminController
 		dto.setBoard_reply(request.getParameter("board_reply"));
 		dto.setBoard_no(Integer.parseInt(request.getParameter("board_no")));
 		AdminDao.replySend(dto);
-		return "/admin/itemQna";
+		return "redirect:itemQna";
 	}
 	
 	//로그아웃

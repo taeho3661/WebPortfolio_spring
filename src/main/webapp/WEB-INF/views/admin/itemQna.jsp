@@ -129,12 +129,26 @@ a {
 					<c:forEach var="dto" items="${ list }">
 						<form method="get" name="answer">
 							<input type="hidden" name="board_no" value="${dto.board_no}" />
+							<input type="hidden" name="board_reply" value="${dto.board_reply }" id="board_reply">
 							<tr>
 								<td>${ dto.item_name }</td>
 								<td>${ dto.board_name }</td>
 								<td>${ dto.board_writer }</td>
 								<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
-								<td><a href="/admin/qnaReply?board_no=${dto.board_no }" onclick="window.open(this.href, '_blank', 'width=780, height=850'); return false;"><input type="button" value="답변" id="productQnaReplyButton"></a></td>
+								<td><a href="/admin/qnaReply?board_no=${dto.board_no }" onclick="window.open(this.href, 'qnaReply', 'width=780, height=850'); return false;">
+								
+								<c:choose>
+								<c:when test="${empty dto.board_reply}">
+									<input type="button" value="답변" id="productQnaReplyButton">
+								</c:when>
+								<c:when test="${not empty dto.board_reply}">
+									<input type="button" value="답변 완료" id="productQnaReplyButton">
+								</c:when>
+								</c:choose>
+								
+								<!-- <input type="button" value="답변" id="productQnaReplyButton"> -->
+								
+								</a></td>
 							</tr>
 						</form>
 					</c:forEach>
