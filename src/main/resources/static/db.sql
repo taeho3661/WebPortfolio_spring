@@ -127,7 +127,8 @@ null, null, null, null, 10000, null);
 select * from tb_order;
 
 -- 이미지 이름 수량 가격
-select i.item_img
+select o.order_no
+, i.item_img
 , i.item_name
 , o.order_count
 , o.order_price
@@ -135,7 +136,7 @@ from tb_order o
 , tb_item i
 where o.item_no = i.item_no
   and o.order_state = 1
-  and o.user_no = 5;
+  and o.user_no = 3;
 
 --주문번호	일자	고객명	상품명	상품상태	비고
 select o.order_no
