@@ -58,7 +58,6 @@
     .header_nav a {
       padding: 0 40px;
       padding-top: 3px;
-      color: rgb(61, 53, 53);
       font-weight: bold;
       font-size: 18px;
     }
@@ -94,11 +93,18 @@
 }
 .dropdown:hover .dropbtn:hover {
   background-color: white;
+  text-decoration: none;
+  color: rgb(59, 56, 56);
   }
+  
+  .dropdown-content a:hover{
+  text-decoration: none;
+  color: #F27078;
+}
   
  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 /* search */
-.serch {
+.header_serch {
   padding: 5px;
   margin-top: 3px;
   height: 28px;
@@ -109,7 +115,7 @@
   border-radius: 10px 0 0 10px;
   outline: none;
 }
-.searchButton {
+.header_searchButton {
   margin-top: 3px;
   width: 35px;
   height: 28px;
@@ -137,7 +143,7 @@
     
     <c:if test="${user != null}">
     	<div class="header_topnav">
-    		<label>환영합니다 ${user.user_name }님</label>
+    		<label><a href="mypage">환영합니다 ${user.user_name }님</a></label>
     		<a href="Logout">로그아웃</a>
     	</div>
     </c:if>
@@ -190,8 +196,8 @@
                    
    
   
-  <input class="serch"  type="text" value="">
-<button type="submit" class="searchButton" ><i class="fa fa-search"></i>
+ <input class="header_serch"  type="text" value="">
+<button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
 </button>
   
 

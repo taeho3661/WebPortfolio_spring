@@ -127,6 +127,12 @@ public class MainController
 		return "mypage/orderHistory";
 	}
 	
+	@RequestMapping("/mypage")
+	public String mypage(Model model)
+	{
+		return "mypage/mypage";
+	}
+	
 	//로그인
 	@RequestMapping("/login")
 	public String login()

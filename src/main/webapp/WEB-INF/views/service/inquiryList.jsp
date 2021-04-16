@@ -12,6 +12,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-style: normal;
   text-decoration: none;
   text-align: center;
 }
