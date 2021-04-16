@@ -204,17 +204,6 @@
      </button>
        
     </div>
-<<<<<<< Updated upstream
-</div>
-                   
-   
-  
- <input class="header_serch"  type="text" value="">
-<button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
-</button>
-  
-=======
->>>>>>> Stashed changes
 
 </div>
 
