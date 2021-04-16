@@ -89,7 +89,7 @@
 
 <div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; border:1px solid red;">
   <div class="section1" style="margin-bottom: 60px;">
-    <h4 style="font-size: 20px; margin-right: 60%;">(카테고리) ${ listName }</h4>
+    <h4 style="font-size: 25px; margin-right: 70%;">${ item_type }</h4>
     <div>
       <!-- 쿼리문으로 정렬처리해서 페이지 리다이렉트하면 될듯? -->
       <a href="#">신상품</a>&nbsp;
@@ -103,20 +103,20 @@
       <c:forEach var="dto" items="${ list }">
         <div class="section_content_div">
           <div class="img_tool">
-            <img src="//www.cafeplay.co.kr/web/product/medium/201907/cb858589efbe54fab8b5948d2f18ce06.jpg" alt="">
+            <a href="item?item_no=${ dto.item_no }"><img src="//www.cafeplay.co.kr/web/product/medium/201907/cb858589efbe54fab8b5948d2f18ce06.jpg" alt=""></a>
           </div><br>
           <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-            <h3>${ item_name }</h3>
+            <h3>${ dto.item_name }</h3>
           </div>
-          <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
-          <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }원</div>
+          <div style="width: 220px; height: 40px; line-height: 40px;">${ dto.item_name }</div>
+          <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ dto.item_price }원</div>
         </div>
       </c:forEach>
       
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
       <!-- 디버깅용 더미자료 / 백 연결후에는 삭제하자 -->
-      <div class="section_content_div">
+      <%-- <div class="section_content_div">
         <div class="img_tool">
           <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/201908/2839c67ab50e7e732fec93db0ca3cb4d.jpg" alt=""></a>
         </div><br>
@@ -165,7 +165,7 @@
         </div>
         <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
         <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }</div>
-      </div>
+      </div> --%>
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->

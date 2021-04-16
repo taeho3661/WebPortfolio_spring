@@ -25,4 +25,5 @@ public interface IAdminDao
 	public ItemDto itemModify(int item_no);
 	public int itemModifyAction(ItemDto dto);
 	public BoardDto qnaView(int board_no);
+	public int replySend(BoardDto dto);
 }

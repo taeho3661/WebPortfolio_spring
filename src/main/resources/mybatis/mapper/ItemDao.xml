@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.port.springboot.dao.IItemDao"> 
+
+	<select id="itemTypeList" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_type = #{item_type}
+	</select>
+	
+	<select id="item" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_no = #{item_no}
+	</select>
+	
+	<select id="basket" resultType="com.port.springboot.dto.BasketDto">
+		select i.item_img, i.item_name, o.order_count, o.order_price
+		from tb_order o, tb_item i
+		where o.item_no = i.item_no
+		and o.order_state = 1
+		and o.user_no = #{user_no}
+	</select>
+
+</mapper>

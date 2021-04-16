@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.port.springboot.dao.IAdminDao;
+import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 
@@ -207,6 +208,7 @@ public class AdminController
 		return "/admin/itemQna";
 	}
 	
+	//문의 조회
 	@RequestMapping("/qnaReply")
 	public String qnaReply(HttpServletRequest request, Model model)
 	{
@@ -214,6 +216,17 @@ public class AdminController
 		System.out.println("board_no : "+board_no);
 		model.addAttribute("dto", AdminDao.qnaView(board_no));
 		return "/admin/qnaReply";
+	}
+	
+	//문의 답변 액션
+	@RequestMapping("/replySend")
+	public String replySend(HttpServletRequest request)
+	{
+		BoardDto dto = new BoardDto();
+		dto.setBoard_reply(request.getParameter("board_reply"));
+		dto.setBoard_no(Integer.parseInt(request.getParameter("board_no")));
+		AdminDao.replySend(dto);
+		return "redirect:itemQna";
 	}
 	
 	//로그아웃

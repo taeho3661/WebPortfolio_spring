@@ -11,3 +11,4 @@ public class CartDto
     private int amount;
     private int bil_id;
 }
+// 이거 안쓰는 Dto임, 고민해보고 나중에 삭제

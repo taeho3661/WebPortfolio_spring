@@ -1,6 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +54,8 @@
 
 </style>
 <body>
-
-<!-- 헤더 인클루드 -->
-<jsp:include page="../main/header.jsp" />
+   
+   <jsp:include page="../main/header.jsp" />
    
   <div class="editor">
 
@@ -77,16 +77,16 @@
     </div>
   </div>
   
-<!-- 푸터 인클루드 -->
-<jsp:include page="../main/footer.jsp" />
     
 
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    
+    <jsp:include page="../main/footer.jsp" />
 </body>
 </html>
