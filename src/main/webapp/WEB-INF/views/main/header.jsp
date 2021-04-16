@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +25,7 @@
     }
     
     .header {
-    width: 1480px;
+    width: 100%;
     margin: 0 auto;
     height: auto;
     
@@ -75,12 +77,18 @@
 }
 .dropdown-content {
     display: none;
-    flex-flow: column wrap;
     margin-top: 35px;
     position: absolute;
     background-color: rgb(127, 138, 211);
     border: 0.05px solid rgb(228, 219, 219);
     z-index: 1;
+}
+.content {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.content div {
+  width: 148px;
 }
 .dropdown-content a {
   font-size: 14px;
@@ -123,10 +131,7 @@
   border-left: none;
   background: rgb(231, 218, 218);
   color: rgb(135, 135, 152);
-  border-radius: 0 10px 10px 0 ;
-
- 
-  
+  border-radius: 0 10px 10px 0 ; 
 }
 
  </style>
@@ -156,42 +161,50 @@
   <div class="header_nav">
        <div class="dropdown">
           <a class="dropbtn" href="">ABOUT</a>
+          <a class="dropbtn" href="">DESSERT</a>
+          <a class="dropbtn" href="">DRINK</a>
+          <a class="dropbtn" href="">고객센터</a>
+
           <div class="dropdown-content">
+            <div class="content">
+            <div>
             <a href="#">공지사항</a>
             <a href="introduce">회사소개</a>
             <a href="map">오시는길</a>
             <a href="#">이벤트</a>
+            </div>
+              
+            <div>
+            <a href="list?item_type=디저트">마카롱</a>
+            <a href="list?item_type=음료">머핀</a>
+            <a href="list">CAKE</a>
+            <a href="list">BREAD</a>
           </div>
-      </div>
+                 
+          <div>
+            <a href="#">Name1</a>
+            <a href="#">Name1</a>
+            <a href="#">Name1</a>
+            <a href="#">Name1</a>
+         </div>
+            
+            <div>
+            <a href="review">상품후기</a>
+            <a href="inquiryList">상품문의</a>
+            <a href="#">이용약관</a>
+            <a href="#">개인정보</a>
+          </div>
+          </div>
 
-      <div class="dropdown">
-        <a class="dropbtn" href="">DESSERT</a>
-        <div class="dropdown-content">
-          <a href="list?item_type=디저트">마카롱</a>
-          <a href="list?item_type=음료">머핀</a>
-          <a href="list">CAKE</a>
-          <a href="list">BREAD</a>
-        </div>
+            </div>
+    
+      </div> 
+      <input class="header_serch"  type="text" value="">
+     <button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
+     </button>
+       
     </div>
-
-    <div class="dropdown">
-      <a class="dropbtn" href="">DRINK</a>
-      <div class="dropdown-content">
-        <a href="#">Name1</a>
-        <a href="#">Name1</a>
-        <a href="#">Name1</a>
-        <a href="#">Name1</a>
-      </div>
-  </div>
-
-  <div class="dropdown">
-    <a class="dropbtn" href="">고객센터</a>
-    <div class="dropdown-content">
-      <a href="review">상품후기</a>
-      <a href="inquiryList">상품문의</a>
-      <a href="#">이용약관</a>
-      <a href="#">개인정보</a>
-    </div>
+<<<<<<< Updated upstream
 </div>
                    
    
@@ -200,6 +213,8 @@
 <button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
 </button>
   
+=======
+>>>>>>> Stashed changes
 
 </div>
 
