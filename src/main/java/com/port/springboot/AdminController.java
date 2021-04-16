@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.port.springboot.dao.IAdminDao;
 import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.ItemDto;
-import com.port.springboot.dto.OrderDto;
+import com.port.springboot.dto.AdminOrderDto;
 
 @Controller
 @RequestMapping("/admin")
@@ -72,7 +72,7 @@ public class AdminController
 		
 		System.out.println("order_state changed : "+order_state);
 		
-		OrderDto dto = new OrderDto();
+		AdminOrderDto dto = new AdminOrderDto();
 		dto.setOrder_no(order_no);
 		dto.setOrder_state(order_state);
 		

@@ -1,5 +1,8 @@
 package com.port.springboot;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -9,10 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IUserDao;
+import com.port.springboot.dto.ItemDto;
+import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
 @Controller
@@ -87,15 +94,38 @@ public class MainController
 		
 		return "order/item";
 	}
-	@RequestMapping("/basket")
-	public String order_basket(HttpServletRequest request, Model model)
-	{
+	
+//	@RequestMapping("/basket") // basket이랑 basketAdd합치기
+//	public String order_basket(HttpServletRequest request, Model model)
+//	{
+//		int user_no = Integer.parseInt(request.getParameter("user_no"));
+//		
+//		System.out.println("select user_no : " + user_no);
+//		
+//		model.addAttribute("list", ItemDao.basket(user_no));
+//		
+//		return "order/basket";
+//	}
+	
+	//장바구니 추가
+	@RequestMapping("/basketAdd")
+	public String order_basketAdd(HttpServletRequest request, Model model)
+	{		
+		//장바구니에 추가하는 부분
+		OrderDto dto = new OrderDto();
+		dto.setUser_no(Integer.parseInt(request.getParameter("user_no")));
+		dto.setItem_no(Integer.parseInt(request.getParameter("item_no")));
+		dto.setOrder_count(Integer.parseInt(request.getParameter("order_count")));
+		ItemDao.basketAdd(dto);
+		
+		//장바구니 목록을 띄우는 부분		
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		
 		System.out.println("select user_no : " + user_no);
 		
 		model.addAttribute("list", ItemDao.basket(user_no));
 		
+		//		
 		return "order/basket";
 	}
 	@RequestMapping("/order")
