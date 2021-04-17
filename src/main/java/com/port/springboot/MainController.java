@@ -1,24 +1,18 @@
 package com.port.springboot;
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.port.springboot.dao.IItemDao;
+import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
-import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -31,6 +25,9 @@ public class MainController
 	
 	@Autowired
 	private IUserDao UserDao;
+	
+	@Autowired
+	private IOrderDao OrderDao;
 	
 	@RequestMapping("/")
 	public String root() throws Exception {
@@ -152,14 +149,31 @@ public class MainController
 	
 	//MyPage
 	@RequestMapping("/orderHistory")
-	public String order_history(Model model)
+	public String order_history(Model model, HttpServletRequest request)
 	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		model.addAttribute("list",OrderDao.userOrder(user.getUser_no()));
+		System.out.println("orderHistory user no : "+user.getUser_no());
 		return "mypage/orderHistory";
 	}
 	
-	@RequestMapping("/mypage")
-	public String mypage(Model model)
+	//주문 삭제 액션
+	@RequestMapping("/orderDelete")
+	public String orderDelete(HttpServletRequest request)
 	{
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		OrderDao.orderDelete(order_no);
+		return "redirect:orderHistory";
+	}
+	
+	@RequestMapping("/mypage")
+	public String mypage(HttpServletRequest request, Model model)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		System.out.println("mypage user name : "+user.getUser_name());
+		System.out.println("mypage user score : "+user.getUser_score());
 		return "mypage/mypage";
 	}
 	
@@ -180,6 +194,13 @@ public class MainController
 	public String FindPasswor()
 	{
 		return "member/FindPassword";
+	}
+	
+	
+	@RequestMapping("/Modify")
+	public String Modify()
+	{
+		return "member/Modify";
 	}
 	
 	//로그인 기능

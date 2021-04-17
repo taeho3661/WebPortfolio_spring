@@ -61,7 +61,27 @@
 <body >
   <div class="mypage_wrap">
   <div class="mypage_introduce">
-    <p>저희 쇼핑몰을 이용해 주셔서 감사합니다. <strong class="mapage_name">황현영</strong> 님은 [<strong class="mapage_group">일반회원</strong>] 회원이십니다.</p>
+    <p>저희 쇼핑몰을 이용해 주셔서 감사합니다. <strong class="mapage_name">${user.user_name }</strong> 님은 [<strong class="mapage_group">
+    
+    
+    <%--적립금에 따른 유저 등급 --%>
+    <c:if test="${user.user_score < '100000'}">
+    	브론즈
+    </c:if>
+    
+    <c:if test="${user.user_score >= '100000' && user.user_score < '200000'}">
+    	실버
+    </c:if>
+    
+    <c:if test="${user.user_score >= '200000' && user.user_score < '300000' }">
+    	골드
+    </c:if>
+    
+    <c:if test="${user.user_score >= '300000' }">
+    	다이아
+    </c:if>
+    
+    </strong>] 회원이십니다.</p>
   </div>
    <div class="mypage_table1">
      <table>
@@ -76,7 +96,7 @@
         <td>0원</td>
         <td>0원</td>
         <td>0원</td>
-        <td>0원</td>
+        <td>${user.user_score }원</td>
       </tr>
      </table>
    </div>
@@ -84,22 +104,22 @@
    <div class="mypage_table2">
      <table>
        <tr>
-         <th>주문내역조회</th>
+         <th><a href=orderHistory>주문내역조회</a></th>
          <td>고객님께서 주문하신 상품의 주문내역을 확인하실 수 있습니다.</td>
        </tr>
 
        <tr>
-        <th>회원 정보 수정</th>
+        <th><a href=Modify>회원 정보 수정</a></th>
         <td>회원이신 고객님의 개인정보를 관리하는 공간입니다.</td>
       </tr>
 
       <tr>
-        <th>장바구니 조회</th>
+        <th><a href=장바구니>장바구니 조회</a></th>
         <td>관심상품으로 등록하신 상품의 목록을 보여드립니다.</td>
       </tr>
 
       <tr>
-        <th>관리자 문의</th>
+        <th><a href="inquiry">관리자 문의</a></th>
         <td>고객님의 궁심하신 문의사항에 대하여 1:1맞춤상담 내용을 확인하실 수 있습니다.</td>
       </tr>
      </table>

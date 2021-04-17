@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -144,73 +145,36 @@
        <th>주문취소</th>
      </tr>
      <!-- tr -->
-     <c:forEach var="dto" items="${ list }">
+     <c:forEach var="list" items="${ list }">
          <tr>
-           <td>${ list.order_date }</th> <!-- tb_bil -->
-           <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-           <td>${ list.amount }</td> <!-- tb_cart -->
-           <td>${ list.total_price }</td> <!-- tb_bil -->
-           <td>${ list.order_state }</td> <!-- tb_bil -->
-           <td><button id="orderButton" 
+           <td><fmt:formatDate value="${list.order_date}" pattern="yyyy/MM/dd" /></th> <!-- tb_bil -->
+           <td><img src="/img/${ list.item_img }" alt="${list.item_img}" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->
+           <td style="text-align: left;">${ list.item_name }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
+           <td>${ list.order_count }개</td> <!-- tb_cart -->
+           <td>${ list.order_price }원</td> <!-- tb_bil -->
+           <td>
+           
+           <c:choose>
+							<c:when test="${list.order_state == '1' }">
+								결제중
+							</c:when>
+							<c:when test="${list.order_state == '2' }">
+								결제 완료
+							</c:when>
+							<c:when test="${list.order_state == '3' }">
+								배송중
+							</c:when>
+							<c:when test="${list.order_state == '4' }">
+								배송 완료
+							</c:when>
+							</c:choose>
+           </td> <!-- tb_bil -->
+           <td><a href="orderDelete?order_no=${list.order_no }"><button id="orderButton" 
              style="margin: 0 auto; border-radius: 20px; background-color: white; 
-             border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
+             border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></a></td>
          </tr>
      </c:forEach>
-     <!-- ////////////////////////////////////////////////////////////// -->
-     <!-- ////////////////////////////////////////////////////////////// -->
-     <!-- 디버깅용 더미 데이터 :: 나중에 삭제 -->
-     <tr>
-       <td>${ list.order_date }</th> <!-- tb_bil -->
-       <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-       <td>${ list.amount }</td> <!-- tb_cart -->
-       <td>${ list.total_price }</td> <!-- tb_bil -->
-       <td>${ list.order_state }</td> <!-- tb_bil -->
-       <td><button id="orderButton" 
-         style="margin: 0 auto; border-radius: 20px; background-color: white; 
-         border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-     </tr>
-     <tr>
-       <td>${ list.order_date }</th> <!-- tb_bil -->
-       <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-       <td>${ list.amount }</td> <!-- tb_cart -->
-       <td>${ list.total_price }</td> <!-- tb_bil -->
-       <td>${ list.order_state }</td> <!-- tb_bil -->
-       <td><button id="orderButton" 
-         style="margin: 0 auto; border-radius: 20px; background-color: white; 
-         border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-     </tr>
-     <tr>
-       <td>${ list.order_date }</th> <!-- tb_bil -->
-       <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-       <td>${ list.amount }</td> <!-- tb_cart -->
-       <td>${ list.total_price }</td> <!-- tb_bil -->
-       <td>${ list.order_state }</td> <!-- tb_bil -->
-       <td><button id="orderButton" 
-         style="margin: 0 auto; border-radius: 20px; background-color: white; 
-         border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-     </tr>
-     <tr>
-       <td>${ list.order_date }</th> <!-- tb_bil -->
-       <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-       <td>${ list.amount }</td> <!-- tb_cart -->
-       <td>${ list.total_price }</td> <!-- tb_bil -->
-       <td>${ list.order_state }</td> <!-- tb_bil -->
-       <td><button id="orderButton" 
-         style="margin: 0 auto; border-radius: 20px; background-color: white; 
-         border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-     </tr>
-     <tr>
-       <td>${ list.order_date }</th> <!-- tb_bil -->
-       <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-       <td>${ list.amount }</td> <!-- tb_cart -->
-       <td>${ list.total_price }</td> <!-- tb_bil -->
-       <td>${ list.order_state }</td> <!-- tb_bil -->
-       <td><button id="orderButton" 
-         style="margin: 0 auto; border-radius: 20px; background-color: white; 
-         border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-     </tr>
-     <!-- ////////////////////////////////////////////////////////////// -->
-     <!-- ////////////////////////////////////////////////////////////// -->
+     
 
     </table>
   </div>

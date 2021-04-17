@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.port.springboot.dao.IOrderDao"> 
+
+	<select id="userOrder" resultType="com.port.springboot.dto.UserOrderDto">
+		select o.order_date, i.item_name, i.item_img, o.order_count, o.order_price, o.order_state, o.order_no
+		from tb_order o, tb_item i
+		where o.user_no = #{user.no}
+		and o.item_no = i.item_no
+	</select>
+	
+	<delete id="orderDelete" parameterType="com.port.springboot.dto.OrderDto">
+		delete from tb_order where order_no = #{order_no}
+	</delete>
+
+</mapper>
+
