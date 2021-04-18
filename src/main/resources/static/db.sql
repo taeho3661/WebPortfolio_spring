@@ -60,7 +60,7 @@ drop table  tb_item;
 create table  tb_item(
 	item_no      	number(4) primary key,
     item_type     	varchar2(20),
-    item_name		varchar2(40),
+    item_name		varchar2(80),
     item_price     	number(20),
     item_stock     	number(20),
     item_img  		varchar2(100),    
@@ -71,19 +71,77 @@ drop sequence tb_item_seq;
 create sequence tb_item_seq;
 
 --샘플--
+--베이글--
 insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
-values (tb_item_seq.nextval, '디저트', '샌드위치', 50000, 100, 'https://ifh.cc/g/SkXbo6.jpg', 'https://ifh.cc/g/xt20xS.jpg');
+values (tb_item_seq.nextval, 'bagel', '블루베리 베이글 110g X 6ea', 8000, 100, 'BG_blue.png', 'BG_blue_info.png');
 insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
-values (tb_item_seq.nextval, '디저트', '아이스크림와플', 10000, 80, 'https://ifh.cc/g/uPjOSq.jpg', null);
+values (tb_item_seq.nextval, 'bagel', '치즈 베이글 110g X 6ea', 8500, 100, 'BG_cheese.png', 'BG_cheese_info.png');
 insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
-values (tb_item_seq.nextval, '음료', '자몽스무디', 5000, 1000, 'https://ifh.cc/g/WgRO73.jpg', null);
-
+values (tb_item_seq.nextval, 'bagel', '어니언 베이글 110g X 6ea', 8000, 100, 'BG_onion.png', 'BG_onion_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'bagel', '플레인 베이글 110gX 6ea', 7500, 100, 'BG_plain.png', 'BG_plain_info.png');
+--청--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 대추차 1kg', 6600, 100, 'C_deachu.png', 'C_deachu_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 레드자몽차 1kg', 7700, 100, 'C_jamong.png', 'C_jamong_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 레몬차 1kg', 6900, 100, 'C_lemon.png', 'C_lemon_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 매실차 1kg', 6900, 100, 'C_mesil.png', 'C_mesil_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 모과차 1kg', 6600, 100, 'C_moga.png', 'C_moga_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 오미자차 1kg', 7700, 100, 'C_omiza.png', 'C_omiza_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'cheong', '[꽃샘] 꿀 유자차 1kg', 6500, 100, 'C_uza.png', 'C_uza_info.png');
+--커피--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'coffee', '마노 아프리카 마일드 0.9g 100입', 10000, 100, 'CF_africa.png', 'CF_africa_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img) 
+values (tb_item_seq.nextval, 'coffee', '마노 라틴 아메이카 마일드 0.9g 100입', 12000, 100, 'CF_america.png', 'CF_america_info.png');
+--크레이프--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'crepe', '[스페로스페라] 럭키 블루베리 크레이프', 29900, 100, 'Crepe_blue.png', 'Crepe_blue_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'crepe', '[스페로스페라] 럭키 초코 크레이프', 29900, 100, 'Crepe_choco.png', 'Crepe_choco_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'crepe', '[스페로스페라] 럭키 밀크 크레이프', 29900, 100, 'Crepe_milk.png', 'Crepe_milk_info.png');
+--머핀--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'muffin', '블루베리 머핀 130g X 12ea', 22500, 100, 'MF_blue.png', 'MF_blue_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'muffin', '치즈 머핀 130g X 12ea', 22500, 100, 'MF_cheese.png', 'MF_cheese_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'muffin', '초코머핀 130g X 12ea', 22500, 100, 'MF_choco.png', 'MF_choco_info.png');
+--티--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[베티나르디] 얼그레이 (1.5g X 30티백)', 9500, 100, 'Tea_Bettynardiearlgray.png', 'Tea_Bettynardiearlgray_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[베티나르디] 그린티 (1.2g X 30티백)', 12900, 100, 'Tea_Bettynardigreen.png', 'Tea_Bettynardigreen_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[브리즈] 녹차 티백 (2g X 20티백)', 11900, 100, 'Tea_Brise.png', 'Tea_Brise_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[브리즈] 캐모마일 (1g X 20티백)', 8700, 100, 'Tea_Brisechamomile.png', 'Tea_Brisechamomile_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[브리즈] 다즐링 (2.5g X 20티백)', 9900, 100, 'Tea_Brisedjl.png', 'Tea_Brisedjl_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'tea', '[브리즈] 진주 자스민 (1.5g X 20티백)', 10900, 100, 'Tea_Brisejasmin.png', 'Tea_Brisejasmin_info.png');
+--케이크--
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'cake', '버터 크럼블 케이크', 20000, 100, 'Cake_buttercramble.png', 'Cake_buttercramble_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'cake', '다크 초코 스폰지 케이크', 20000, 100, 'Cake_chocosponge.png', 'Cake_chocosponge_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'cake', '초코 카라멜 케이크', 20000, 100, 'Cake_cramel.png', 'Cake_cramel_info.png');
+insert into tb_item(item_no, item_type, item_name, item_price, item_stock, item_img, item_info_img)
+values (tb_item_seq.nextval, 'cake', '초코 헤이즐넛 케이크', 20000, 100, 'Cake_hazelnut.png', 'Cake_hazelnut_info.png');
 
 -- 테스트 코드
 select * from tb_item;
-select * from tb_item where Item_type = '디저트';
+select * from tb_item where Item_type = 'coffee';
 
-  
+  commit;
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 --order : bil이랑 cart 통합해서 다시만든 테이블

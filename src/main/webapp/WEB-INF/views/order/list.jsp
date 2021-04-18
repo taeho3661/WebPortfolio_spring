@@ -64,7 +64,8 @@
   }
   /* 이미지를 가둬놓기위한 툴 */
   .section_content div .img_tool{
-    width: 280px;
+    /* width: 275px; */
+    width: 100%;
     height: 280px;
     
     overflow: hidden;
@@ -87,7 +88,7 @@
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
 
-<div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; border:1px solid red;">
+<div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; /* border:1px solid red; */">
   <div class="section1" style="margin-bottom: 60px;">
     <h4 style="font-size: 25px; margin-right: 70%;">${ item_type }</h4>
     <div>
@@ -103,73 +104,15 @@
       <c:forEach var="dto" items="${ list }">
         <div class="section_content_div">
           <div class="img_tool">
-            <a href="item?item_no=${ dto.item_no }"><img src="//www.cafeplay.co.kr/web/product/medium/201907/cb858589efbe54fab8b5948d2f18ce06.jpg" alt=""></a>
+            <a href="item?item_no=${ dto.item_no }"><img alt="" src="/img/${ dto.item_img }"></a>
           </div><br>
           <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-            <h3>${ dto.item_name }</h3>
+            <h3 style="font-size: 25px">${ dto.item_name }</h3>
           </div>
           <div style="width: 220px; height: 40px; line-height: 40px;">${ dto.item_name }</div>
           <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ dto.item_price }원</div>
         </div>
-      </c:forEach>
-      
-      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-      <!-- 디버깅용 더미자료 / 백 연결후에는 삭제하자 -->
-      <%-- <div class="section_content_div">
-        <div class="img_tool">
-          <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/201908/2839c67ab50e7e732fec93db0ca3cb4d.jpg" alt=""></a>
-        </div><br>
-        <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-          <h3>상품이름 들어갈곳</h3>
-        </div>
-        <div style="width: 220px; height: 40px; line-height: 40px;">간단한 정보?</div>
-        <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">가격</div>
-      </div>
-      <div class="section_content_div">
-        <div class="img_tool">
-          <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/20200508/751d5a73b9b8f8fa657d8d28d194a636.jpg" alt=""></a>
-        </div><br>
-        <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-          <h3>${ item_name }</h3>
-        </div>
-        <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
-        <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }원</div>
-      </div>
-      <div class="section_content_div">
-        <div class="img_tool">
-          <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/201908/ae57500ecf1f8f2ae71c4ad7ecd315d9.jpg" alt=""></a>
-        </div><br>
-        <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-          <h3>${ item_name }</h3>
-        </div>
-        <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
-        <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }원</div>
-      </div>
-      <div class="section_content_div">
-        <div class="img_tool">
-          <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/201908/ae57500ecf1f8f2ae71c4ad7ecd315d9.jpg" alt=""></a>
-        </div><br>
-        <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-          <h3>${ item_name }</h3>
-        </div>
-        <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
-        <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }</div>
-      </div>
-      <div class="section_content_div">
-        <div class="img_tool">
-          <a href="item"><img src="//www.cafeplay.co.kr/web/product/medium/201908/ae57500ecf1f8f2ae71c4ad7ecd315d9.jpg" alt=""></a>
-        </div><br>
-        <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
-          <h3>${ item_name }</h3>
-        </div>
-        <div style="width: 220px; height: 40px; line-height: 40px;">${ item_info }</div>
-        <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ item_price }</div>
-      </div> --%>
-      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-      
+      </c:forEach>      
     </div>
   </div>
 </div>

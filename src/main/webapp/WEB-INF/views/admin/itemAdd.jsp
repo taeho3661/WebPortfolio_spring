@@ -140,8 +140,14 @@ a {
 						<td>카테고리</td>
 						<td>
 							<select name="item_type">
-							  <option value="디저트">디저트</option>
-							  <option value="음료">음료</option>
+							  <option value="crepe">crepe</option>
+							  <option value="muffin">muffin</option>
+							  <option value="bagel">bagel</option>
+							  <option value="cake">cake</option>
+							  <option value="tea">tea</option>
+							  <option value="cheong">cheong</option>
+							  <option value="coffee">coffee</option>
+							  <option value="smoothie">smoothie</option>
 							</select>
 						</td>
 					</tr>

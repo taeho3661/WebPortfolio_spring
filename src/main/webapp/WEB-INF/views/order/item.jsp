@@ -105,7 +105,7 @@
   <div class="wrap">
     <div class="item_info">
       <div class="section1">
-        <img src="https://ifh.cc/g/SkXbo6.jpg" alt="">
+        <img alt="" src="/img/${ itemDto.item_img }">
       </div>
       <div class="section2">
         <div style="padding-bottom: 20px; font-size: 30px;">${ itemDto.item_name }</div>
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div class="section3">
-      <img src="https://ifh.cc/g/xt20xS.jpg" alt="">
+      <img alt="" src="/img/${ itemDto.item_info_img }">
     </div>
     <div class="section4">
       <h4>리뷰</h4>
