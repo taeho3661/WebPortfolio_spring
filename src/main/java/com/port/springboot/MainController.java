@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.port.springboot.dao.IBoardDao;
 import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
+import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -28,6 +30,9 @@ public class MainController
 	
 	@Autowired
 	private IOrderDao OrderDao;
+	
+	@Autowired
+	private IBoardDao BoardDao;
 	
 	@RequestMapping("/")
 	public String root() throws Exception {
@@ -64,6 +69,32 @@ public class MainController
 	public String service_inquiry(Model model)
 	{
 		return "service/inquiry";
+	}
+	
+	//1:1문의 액션
+	@RequestMapping("/inquiryAction")
+	public String inquiryAction(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		
+		BoardDto dto = new BoardDto();
+		
+		String board_name = request.getParameter("board_name");
+		String board_content = request.getParameter("board_content");
+		String board_writer = user.getUser_name();
+		
+		dto.setBoard_name(board_name);
+		dto.setBoard_content(board_content);
+		dto.setBoard_writer(board_writer);
+		
+		System.out.println("board name : "+dto.getBoard_name());
+		System.out.println("board content : "+dto.getBoard_content());
+		System.out.println("board writer : "+dto.getBoard_writer());
+		
+		BoardDao.inquiryAction(dto);
+		
+		return "redirect:mypage";
 	}
 	
 	@RequestMapping("/inquiryList")

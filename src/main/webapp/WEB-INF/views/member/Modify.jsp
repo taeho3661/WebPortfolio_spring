@@ -219,18 +219,14 @@
   <form action="aaa.jsp" method="POST">
 
     <div class="join">
-      <div class="header">
-        <p class="myThumb"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/member/img_member_default.gif" alt="일반회원" onerror="this.src='http://img.echosting.cafe24.com/skin/base_ko_KR/member/img_member_default.gif';"></p>
-          <div class="myInfo">
-                <p class="">저희 쇼핑몰을 이용해 주셔서 감사합니다. <strong class="name"><span>김재현</span></strong> 님은 <strong class="group">[일반회원]</strong> 회원이십니다.</p>
-          </div>
-      </div>
       <div class="joinheader">필수 입력 항목입니다</div>
+      
       <div class="join_ID main Line ">
         <div class="join_textside">아이디 </div>
         <input type="text" class="form-control textbox">
         <a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" class="btn btn-secondary btn-lg join_ID_Check ">아이디 중복체크</a>
       </div>
+      
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
         <input type="text" class="form-control textbox" >
