@@ -227,11 +227,36 @@ public class MainController
 		return "member/FindPassword";
 	}
 	
-	
+	//정보수정 페이지
 	@RequestMapping("/Modify")
-	public String Modify()
+	public String Modify(HttpServletRequest request, Model model)
 	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		model.addAttribute("dto", UserDao.modifyView(user_no));
 		return "member/Modify";
+	}
+	
+	@RequestMapping("/modifyAction")
+	public String modifyAction(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		UserDto dto = new UserDto();
+		dto.setUser_no(user_no);
+		dto.setUser_id(request.getParameter("user_id"));
+		dto.setUser_pw(request.getParameter("user_pw"));
+		dto.setUser_name(request.getParameter("user_name"));
+		dto.setAdr1(request.getParameter("Adr1"));
+		dto.setAdr2(request.getParameter("Adr2"));
+		dto.setAdr3(request.getParameter("Adr3"));
+		dto.setAdr4(request.getParameter("Adr4"));
+		dto.setUser_phone(request.getParameter("user_phone"));
+		dto.setUser_email(request.getParameter("user_email"));
+		return "redirect:mypage";
 	}
 	
 	//로그인 기능

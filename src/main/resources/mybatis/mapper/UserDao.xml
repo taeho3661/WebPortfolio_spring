@@ -10,6 +10,14 @@
 		select * from tb_user where user_id = #{user_id} and user_pw = #{user_pw}
 	</select>
 
-
+	<select id="modifyView" resultType="com.port.springboot.dto.UserDto">
+		select * from tb_user where user_no = #{user_no}
+	</select>
+	
+	<update id="modifyAction" parameterType="com.port.springboot.dto.UserDto">
+		update tb_user set user_id = #{user_id}, user_pw = #{user_pw}, user_name = #{user_name}, 
+		Adr1 = #{Adr1}, Adr2 = #{Adr2}, Adr3 = #{Adr3}, Adr4 = #{Adr4}, user_phone = #{user_phone}, user_email = #{user_email}
+		where user_no = #{user_no}
+	</update>
 </mapper>
 
