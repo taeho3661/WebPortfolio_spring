@@ -177,6 +177,29 @@ public class MainController
 		return "order/list";
 	}
 	
+	//메인 헤더의 검색기능
+	@RequestMapping("/mainSearch")
+	public String main_header_search(HttpServletRequest request, Model model)
+	{
+		HttpSession session = request.getSession();
+		
+		String item_name = request.getParameter("item_name");
+		
+		session.setAttribute("item_name", item_name);
+		
+		System.out.println("select item_name : " + item_name);
+		
+		model.addAttribute("list", ItemDao.mainSearch(item_name));
+		
+		////todo::
+		//String searchWord = "검색어는 [" + item_name + "] 입니다.";
+		//
+		//session.setAttribute("searchWord", searchWord);		
+		////
+		
+		return "order/list";
+	}
+	
 	
 	//MyPage
 	@RequestMapping("/orderHistory")

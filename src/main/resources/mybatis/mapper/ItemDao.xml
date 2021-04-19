@@ -26,5 +26,9 @@
 		INSERT INTO tb_order(order_no, user_no, item_no, order_count, order_state, order_date) 
 		values (tb_order_seq.nextval, #{user_no}, #{item_no}, #{order_count}, 1, sysdate)
 	</insert>
+	
+	<select id="mainSearch" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_name like '%'||#{item_name}||'%'
+	</select>
 
 </mapper>
