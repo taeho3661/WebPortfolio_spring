@@ -14,7 +14,7 @@
 		delete from tb_user where user_id = #{user_id}
 	</delete>
 	
-	<select id="orderList" resultType="com.port.springboot.dto.OrderDto">
+	<select id="orderList" resultType="com.port.springboot.dto.AdminOrderDto">
 		select o.order_no, o.order_date, u.user_id, i.item_name, o.order_state 
 		from tb_order o, tb_item i, tb_user u 
 		where o.user_no = u.user_no  and o.item_no = i.item_no
@@ -39,7 +39,7 @@
 		delete from tb_item where item_no = #{item_no}
 	</delete>
 	
-	<update id="orderStateChange" parameterType="com.port.springboot.dto.OrderDto">
+	<update id="orderStateChange" parameterType="com.port.springboot.dto.AdminOrderDto">
 		update tb_order set order_state = #{order_state} where order_no = #{order_no}
 	</update>
 	

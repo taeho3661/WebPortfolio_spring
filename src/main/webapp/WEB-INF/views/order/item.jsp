@@ -105,7 +105,7 @@
   <div class="wrap">
     <div class="item_info">
       <div class="section1">
-        <img src="https://ifh.cc/g/SkXbo6.jpg" alt="">
+        <img alt="" src="/img/${ itemDto.item_img }">
       </div>
       <div class="section2">
         <div style="padding-bottom: 20px; font-size: 30px;">${ itemDto.item_name }</div>
@@ -114,7 +114,8 @@
           <h4 style="display: inline; float: right; font-weight: lighter;">${ itemDto.item_price }원</h4>
         </div>
         <c:if test="${user != null}">
-        	<div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basket?user_no=${ user.user_no }"><input type="button" value="장바구니"/></a></div>
+        	<%-- <div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basket?user_no=${ user.user_no }"><input type="button" value="장바구니"/></a></div> --%>
+        	<div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basketAdd?user_no=${ user.user_no }&item_no=${ itemDto.item_no }&order_count=1"><input type="button" value="장바구니"/></a></div>
         </c:if>
         <c:if test="${user == null}">
         	<div id="basketButton" onclick="alert('로그인페이지로 이동합니다.')"><a href="login"><input type="button" value="장바구니"/></a></div>
@@ -129,7 +130,7 @@
       </div>
     </div>
     <div class="section3">
-      <img src="https://ifh.cc/g/xt20xS.jpg" alt="">
+      <img alt="" src="/img/${ itemDto.item_info_img }">
     </div>
     <div class="section4">
       <h4>리뷰</h4>

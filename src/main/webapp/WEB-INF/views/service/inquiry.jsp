@@ -58,23 +58,25 @@
    <jsp:include page="../main/header.jsp" />
    
   <div class="editor">
-
-    <div class="ask">
-      <h2>1:1문의</h2>
-      제 목  <input class="title" type="text" placeholder="입력하시오.">
-    </div>
-
-    <div id="editor">
-
-    </div>
-
-    <div class="password">
-      비밀번호 <input type="password">
-    </div>
-    <hr>
-    <div class="button">
-      <button>문의하기</button>
-    </div>
+	<form action="inquiryAction" method="post">
+	    <div class="ask">
+	      <h2>1:1문의</h2>
+	      제 목  <input class="title" type="text" name="board_name" placeholder="제목을 입력하세요.">
+	    </div>
+	    <div>
+	    	<textarea name="board_content" id="editor">
+        	</textarea>
+	    </div>
+	<!--     
+		비밀번호 추후 고려
+		<div class="password">
+	      비밀번호 <input type="password">
+	    </div> -->
+	    <hr>
+	    <div class="button">
+	      <input type="submit">
+	    </div>
+	</form>	
   </div>
   
     

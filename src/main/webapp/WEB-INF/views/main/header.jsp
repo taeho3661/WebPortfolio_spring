@@ -175,17 +175,17 @@
             </div>
               
             <div>
-            <a href="list?item_type=디저트">마카롱</a>
-            <a href="list?item_type=음료">머핀</a>
-            <a href="list">CAKE</a>
-            <a href="list">BREAD</a>
+            <a href="list?item_type=crepe">CREPE</a>
+            <a href="list?item_type=muffin">MUFFIN</a>
+            <a href="list?item_type=bagel">BAGEL</a>
+            <a href="list?item_type=cake">CAKE</a>
           </div>
                  
           <div>
-            <a href="#">Name1</a>
-            <a href="#">Name1</a>
-            <a href="#">Name1</a>
-            <a href="#">Name1</a>
+            <a href="list?item_type=tea">TEA</a>
+            <a href="list?item_type=cheong">CHEONG</a>
+            <a href="list?item_type=coffee">COFFEE</a>
+            <a href="list?item_type=smoothie">SMOOTHIE</a>
          </div>
             
             <div>

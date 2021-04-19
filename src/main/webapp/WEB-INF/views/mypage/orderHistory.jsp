@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,10 @@
   input[type="button"], button{
     cursor:pointer;
   }
+  .section{
+      margin: 0 auto;
+      width: 1280px;
+  }
   .section1{
     width: 1280px;
 
@@ -31,7 +36,7 @@
 
   }
   .section1_title > div:first-child{
-    width: 10%;
+    width: 15%;
     height: 30px;
     text-align: center;
     line-height: 30px;
@@ -46,12 +51,12 @@
   .section1_title > div:last-child{
     float: left;
     height: 30px;
-    width: 84%;
+    width: 85%;
     /* background-color: blue; */
     border-bottom: 1px solid lightgray;
   }
   .section1_con{
-    height: 80px;
+    height: 120px;
     line-height: 80px;
     border-bottom:1px solid lightgray;
     padding: 20px;   
@@ -60,6 +65,8 @@
   .section1_con button{
     width: 100px;
     height: 30px;
+    line-height: 30px;
+    
     background-color: darksalmon;
     color:cornsilk;
     border: none;
@@ -101,109 +108,80 @@
   
 </style>
 <body>
-  <div class="section">
-    <div class="section1">
-      <div class="section1_title">
-        <div>주문내역조회</div>
-        <div></div>
-      </div>
-      <div class="section1_con">
-        <button>오늘</button>
-        <button>1주일</button>
-        <button>1개월</button>
-        <button>3개월</button>
-        <button>6개월</button>
-      </div>
-      <div class="section1_sub">
-        기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다. <br>
-        주문번호를 클릭하시면 해당 주문에 대한 상새내역을 확인하실 수 있습니다.
 
-      </div>
-      
-    </div>
-    <div class="section2">
-      <table class="section2_table">
-        <!-- th -->
-        <tr>
-          <th><div>주문일자</div><div>[주문번호]</div></th>
-          <th style="width: 10%;">이미지</th>
-          <th style="width: 30%;">상품정보</th>
-          <th>수량</th>
-          <th style="width: 12%;">상품구매금액</th>
-          <th>주문처리상태</th>
-          <th>주문취소</th>
-        </tr>
-        <!-- tr -->
-        <c:forEach var="dto" items="${ list }">
-            <tr>
-              <td>${ list.order_date }</th> <!-- tb_bil -->
-              <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-              <td>${ list.amount }</td> <!-- tb_cart -->
-              <td>${ list.total_price }</td> <!-- tb_bil -->
-              <td>${ list.order_state }</td> <!-- tb_bil -->
-              <td><button id="orderButton" 
-                style="margin: 0 auto; border-radius: 20px; background-color: white; 
-                border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-            </tr>
-        </c:forEach>
-        <!-- ////////////////////////////////////////////////////////////// -->
-        <!-- ////////////////////////////////////////////////////////////// -->
-        <!-- 디버깅용 더미 데이터 :: 나중에 삭제 -->
-        <tr>
-          <td>${ list.order_date }</th> <!-- tb_bil -->
-          <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-          <td>${ list.amount }</td> <!-- tb_cart -->
-          <td>${ list.total_price }</td> <!-- tb_bil -->
-          <td>${ list.order_state }</td> <!-- tb_bil -->
-          <td><button id="orderButton" 
-            style="margin: 0 auto; border-radius: 20px; background-color: white; 
-            border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-        </tr>
-        <tr>
-          <td>${ list.order_date }</th> <!-- tb_bil -->
-          <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-          <td>${ list.amount }</td> <!-- tb_cart -->
-          <td>${ list.total_price }</td> <!-- tb_bil -->
-          <td>${ list.order_state }</td> <!-- tb_bil -->
-          <td><button id="orderButton" 
-            style="margin: 0 auto; border-radius: 20px; background-color: white; 
-            border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-        </tr>
-        <tr>
-          <td>${ list.order_date }</th> <!-- tb_bil -->
-          <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-          <td>${ list.amount }</td> <!-- tb_cart -->
-          <td>${ list.total_price }</td> <!-- tb_bil -->
-          <td>${ list.order_state }</td> <!-- tb_bil -->
-          <td><button id="orderButton" 
-            style="margin: 0 auto; border-radius: 20px; background-color: white; 
-            border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-        </tr>
-        <tr>
-          <td>${ list.order_date }</th> <!-- tb_bil -->
-          <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-          <td>${ list.amount }</td> <!-- tb_cart -->
-          <td>${ list.total_price }</td> <!-- tb_bil -->
-          <td>${ list.order_state }</td> <!-- tb_bil -->
-          <td><button id="orderButton" 
-            style="margin: 0 auto; border-radius: 20px; background-color: white; 
-            border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-        </tr>
-        <tr>
-          <td>${ list.order_date }</th> <!-- tb_bil -->
-          <td><img src="${ list.item_img }" alt="" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->            <td style="text-align: left;">${ list.item_nm }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
-          <td>${ list.amount }</td> <!-- tb_cart -->
-          <td>${ list.total_price }</td> <!-- tb_bil -->
-          <td>${ list.order_state }</td> <!-- tb_bil -->
-          <td><button id="orderButton" 
-            style="margin: 0 auto; border-radius: 20px; background-color: white; 
-            border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></td>
-        </tr>
-        <!-- ////////////////////////////////////////////////////////////// -->
-        <!-- ////////////////////////////////////////////////////////////// -->
+<!-- 헤더 인클루드 -->
+<jsp:include page="../main/header.jsp" />
 
-      </table>
+<div class="section">
+  <div class="section1">
+    <div class="section1_title">
+      <div>주문내역조회</div>
+      <div></div>
     </div>
+    <div class="section1_con">
+      <button>오늘</button>
+      <button>1주일</button>
+      <button>1개월</button>
+      <button>3개월</button>
+      <button>6개월</button>
+    </div>
+    <div class="section1_sub">
+      기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다. <br>
+      주문번호를 클릭하시면 해당 주문에 대한 상새내역을 확인하실 수 있습니다.
+
+    </div>
+    
   </div>
+  <div class="section2">
+    <table class="section2_table">
+      <!-- th -->
+     <tr>
+       <th><div>주문일자</div><div>[주문번호]</div></th>
+       <th style="width: 10%;">이미지</th>
+       <th style="width: 30%;">상품정보</th>
+       <th>수량</th>
+       <th style="width: 12%;">상품구매금액</th>
+       <th>주문처리상태</th>
+       <th>주문취소</th>
+     </tr>
+     <!-- tr -->
+     <c:forEach var="list" items="${ list }">
+         <tr>
+           <td><fmt:formatDate value="${list.order_date}" pattern="yyyy/MM/dd" /></th> <!-- tb_bil -->
+           <td><img src="/img/${ list.item_img }" alt="${list.item_img}" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->
+           <td style="text-align: left;">${ list.item_name }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
+           <td>${ list.order_count }개</td> <!-- tb_cart -->
+           <td>${ list.order_price }원</td> <!-- tb_bil -->
+           <td>
+           
+           <c:choose>
+							<c:when test="${list.order_state == '1' }">
+								결제중
+							</c:when>
+							<c:when test="${list.order_state == '2' }">
+								결제 완료
+							</c:when>
+							<c:when test="${list.order_state == '3' }">
+								배송중
+							</c:when>
+							<c:when test="${list.order_state == '4' }">
+								배송 완료
+							</c:when>
+							</c:choose>
+           </td> <!-- tb_bil -->
+           <td><a href="orderDelete?order_no=${list.order_no }"><button id="orderButton" 
+             style="margin: 0 auto; border-radius: 20px; background-color: white; 
+             border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></a></td>
+         </tr>
+     </c:forEach>
+     
+
+    </table>
+  </div>
+</div>
+  
+<!-- 푸터 인클루드 -->
+<jsp:include page="../main/footer.jsp" />
+
 </body>
 </html>

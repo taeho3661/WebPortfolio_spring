@@ -2,7 +2,6 @@ package com.port.springboot;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.port.springboot.dao.IBoardDao;
 import com.port.springboot.dao.IItemDao;
+import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
+import com.port.springboot.dto.BoardDto;
+import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
 @Controller
@@ -24,6 +27,12 @@ public class MainController
 	
 	@Autowired
 	private IUserDao UserDao;
+	
+	@Autowired
+	private IOrderDao OrderDao;
+	
+	@Autowired
+	private IBoardDao BoardDao;
 	
 	@RequestMapping("/")
 	public String root() throws Exception {
@@ -62,6 +71,32 @@ public class MainController
 		return "service/inquiry";
 	}
 	
+	//1:1문의 액션
+	@RequestMapping("/inquiryAction")
+	public String inquiryAction(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		
+		BoardDto dto = new BoardDto();
+		
+		String board_name = request.getParameter("board_name");
+		String board_content = request.getParameter("board_content");
+		String board_writer = user.getUser_name();
+		
+		dto.setBoard_name(board_name);
+		dto.setBoard_content(board_content);
+		dto.setBoard_writer(board_writer);
+		
+		System.out.println("board name : "+dto.getBoard_name());
+		System.out.println("board content : "+dto.getBoard_content());
+		System.out.println("board writer : "+dto.getBoard_writer());
+		
+		BoardDao.inquiryAction(dto);
+		
+		return "redirect:mypage";
+	}
+	
 	@RequestMapping("/inquiryList")
 	public String service_inquiryList(Model model)
 	{
@@ -87,15 +122,38 @@ public class MainController
 		
 		return "order/item";
 	}
-	@RequestMapping("/basket")
-	public String order_basket(HttpServletRequest request, Model model)
-	{
+	
+//	@RequestMapping("/basket") // basket이랑 basketAdd합치기
+//	public String order_basket(HttpServletRequest request, Model model)
+//	{
+//		int user_no = Integer.parseInt(request.getParameter("user_no"));
+//		
+//		System.out.println("select user_no : " + user_no);
+//		
+//		model.addAttribute("list", ItemDao.basket(user_no));
+//		
+//		return "order/basket";
+//	}
+	
+	//장바구니 추가
+	@RequestMapping("/basketAdd")
+	public String order_basketAdd(HttpServletRequest request, Model model)
+	{		
+		//장바구니에 추가하는 부분
+		OrderDto dto = new OrderDto();
+		dto.setUser_no(Integer.parseInt(request.getParameter("user_no")));
+		dto.setItem_no(Integer.parseInt(request.getParameter("item_no")));
+		dto.setOrder_count(Integer.parseInt(request.getParameter("order_count")));
+		ItemDao.basketAdd(dto);
+		
+		//장바구니 목록을 띄우는 부분		
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		
 		System.out.println("select user_no : " + user_no);
 		
 		model.addAttribute("list", ItemDao.basket(user_no));
 		
+		//		
 		return "order/basket";
 	}
 	@RequestMapping("/order")
@@ -122,14 +180,31 @@ public class MainController
 	
 	//MyPage
 	@RequestMapping("/orderHistory")
-	public String order_history(Model model)
+	public String order_history(Model model, HttpServletRequest request)
 	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		model.addAttribute("list",OrderDao.userOrder(user.getUser_no()));
+		System.out.println("orderHistory user no : "+user.getUser_no());
 		return "mypage/orderHistory";
 	}
 	
-	@RequestMapping("/mypage")
-	public String mypage(Model model)
+	//주문 삭제 액션
+	@RequestMapping("/orderDelete")
+	public String orderDelete(HttpServletRequest request)
 	{
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		OrderDao.orderDelete(order_no);
+		return "redirect:orderHistory";
+	}
+	
+	@RequestMapping("/mypage")
+	public String mypage(HttpServletRequest request, Model model)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		System.out.println("mypage user name : "+user.getUser_name());
+		System.out.println("mypage user score : "+user.getUser_score());
 		return "mypage/mypage";
 	}
 	
@@ -150,6 +225,38 @@ public class MainController
 	public String FindPasswor()
 	{
 		return "member/FindPassword";
+	}
+	
+	//정보수정 페이지
+	@RequestMapping("/Modify")
+	public String Modify(HttpServletRequest request, Model model)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		model.addAttribute("dto", UserDao.modifyView(user_no));
+		return "member/Modify";
+	}
+	
+	@RequestMapping("/modifyAction")
+	public String modifyAction(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		UserDto dto = new UserDto();
+		dto.setUser_no(user_no);
+		dto.setUser_id(request.getParameter("user_id"));
+		dto.setUser_pw(request.getParameter("user_pw"));
+		dto.setUser_name(request.getParameter("user_name"));
+		dto.setAdr1(request.getParameter("Adr1"));
+		dto.setAdr2(request.getParameter("Adr2"));
+		dto.setAdr3(request.getParameter("Adr3"));
+		dto.setAdr4(request.getParameter("Adr4"));
+		dto.setUser_phone(request.getParameter("user_phone"));
+		dto.setUser_email(request.getParameter("user_email"));
+		return "redirect:mypage";
 	}
 	
 	//로그인 기능

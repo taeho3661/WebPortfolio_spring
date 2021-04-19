@@ -18,7 +18,7 @@
     box-sizing: border-box;
     /* overflow: hidden; */
     /* 디버깅용 라인 */
-    /* border: 1px solid red; */ 
+    /* border: 1px solid red; */
   }
   a{
     text-decoration: none;
@@ -54,10 +54,11 @@
     color:lavender;
   }
   .section{
-    margin-top: 20px;
     width: 1100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
     background-color: lavender;
-    height: 800px;
   }
   .sectionTitle{
     background-color: lavenderblush;
@@ -119,17 +120,18 @@
       <table class="table">
         <!-- th -->
         <tr>
-          <th></th>
-          <th>상품이름</th>
-          <th>가격</th>
-          <th>판매량</th>
-          <th>재고</th>
-          <th></th>
+          <th style="width:10%;"></th>
+          <th style="width:20%;">상품이름</th>
+          <th style="width:10%;">가격</th>
+          <th style="width:10%;">판매량</th>
+          <th style="width:10%;">재고</th>
+          <th style="width:10%;"></th>
         </tr>
         <!-- tr -->
         <c:forEach var="dto" items="${ list }">
             <tr>
-              <td><img alt="" src="${ dto.item_img }"></td>
+              <%-- <td><img alt="" src="${ dto.item_img }"></td> --%>
+              <td><img alt="" src="/img/${ dto.item_img }"></td>
               <td>${ dto.item_name }</td>
               <td>${ dto.item_price }</td>
               <td>판매량</td>

@@ -15,11 +15,16 @@
 	</select>
 	
 	<select id="basket" resultType="com.port.springboot.dto.BasketDto">
-		select i.item_img, i.item_name, o.order_count, o.order_price
+		select o.order_no, i.item_img, i.item_name, o.order_count, o.order_price
 		from tb_order o, tb_item i
 		where o.item_no = i.item_no
 		and o.order_state = 1
 		and o.user_no = #{user_no}
 	</select>
+	
+	<insert id="basketAdd" parameterType="com.port.springboot.dto.BasketDto">
+		INSERT INTO tb_order(order_no, user_no, item_no, order_count, order_state, order_date) 
+		values (tb_order_seq.nextval, #{user_no}, #{item_no}, #{order_count}, 1, sysdate)
+	</insert>
 
 </mapper>

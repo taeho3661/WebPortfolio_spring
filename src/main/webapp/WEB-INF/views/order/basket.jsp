@@ -153,7 +153,7 @@
       <c:forEach var="dto" items="${ list }">
           <tr>
             <td><input type="checkbox" name="itemSelect" value=""></th>
-            <td>${ dto.item_img }</td>
+            <td><img alt="" src="/img/${ dto.item_img }" style="height: 70px;"></td>
             <td style="text-align: left;">${ dto.item_name }</td>
             <td>${ dto.order_count }</td>
             <td>${ dto.order_price }</td>
