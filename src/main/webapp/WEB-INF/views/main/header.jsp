@@ -114,9 +114,8 @@
 /* search */
 .header_serch {
   padding: 5px;
-  margin-top: 3px;
   height: 28px;
-  border: 1px solid rgb(176, 170, 170);
+  border: none;
   border-right: none;
   background-color: rgb(231, 218, 218);
   border-bottom: 0.5px solid #c9c2c2;
@@ -124,10 +123,9 @@
   outline: none;
 }
 .header_searchButton {
-  margin-top: 3px;
   width: 35px;
   height: 28px;
-  border: 1px solid rgb(176, 170, 170);
+  border: none;
   border-left: none;
   background: rgb(231, 218, 218);
   color: rgb(135, 135, 152);
@@ -198,14 +196,16 @@
 
             </div>
     
-      </div> 
-      <input class="header_serch"  type="text" value="">
-     <button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
-     </button>
-       
-    </div>
+      </div>
+      <form action="mainSearch" method="post" style="margin:0; padding:0;">
+	      <div style="margin:0; padding:0; background-color: rgb(231, 218, 218); border-radius: 10px; margin-top: 3px; border: 1px solid rgb(176, 170, 170);">
+		     <input class="header_serch"  type="text" name="item_name" value="">	     
+		     <button type="submit" class="header_searchButton" ><i class="fa fa-search"></i>
+		     </button>
+	     </div>
+      </form>
+ </div>
 
-</div>
 
 
 </body>

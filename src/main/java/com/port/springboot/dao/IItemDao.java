@@ -17,5 +17,6 @@ public interface IItemDao {
 	public List<ItemDto> item(int item_no);
 	public List<BasketDto> basket(int user_no);
 	public int basketAdd(OrderDto dto);
-
+	public List<ItemDto> mainSearch(String item_name);
+	
 }

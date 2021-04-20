@@ -119,11 +119,11 @@
       <div></div>
     </div>
     <div class="section1_con">
-      <button>오늘</button>
-      <button>1주일</button>
-      <button>1개월</button>
-      <button>3개월</button>
-      <button>6개월</button>
+      <a href="orderHistory1d"><button>오늘</button></a>
+      <a href="orderHistory7d"><button>7일</button></a>
+      <a href="orderHistory1m"><button>1개월</button></a>
+      <a href="orderHistory3m"><button>3개월</button></a>
+      <a href="orderHistory6m"><button>6개월</button></a>
     </div>
     <div class="section1_sub">
       기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다. <br>
