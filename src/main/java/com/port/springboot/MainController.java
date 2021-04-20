@@ -1,6 +1,14 @@
 package com.port.springboot;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.port.springboot.dao.IBoardDao;
 import com.port.springboot.dao.IItemDao;
@@ -212,6 +219,116 @@ public class MainController
 		return "mypage/orderHistory";
 	}
 	
+	@RequestMapping("/orderHistory1d")
+	public String order_history_1d(Model model, HttpServletRequest request)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, -1);
+		
+		DateFormat df = new SimpleDateFormat("yy-MM-dd");
+		String date = df.format(cal.getTime());
+		
+		System.out.println("date : "+date);
+		
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("orderHistory user no d1 : "+user_no);
+		
+		model.addAttribute("list",OrderDao.userOrderDate(user_no, date));
+		return "mypage/orderHistory";
+	}
+	
+	@RequestMapping("/orderHistory7d")
+	public String order_history_7d(Model model, HttpServletRequest request)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, -7);
+		
+		DateFormat df = new SimpleDateFormat("yy-MM-dd");
+		String date = df.format(cal.getTime());
+		
+		System.out.println("date : "+date);
+		
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("orderHistory user no d7 : "+user_no);
+		
+		model.addAttribute("list",OrderDao.userOrderDate(user_no, date));
+		return "mypage/orderHistory";
+	}
+	
+	@RequestMapping("/orderHistory1m")
+	public String order_history_1m(Model model, HttpServletRequest request)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MONTH, -1);
+		
+		DateFormat df = new SimpleDateFormat("yy-MM-dd");
+		String date = df.format(cal.getTime());
+		
+		System.out.println("date : "+date);
+		
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("orderHistory user no m1 : "+user_no);
+		
+		model.addAttribute("list",OrderDao.userOrderDate(user_no, date));
+		return "mypage/orderHistory";
+	}
+	
+	@RequestMapping("/orderHistory3m")
+	public String order_history_3m(Model model, HttpServletRequest request)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MONTH, -3);
+		
+		DateFormat df = new SimpleDateFormat("yy-MM-dd");
+		String date = df.format(cal.getTime());
+		
+		System.out.println("date : "+date);
+		
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("orderHistory user no m1 : "+user_no);
+		
+		model.addAttribute("list",OrderDao.userOrderDate(user_no, date));
+		return "mypage/orderHistory";
+	}
+	
+	@RequestMapping("/orderHistory6m")
+	public String order_history_6m(Model model, HttpServletRequest request)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MONTH, -6);
+		
+		DateFormat df = new SimpleDateFormat("yy-MM-dd");
+		String date = df.format(cal.getTime());
+		
+		System.out.println("date : "+date);
+		
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("orderHistory user no m1 : "+user_no);
+		
+		model.addAttribute("list",OrderDao.userOrderDate(user_no, date));
+		return "mypage/orderHistory";
+	}
+	
 	//주문 삭제 액션
 	@RequestMapping("/orderDelete")
 	public String orderDelete(HttpServletRequest request)
@@ -284,7 +401,7 @@ public class MainController
 	
 	//로그인 기능
 	@RequestMapping(value="/loginAction", method= RequestMethod.POST)
-	public String loginAction(HttpServletRequest request, RedirectAttributes rttr)
+	public String loginAction(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		HttpSession session = request.getSession();
 		String user_id = request.getParameter("user_id");
@@ -293,6 +410,7 @@ public class MainController
 		System.out.println("insert pw : "+user_pw);
 		UserDto user = UserDao.userLogin(user_id, user_pw);
 		
+		/*
 		if(user == null)
 		{
 			session.setAttribute("user", null);
@@ -314,6 +432,31 @@ public class MainController
 		else
 		{
 			return "redirect:/admin/memberList";			
+		}
+		*/
+		
+		if(user == null)
+		{
+			session.setAttribute("user", null);
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+            out.flush();
+			return "redirect:login";
+		}
+		else
+		{
+			if(user.getUser_login_type() == 0)
+			{
+				
+				session.setAttribute("user", user);
+				return "redirect:/main";			
+			}
+			else
+			{
+				session.setAttribute("user", user);
+				return "redirect:/admin/memberList";			
+			}
 		}
 	}
 	

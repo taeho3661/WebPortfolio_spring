@@ -9,7 +9,15 @@
 	<select id="userOrder" resultType="com.port.springboot.dto.UserOrderDto">
 		select o.order_date, i.item_name, i.item_img, o.order_count, o.order_price, o.order_state, o.order_no
 		from tb_order o, tb_item i
-		where o.user_no = #{user.no}
+		where o.user_no = #{user_no}
+		and o.item_no = i.item_no
+	</select>
+	
+	<select id="userOrderDate" resultType="com.port.springboot.dto.UserOrderDto">
+		select o.order_date, i.item_name, i.item_img, o.order_count, o.order_price, o.order_state, o.order_no
+		from tb_order o, tb_item i
+		where o.user_no = #{user_no}
+		and o.order_date > #{date}
 		and o.item_no = i.item_no
 	</select>
 	
