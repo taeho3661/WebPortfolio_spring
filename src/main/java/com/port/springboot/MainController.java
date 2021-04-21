@@ -399,6 +399,21 @@ public class MainController
 		return "redirect:mypage";
 	}
 	
+	//멤버 삭제
+	@RequestMapping("/modifyDelete")
+	public String modifyDelete(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		int user_no = user.getUser_no();
+		
+		System.out.println("delete user no : "+user_no);
+		
+		UserDao.modifyDelete(user_no);
+		
+		return "redirect:main";
+	}
+	
 	//로그인 기능
 	@RequestMapping(value="/loginAction", method= RequestMethod.POST)
 	public String loginAction(HttpServletRequest request, HttpServletResponse response) throws IOException

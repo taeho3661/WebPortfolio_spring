@@ -13,4 +13,5 @@ public interface IUserDao
 	public UserDto userLogin(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
 	public UserDto modifyView(int user_no);
 	public int modifyAction(UserDto dto);
+	public int modifyDelete(int user_no);
 }
