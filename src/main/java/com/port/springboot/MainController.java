@@ -141,7 +141,7 @@ public class MainController
 //		
 //		return "order/basket";
 //	}
-	
+	int tempUser_no = 0;
 	//장바구니 추가
 	@RequestMapping("/basketAdd")
 	public String order_basketAdd(HttpServletRequest request, Model model)
@@ -153,19 +153,45 @@ public class MainController
 		dto.setOrder_count(Integer.parseInt(request.getParameter("order_count")));
 		ItemDao.basketAdd(dto);
 		
-		//장바구니 목록을 띄우는 부분		
-		int user_no = Integer.parseInt(request.getParameter("user_no"));
+		tempUser_no = Integer.parseInt(request.getParameter("user_no"));
 		
-		System.out.println("select user_no : " + user_no);
-		
-		model.addAttribute("list", ItemDao.basket(user_no));
-		
-		//		
-		return "order/basket";
+		return "redirect:basketList";
 	}
-	@RequestMapping("/order")
-	public String order_order(Model model)
+	@RequestMapping("/basketList")
+	public String basketList(HttpServletRequest request, Model model)
+	{		
+		//int user_no = Integer.parseInt(request.getParameter("user_no"));		 
+		System.out.println("select user_no : " + tempUser_no);
+		model.addAttribute("list", ItemDao.basket(tempUser_no));
+		
+		return "/order/basket";
+	}
+	
+	//장바구니 삭제
+	@RequestMapping("/basketDelete")
+	public String basketDelete(HttpServletRequest request, Model model)
 	{
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		ItemDao.basketDelete(order_no);
+		System.out.println("basketDelete");
+		System.out.println(order_no);
+		return "redirect:basketList";
+	}
+	
+	@RequestMapping("/order")
+	public String order_order(HttpServletRequest request, Model model)
+	{
+		//check박스에 order_no을 매칭시켜서 선택된 상품 찾아내서 가져옴
+		if(request.getParameterValues("order_no") != null)
+		{
+			String order_no[] = request.getParameterValues("order_no");
+			for(String val : order_no)
+			{
+				System.out.println("선택된 상품의 order_no : " + val);
+			}
+		}
+		
+		
 		return "order/order";
 	}
 	@RequestMapping("/list")

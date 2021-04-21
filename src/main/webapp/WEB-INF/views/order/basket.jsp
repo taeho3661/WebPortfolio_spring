@@ -95,7 +95,8 @@
     text-align: center;
     margin: 50px;
   }
-  .section2_buttonArea input[type="button"]{
+  .section2_buttonArea input[type="button"],
+  .section2_buttonArea input[type="submit"]{
     width: 200px;
     height: 50px;
     border: 1px solid gray;
@@ -117,6 +118,16 @@
     border: 1px solid red;
   }
 </style>
+<script>
+function selectAll(selectAll)  {
+	  const checkboxes 
+	       = document.getElementsByName('order_no');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked;
+	  })
+	}
+</script>
 <body>
 
 <!-- 헤더 인클루드 -->
@@ -135,39 +146,41 @@
     </div>
   </div>
   <div class="section2">
-    <div class="section2_title">
-      <div>배송상품</div>
-      <div></div>
-    </div>
-    <table class="section2_table">
-      <!-- th -->
-      <tr>
-        <th><input type="checkbox" name="itemSelect" value="total"></th>
-        <th style="width: 20%;">item</th>
-        <th style="width: 35%;"></th>
-        <th>수량</th>
-        <th style="width: 15%;">가격</th>
-        <th></th>
-      </tr>
-      <!-- tr -->
-      <c:forEach var="dto" items="${ list }">
-          <tr>
-            <td><input type="checkbox" name="itemSelect" value=""></th>
-            <td><img alt="" src="/img/${ dto.item_img }" style="height: 70px;"></td>
-            <td style="text-align: left;">${ dto.item_name }</td>
-            <td>${ dto.order_count }</td>
-            <td>${ dto.order_price }</td>
-            <td><button id="orderButton" 
-              style="margin: 0 auto; border-radius: 10px; background-color: white; 
-              border: 1px solid lightgray; width: 35%; height: 25px;">삭제</button></td>
-          </tr>
-      </c:forEach>  
-    </table>
-    <div class="section2_buttonArea">
-      <a href="./order"><input type="button" value="전체상품주문" id="totalOrderButton"/></a>
-      <a href="./order"><input type="button" value="선택상품주문" id="selectOrderButton"/></a>
-      <a href="./main"><input type="button" value="쇼핑계속하기" id="turnToShopping"/></a>
-    </div>
+  	<form action="order" method="post">
+	    <div class="section2_title">
+	      <div>배송상품</div>
+	      <div></div>
+	    </div>
+	    <table class="section2_table">
+	      <!-- th -->
+	      <tr>
+	        <th><input type="checkbox" name="order_no" value="" onclick='selectAll(this)'/></th>
+	        <th style="width: 20%;">item</th>
+	        <th style="width: 35%;"></th>
+	        <th>수량</th>
+	        <th style="width: 15%;">가격</th>
+	        <th></th>
+	      </tr>
+	      <!-- tr -->
+	      <c:forEach var="dto" items="${ list }">
+	          <tr>
+	            <td><input type="checkbox" name="order_no" value=${ dto.order_no }></td>
+	            <td><img alt="" src="/img/${ dto.item_img }" style="height: 70px;"></td>
+	            <td style="text-align: left;">${ dto.item_name }</td>
+	            <td>${ dto.order_count }</td>
+	            <td>${ dto.order_price }</td>
+	            <td><a href="basketDelete?order_no=${ dto.order_no }"><input type="button" id="orderButton" 
+	              style="margin: 0 auto; border-radius: 10px; background-color: white; 
+	              border: 1px solid lightgray; width: 35%; height: 25px;"/>삭제</a></td>
+	          </tr>
+	      </c:forEach>  
+	    </table>
+	    <div class="section2_buttonArea">
+	      <a href=""><input type="submit" value="전체상품주문" id="totalOrderButton"/></a>
+	      <a href=""><input type="submit" value="선택상품주문" id="selectOrderButton"/></a>
+	      <a href="./main"><input type="button" value="쇼핑계속하기" id="turnToShopping"/></a>
+	    </div>
+  	</form>
   </div>
   <div class="section3">
     <div>이용안내</div>
