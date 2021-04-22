@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,9 +19,9 @@
   <style>
     .wrap
     { 
-      font-family: 'Noto Sans JP', sans-serif; /* ¸ñ·Ï¿¡ Á¡¾ø´Â°Å. */
-      list-style: none;   /* ¹ØÁÙÁ¡¾ø¾Ú. */
-      text-decoration: none; /* Å×ÀÌºí ºÙÀÓ */
+      font-family: 'Noto Sans JP', sans-serif; /* ëª©ë¡ì— ì ì—†ëŠ”ê±°. */
+      list-style: none;   /* ë°‘ì¤„ì ì—†ì•°. */
+      text-decoration: none; /* í…Œì´ë¸” ë¶™ì„ */
       border-collapse: collapse ;
       margin:auto;
       padding:0px;
@@ -204,111 +205,111 @@
 
 <div class= "wrap">
   
-  <form action="aaa.jsp" method="POST">
+  <form method="POST" name="modify_form" onSubmit="check()" action="modifyAction">
     <div class="join ">
-      <div class="joinheader">ÇÊ¼öÇ×¸ñÀÔ´Ï´Ù</div>
+      <div class="joinheader">í•„ìˆ˜í•­ëª©ì…ë‹ˆë‹¤</div>
       <div class="join_ID main Line ">
-        <div class="join_textside">¾ÆÀÌµğ </div>
-        <input type="text" class="form-control textbox">
-        <a href="#none" title="»õÃ¢ ¿­±â" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">¾ÆÀÌµğ Áßº¹Ã¼Å©</a>
+        <div class="join_textside">ì•„ì´ë”” </div>
+        <input type="text" class="form-control textbox" name="user_id" value="${dto.user_id }" readonly id="user_id">
+        <a href="#none" title="ìƒˆì°½ ì—´ê¸°" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">ì•„ì´ë”” ì¤‘ë³µì²´í¬</a>
       </div>
       <div class="join_Password main Line">
-        <div class="join_textside">ºñºô¹øÈ£</div>
-        <input type="text" class="form-control textbox" >
+        <div class="join_textside">ë¹„ë¹Œë²ˆí˜¸</div>
+        <input type="password" class="form-control textbox" name="user_pw" id="pw1">
     
       </div>
       <div class="join_Passwordcheck main Line">
-        <div class="join_textside">ºñºô¹øÈ£ È®ÀÎ</div>
-        <input type="text" class="form-control textbox" >
+        <div class="join_textside">ë¹„ë¹Œë²ˆí˜¸ í™•ì¸</div>
+        <input type="password" class="form-control textbox" id="pw2">
       </div>
 
       <div class="join_Passwordcheck main Line">
-        <div class="join_textside">ÀÌ¸§</div>
-        <input type="text" class="form-control textbox" >
+        <div class="join_textside">ì´ë¦„</div>
+        <input type="text" class="form-control textbox" name="user_name" value="${dto.user_name }">
         
       </div>
 
       
 
       <div class="main Line">
-        <div class="join_textside_Address ">ÁÖ¼Ò</div>
+        <div class="join_textside_Address ">ì£¼ì†Œ</div>
 
 
 
         <div>
           
-          <!-- iOS¿¡¼­´Â position:fixed ¹ö±×°¡ ÀÖÀ½, Àû¿ëÇÏ´Â »çÀÌÆ®¿¡ ¸Â°Ô position:absolute µîÀ» ÀÌ¿ëÇÏ¿© top,left°ª Á¶Á¤ ÇÊ¿ä -->
+          <!-- iOSì—ì„œëŠ” position:fixed ë²„ê·¸ê°€ ìˆìŒ, ì ìš©í•˜ëŠ” ì‚¬ì´íŠ¸ì— ë§ê²Œ position:absolute ë“±ì„ ì´ìš©í•˜ì—¬ top,leftê°’ ì¡°ì • í•„ìš” -->
           <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-          <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="´İ±â ¹öÆ°">
+          <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="ë‹«ê¸° ë²„íŠ¼">
           </div>
-          <input type="text" id="sample2_postcode" placeholder="¿ìÆí¹øÈ£" style="width:200px; height:30px;  margin-left: 15px;">
-        <input type="button" onclick="sample2_execDaumPostcode()" value="ÁÖ¼Ò Ã£±â" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
-        <input type="text" id="sample2_address" placeholder="ÁÖ¼Ò" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"><br>
-        <input type="text" id="sample2_detailAddress" placeholder="»ó¼¼ÁÖ¼Ò" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;">
-        <input type="text" id="sample2_extraAddress" placeholder="Âü°íÇ×¸ñ" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " >
+          <input type="text" id="sample2_postcode" placeholder="ìš°í¸ë²ˆí˜¸" style="width:200px; height:30px;  margin-left: 15px;" name="adr1">
+        <input type="button" onclick="sample2_execDaumPostcode()" value="ì£¼ì†Œ ì°¾ê¸°" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
+        <input type="text" id="sample2_address" placeholder="ì£¼ì†Œ" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr2"><br>
+        <input type="text" id="sample2_detailAddress" placeholder="ìƒì„¸ì£¼ì†Œ" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr3">
+        <input type="text" id="sample2_extraAddress" placeholder="ì°¸ê³ í•­ëª©" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="adr4">
 
-        <!-- iOS¿¡¼­´Â position:fixed ¹ö±×°¡ ÀÖÀ½, Àû¿ëÇÏ´Â »çÀÌÆ®¿¡ ¸Â°Ô position:absolute µîÀ» ÀÌ¿ëÇÏ¿© top,left°ª Á¶Á¤ ÇÊ¿ä -->
+        <!-- iOSì—ì„œëŠ” position:fixed ë²„ê·¸ê°€ ìˆìŒ, ì ìš©í•˜ëŠ” ì‚¬ì´íŠ¸ì— ë§ê²Œ position:absolute ë“±ì„ ì´ìš©í•˜ì—¬ top,leftê°’ ì¡°ì • í•„ìš” -->
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-          <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="´İ±â ¹öÆ°">
+          <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="ë‹«ê¸° ë²„íŠ¼">
         </div>
 
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
-            // ¿ìÆí¹øÈ£ Ã£±â È­¸éÀ» ³ÖÀ» element
+            // ìš°í¸ë²ˆí˜¸ ì°¾ê¸° í™”ë©´ì„ ë„£ì„ element
             var element_layer = document.getElementById('layer');
 
             function closeDaumPostcode() {
-                // iframeÀ» ³ÖÀº element¸¦ ¾Èº¸ÀÌ°Ô ÇÑ´Ù.
+                // iframeì„ ë„£ì€ elementë¥¼ ì•ˆë³´ì´ê²Œ í•œë‹¤.
                 element_layer.style.display = 'none';
             }
 
             function sample2_execDaumPostcode() {
                 new daum.Postcode({
                     oncomplete: function(data) {
-                        // °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+                        // ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-                        // °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-                        // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                        var addr = ''; // ÁÖ¼Ò º¯¼ö
-                        var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
+                        // ê° ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+                        // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                        var addr = ''; // ì£¼ì†Œ ë³€ìˆ˜
+                        var extraAddr = ''; // ì°¸ê³ í•­ëª© ë³€ìˆ˜
 
-                        //»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-                        if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+                        //ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œ íƒ€ì…ì— ë”°ë¼ í•´ë‹¹ ì£¼ì†Œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+                        if (data.userSelectedType === 'R') { // ì‚¬ìš©ìê°€ ë„ë¡œëª… ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°
                             addr = data.roadAddress;
-                        } else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+                        } else { // ì‚¬ìš©ìê°€ ì§€ë²ˆ ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°(J)
                             addr = data.jibunAddress;
                         }
 
-                        // »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
+                        // ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œê°€ ë„ë¡œëª… íƒ€ì…ì¼ë•Œ ì°¸ê³ í•­ëª©ì„ ì¡°í•©í•œë‹¤.
                         if(data.userSelectedType === 'R'){
-                            // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                            // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-                            if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
+                            // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                            // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+                            if(data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)){
                                 extraAddr += data.bname;
                             }
-                            // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                            // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
                             if(data.buildingName !== '' && data.apartment === 'Y'){
                                 extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                             }
-                            // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                            // í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
                             if(extraAddr !== ''){
                                 extraAddr = ' (' + extraAddr + ')';
                             }
-                            // Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                            // ì¡°í•©ëœ ì°¸ê³ í•­ëª©ì„ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
                             document.getElementById("sample2_extraAddress").value = extraAddr;
                         
                         } else {
                             document.getElementById("sample2_extraAddress").value = '';
                         }
 
-                        // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                        // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
                         document.getElementById('sample2_postcode').value = data.zonecode;
                         document.getElementById("sample2_address").value = addr;
-                        // Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
+                        // ì»¤ì„œë¥¼ ìƒì„¸ì£¼ì†Œ í•„ë“œë¡œ ì´ë™í•œë‹¤.
                         document.getElementById("sample2_detailAddress").focus();
 
-                        // iframeÀ» ³ÖÀº element¸¦ ¾Èº¸ÀÌ°Ô ÇÑ´Ù.
-                        // (autoClose:false ±â´ÉÀ» ÀÌ¿ëÇÑ´Ù¸é, ¾Æ·¡ ÄÚµå¸¦ Á¦°ÅÇØ¾ß È­¸é¿¡¼­ »ç¶óÁöÁö ¾Ê´Â´Ù.)
+                        // iframeì„ ë„£ì€ elementë¥¼ ì•ˆë³´ì´ê²Œ í•œë‹¤.
+                        // (autoClose:false ê¸°ëŠ¥ì„ ì´ìš©í•œë‹¤ë©´, ì•„ë˜ ì½”ë“œë¥¼ ì œê±°í•´ì•¼ í™”ë©´ì—ì„œ ì‚¬ë¼ì§€ì§€ ì•ŠëŠ”ë‹¤.)
                         element_layer.style.display = 'none';
                     },
                     width : '100%',
@@ -316,26 +317,26 @@
                     maxSuggestItems : 5
                 }).embed(element_layer);
 
-                // iframeÀ» ³ÖÀº element¸¦ º¸ÀÌ°Ô ÇÑ´Ù.
+                // iframeì„ ë„£ì€ elementë¥¼ ë³´ì´ê²Œ í•œë‹¤.
                 element_layer.style.display = 'block';
 
-                // iframeÀ» ³ÖÀº elementÀÇ À§Ä¡¸¦ È­¸éÀÇ °¡¿îµ¥·Î ÀÌµ¿½ÃÅ²´Ù.
+                // iframeì„ ë„£ì€ elementì˜ ìœ„ì¹˜ë¥¼ í™”ë©´ì˜ ê°€ìš´ë°ë¡œ ì´ë™ì‹œí‚¨ë‹¤.
                 initLayerPosition();
             }
 
-            // ºê¶ó¿ìÀúÀÇ Å©±â º¯°æ¿¡ µû¶ó ·¹ÀÌ¾î¸¦ °¡¿îµ¥·Î ÀÌµ¿½ÃÅ°°íÀÚ ÇÏ½Ç¶§¿¡´Â
-            // resizeÀÌº¥Æ®³ª, orientationchangeÀÌº¥Æ®¸¦ ÀÌ¿ëÇÏ¿© °ªÀÌ º¯°æµÉ¶§¸¶´Ù ¾Æ·¡ ÇÔ¼ö¸¦ ½ÇÇà ½ÃÄÑ ÁÖ½Ã°Å³ª,
-            // Á÷Á¢ element_layerÀÇ top,left°ªÀ» ¼öÁ¤ÇØ ÁÖ½Ã¸é µË´Ï´Ù.
+            // ë¸Œë¼ìš°ì €ì˜ í¬ê¸° ë³€ê²½ì— ë”°ë¼ ë ˆì´ì–´ë¥¼ ê°€ìš´ë°ë¡œ ì´ë™ì‹œí‚¤ê³ ì í•˜ì‹¤ë•Œì—ëŠ”
+            // resizeì´ë²¤íŠ¸ë‚˜, orientationchangeì´ë²¤íŠ¸ë¥¼ ì´ìš©í•˜ì—¬ ê°’ì´ ë³€ê²½ë ë•Œë§ˆë‹¤ ì•„ë˜ í•¨ìˆ˜ë¥¼ ì‹¤í–‰ ì‹œì¼œ ì£¼ì‹œê±°ë‚˜,
+            // ì§ì ‘ element_layerì˜ top,leftê°’ì„ ìˆ˜ì •í•´ ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.
             function initLayerPosition(){
-                var width = 300; //¿ìÆí¹øÈ£¼­ºñ½º°¡ µé¾î°¥ elementÀÇ width
-                var height = 400; //¿ìÆí¹øÈ£¼­ºñ½º°¡ µé¾î°¥ elementÀÇ height
-                var borderWidth = 5; //»ùÇÃ¿¡¼­ »ç¿ëÇÏ´Â borderÀÇ µÎ²²
+                var width = 300; //ìš°í¸ë²ˆí˜¸ì„œë¹„ìŠ¤ê°€ ë“¤ì–´ê°ˆ elementì˜ width
+                var height = 400; //ìš°í¸ë²ˆí˜¸ì„œë¹„ìŠ¤ê°€ ë“¤ì–´ê°ˆ elementì˜ height
+                var borderWidth = 5; //ìƒ˜í”Œì—ì„œ ì‚¬ìš©í•˜ëŠ” borderì˜ ë‘ê»˜
 
-                // À§¿¡¼­ ¼±¾ğÇÑ °ªµéÀ» ½ÇÁ¦ element¿¡ ³Ö´Â´Ù.
+                // ìœ„ì—ì„œ ì„ ì–¸í•œ ê°’ë“¤ì„ ì‹¤ì œ elementì— ë„£ëŠ”ë‹¤.
                 element_layer.style.width = width + 'px';
                 element_layer.style.height = height + 'px';
                 element_layer.style.border = borderWidth + 'px solid';
-                // ½ÇÇàµÇ´Â ¼ø°£ÀÇ È­¸é ³Êºñ¿Í ³ôÀÌ °ªÀ» °¡Á®¿Í¼­ Áß¾Ó¿¡ ¶ã ¼ö ÀÖµµ·Ï À§Ä¡¸¦ °è»êÇÑ´Ù.
+                // ì‹¤í–‰ë˜ëŠ” ìˆœê°„ì˜ í™”ë©´ ë„ˆë¹„ì™€ ë†’ì´ ê°’ì„ ê°€ì ¸ì™€ì„œ ì¤‘ì•™ì— ëœ° ìˆ˜ ìˆë„ë¡ ìœ„ì¹˜ë¥¼ ê³„ì‚°í•œë‹¤.
                 element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
                 element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
             }
@@ -347,22 +348,22 @@
 
 
       <div class="main Line phonetext">
-        <div class="join_textside">ÈŞ´ëÀüÈ­</div>
-        <input type="text" class="form-control textbox " >
+        <div class="join_textside">íœ´ëŒ€ì „í™”</div>
+        <input type="text" class="form-control textbox " name="user_phone" value="${dto.user_phone }">
       </div>
 
       <div class="main Line" id="email">
-        <div class="join_textside">ÀÌ¸ŞÀÏ</div>
+        <div class="join_textside">ì´ë©”ì¼</div>
         <div class="mb-3">
-          <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp" name="user_email" value="${dto.user_email }">
         </div>
       </div>
       
 	<div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="È¸¿øÁ¤º¸ ¼öÁ¤"></input>
-      <a class="btn btn-secondary btn-lg" a href="main.jsp">Ãë¼Ò</a>
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="íšŒì›ì •ë³´ ìˆ˜ì •" ></input>
+      <a class="btn btn-secondary btn-lg" href="mypage">ì·¨ì†Œ</a>
       <div class="lastbutton_member2">
-        <input type="submit" class="btn btn-secondary btn-lg " value="È¸¿øÅ»Åğ"></input>
+        <a href=# onclick="dlt();"><input type="button" class="btn btn-secondary btn-lg " value="íšŒì›íƒˆí‡´"></input></a>
       </div>
     </div>
 	
@@ -370,9 +371,41 @@
 
 
 
-    </div> <!-- join main ºÎºĞ-->
+    </div> <!-- join main ë¶€ë¶„-->
 </form>
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
+ <script type="text/javascript">
+	function check()
+	{
+		var pw1 = document.getElementById('pw1').value;
+		var pw2 = document.getElementById('pw2').value;
+		if(!pw1 || !pw2)
+			{
+			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥ í•´ ì£¼ì„¸ìš”");
+			}
+		else
+			{
+			if( pw1 != pw2 ) 
+					{
+		        		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
+		    		} 
+		    	else
+					{
+						alert("íšŒì› ì •ë³´ë¥¼ ìˆ˜ì • í•˜ì˜€ìŠµë‹ˆë‹¤")
+		        		document.modify_form.submit();
+		    		}
+			}
+		
+	}
+	function dlt()
+	{
+		var user_id = document.getElementById('user_id').value;
+		if(window.confirm('ì •ë§ íƒˆí‡´í•˜ì‹œê² ìŠµë‹ˆê¹Œ?'))
+			{
+				window.location = '/modifyDelete';
+			}
+	}
+ </script>
 </body>
 </html>

@@ -16,7 +16,7 @@
 	
 	<update id="modifyAction" parameterType="com.port.springboot.dto.UserDto">
 		update tb_user set user_id = #{user_id}, user_pw = #{user_pw}, user_name = #{user_name}, 
-		Adr1 = #{Adr1}, Adr2 = #{Adr2}, Adr3 = #{Adr3}, Adr4 = #{Adr4}, user_phone = #{user_phone}, user_email = #{user_email}
+		user_adr1 = #{adr1}, user_adr2 = #{adr2}, user_adr3 = #{adr3}, user_adr4 = #{adr4}, user_phone = #{user_phone}, user_email = #{user_email}
 		where user_no = #{user_no}
 	</update>
 	

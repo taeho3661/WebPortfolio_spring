@@ -416,13 +416,15 @@ public class MainController
 		dto.setUser_id(request.getParameter("user_id"));
 		dto.setUser_pw(request.getParameter("user_pw"));
 		dto.setUser_name(request.getParameter("user_name"));
-		dto.setAdr1(request.getParameter("Adr1"));
-		dto.setAdr2(request.getParameter("Adr2"));
-		dto.setAdr3(request.getParameter("Adr3"));
-		dto.setAdr4(request.getParameter("Adr4"));
+		dto.setAdr1(request.getParameter("adr1"));
+		dto.setAdr2(request.getParameter("adr2"));
+		dto.setAdr3(request.getParameter("adr3"));
+		dto.setAdr4(request.getParameter("adr4"));
 		dto.setUser_phone(request.getParameter("user_phone"));
 		dto.setUser_email(request.getParameter("user_email"));
-		return "redirect:mypage";
+		UserDao.modifyAction(dto);
+		session.invalidate();
+		return "/main/main";
 	}
 	
 	//멤버 삭제
@@ -436,7 +438,7 @@ public class MainController
 		System.out.println("delete user no : "+user_no);
 		
 		UserDao.modifyDelete(user_no);
-		
+		session.invalidate();
 		return "redirect:main";
 	}
 	
