@@ -106,24 +106,12 @@
         <c:forEach var="dto" items="${ list }">
           <div class="item_info">
             <div class="item_con1">
-              <div style="width: 100px;"><img src="https://ifh.cc/g/5Gy0b5.png" alt="" style="width: 100px;"></div>
+              <div style="width: 100px;"><img src="/img/${ dto.item_img }" alt="" style="width: 85px;"></div>
             </div>
             <div class="item_con2">
-              <div style="color:brown;"><h4>${ dto.item_nm }</h4></div>
-              <div style="font-weight: lighter;">${ dto.item_count }</div>
-              <div style="font-weight: bolder;">${ dto.item_price }</div>
-            </div>
-          </div>
-        </c:forEach>
-        <c:forEach var="dto" items="${ list }">
-          <div class="item_info">
-            <div class="item_con1">
-              <div style="width: 100px;"><img src="https://ifh.cc/g/5Gy0b5.png" alt="" style="width: 100px;"></div>
-            </div>
-            <div class="item_con2">
-              <div style="color:brown;"><h4>${ dto.item_nm }</h4></div>
-              <div style="font-weight: lighter;">${ dto.item_count }</div>
-              <div style="font-weight: bolder;">${ dto.item_price }</div>
+              <div style="color:brown;"><h4>${ dto.item_name }</h4></div>
+              <div style="font-weight: lighter;">${ dto.order_count }</div>
+              <div style="font-weight: bolder;">${ dto.order_price }</div>
             </div>
           </div>
         </c:forEach>

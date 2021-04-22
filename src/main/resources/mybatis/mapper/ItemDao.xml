@@ -34,5 +34,15 @@
 	<select id="mainSearch" resultType="com.port.springboot.dto.ItemDto">
 		select * from tb_item where item_name like '%'||#{item_name}||'%'
 	</select>
+	
+	<select id="orderFromBasket" resultType="com.port.springboot.dto.BasketDto">
+		select o.order_no, i.item_img, i.item_name, o.order_count, o.order_price
+		from tb_order o, tb_item i
+		where o.item_no = i.item_no
+		and o.order_no in 
+        <foreach collection="array" item="order_no"  open="(" close=")" separator=",">
+            #{order_no}
+        </foreach>
+	</select>
 
 </mapper>

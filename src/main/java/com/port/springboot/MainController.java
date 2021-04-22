@@ -190,6 +190,8 @@ public class MainController
 				System.out.println("선택된 상품의 order_no : " + val);
 			}
 		}
+		String order_no[] = request.getParameterValues("order_no");
+		model.addAttribute("list", ItemDao.orderFromBasket(order_no));
 		
 		
 		return "order/order";

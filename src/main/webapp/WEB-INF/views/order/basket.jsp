@@ -169,9 +169,9 @@ function selectAll(selectAll)  {
 	            <td style="text-align: left;">${ dto.item_name }</td>
 	            <td>${ dto.order_count }</td>
 	            <td>${ dto.order_price }</td>
-	            <td><a href="basketDelete?order_no=${ dto.order_no }"><input type="button" id="orderButton" 
-	              style="margin: 0 auto; border-radius: 10px; background-color: white; 
-	              border: 1px solid lightgray; width: 35%; height: 25px;"/>삭제</a></td>
+	            <td><a href="basketDelete?order_no=${ dto.order_no }"><input type="button" id="orderButton" value="삭제"
+	             style="margin: 0 auto; border-radius: 10px; background-color: white;
+	             border: 1px solid lightgray; width: 35%; height: 25px;"/></a></td>
 	          </tr>
 	      </c:forEach>  
 	    </table>
