@@ -44,5 +44,16 @@
             #{order_no}
         </foreach>
 	</select>
+	
+	<update id="orderCompleted" parameterType="com.port.springboot.dto.OrderDto">
+        update tb_order
+		set order_state=2,
+		order_adr1 = #{order_adr1}, order_adr2 = #{order_adr2}, order_adr3 = #{order_adr3}, order_adr4 = #{order_adr4},
+		order_price = #{order_price}, order_memo = #{order_memo}
+		where order_no in ${covToStringOrder_no}
+        <!-- <foreach collection="array" item="order_no"  open="(" close=")" separator=",">
+            #{order_no}
+        </foreach> -->
+	</update>
 
 </mapper>

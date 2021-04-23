@@ -212,6 +212,59 @@ public class MainController
 		return "order/list";
 	}
 	
+	//주문페이지 주소불러오기
+	@RequestMapping("/loadUserAdr")
+	public String order_loadUserAdr(HttpServletRequest request, Model model)
+	{
+		System.out.println("loadUserAdr 들어옴");
+//		int order_no = Integer.parseInt(request.getParameter("order_no"));
+//		ItemDao.basketDelete(order_no);
+//		System.out.println("basketDelete");
+//		System.out.println(order_no);
+		return "redirect:order";
+	}
+	@RequestMapping("/orderCompleted")
+	public String orderCompleted(HttpServletRequest request, Model model)
+	{
+		String order_adr1 = request.getParameter("order_adr1");
+		String order_adr2 = request.getParameter("order_adr2");
+		String order_adr3 = request.getParameter("order_adr3");
+		String order_adr4 = request.getParameter("order_adr4");
+		String order_price = request.getParameter("order_price");
+		String order_memo = request.getParameter("order_memo");
+		
+		String order_no[] = request.getParameterValues("order_no");
+		///////////////////////////////////////////////////////////////////////////////////////////
+		// Dao 쿼리문으로 넘길때 같은 자료형만 넘어가서 배열을 그냥 만들어버리자
+		///////////////////////////////////////////////////////////////////////////////////////////
+		String covToStringOrder_no = "(";
+		for(String val : order_no)
+		{
+			System.out.println("(orderCompleted) 선택된 상품의 order_no : " + val);
+			covToStringOrder_no += val;
+			covToStringOrder_no += ",";
+		}
+		//마지막 "," 삭제
+		covToStringOrder_no = covToStringOrder_no.substring(0, covToStringOrder_no.length()-1);
+		covToStringOrder_no += ")";
+		System.out.println("covToStringOrder_no : " + covToStringOrder_no);
+		///////////////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////////////
+		
+		System.out.println(request.getParameter("order_adr1"));
+		System.out.println(request.getParameter("order_adr2"));
+		System.out.println(request.getParameter("order_adr3"));
+		System.out.println(request.getParameter("order_adr4"));
+		System.out.println(request.getParameter("order_price"));
+		System.out.println(request.getParameter("order_memo"));
+		
+		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_memo, covToStringOrder_no);
+		
+		return "/main/main";
+	}
+	
+	
+	
 	//메인 헤더의 검색기능
 	@RequestMapping("/mainSearch")
 	public String main_header_search(HttpServletRequest request, Model model)

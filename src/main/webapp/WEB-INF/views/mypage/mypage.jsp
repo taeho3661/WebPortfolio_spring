@@ -114,7 +114,7 @@
       </tr>
 
       <tr>
-        <th><a href=장바구니>장바구니 조회</a></th>
+        <th><a href=basketList>장바구니 조회</a></th>
         <td>관심상품으로 등록하신 상품의 목록을 보여드립니다.</td>
       </tr>
 
