@@ -136,7 +136,7 @@
 	    <div class="section1">
 	      <div class="section_con">
 	        <h4>주문 상품 정보</h4>
-	        <c:forEach var="dto" items="${ list }">
+	        <c:forEach var="dto" items="${ list }" >
 	        <input type="hidden" name="order_no" value="${ dto.order_no }" >
 	          <div class="item_info">
 	            <div class="item_con1">
@@ -145,7 +145,7 @@
 	            <div class="item_con2">
 	              <div style="color:brown;"><h4>${ dto.item_name }</h4></div>
 	              <div style="font-weight: lighter;">${ dto.order_count }</div>
-	              <div style="font-weight: bolder;">${ dto.order_price }</div>
+	              <div style="font-weight: bolder;" class="order_price">${ dto.order_price }</div>
 	            </div>
 	          </div>
 	        </c:forEach>
@@ -281,7 +281,7 @@
 	          <!-- th -->
 	          <tr>
 	            <td>상품가격</td>
-	            <td>${ price }</td>
+	            <td id="totalPriceAmount"></td>
 	          </tr>
 	          <tr>
 	            <td>할인율</td>
@@ -311,6 +311,24 @@
 	    </div>
 	  </div>
   </form>
+  
+  <script>
+	window.onload = function() {
+		var arr = document.getElementsByClassName("order_price");
+
+		var sum = 0;
+		for( var i = 0; i < arr.length; i++ )
+		{ 
+			var innerText = arr[i].innerText;
+			sum = sum + Number( innerText );
+		}
+
+		console.log("sum:" + sum);
+		document.getElementById('totalPriceAmount').innerText = sum;
+		
+	};
+  </script>
+  
   
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />

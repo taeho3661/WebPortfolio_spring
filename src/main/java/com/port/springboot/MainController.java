@@ -154,7 +154,7 @@ public class MainController
 	//장바구니 추가
 	@RequestMapping("/basketAdd")
 	public String order_basketAdd(HttpServletRequest request, Model model)
-	{		
+	{
 		//장바구니에 추가하는 부분
 		OrderDto dto = new OrderDto();
 		dto.setUser_no(Integer.parseInt(request.getParameter("user_no")));
@@ -162,6 +162,8 @@ public class MainController
 		dto.setOrder_count(Integer.parseInt(request.getParameter("order_count")));
 		dto.setOrder_price(Integer.parseInt(request.getParameter("order_price")));
 		ItemDao.basketAdd(dto);
+		
+		//System.out.println("장바구니add에 order_price : " + Integer.parseInt(request.getParameter("order_price")));
 		
 		tempUser_no = Integer.parseInt(request.getParameter("user_no"));
 		
@@ -200,7 +202,9 @@ public class MainController
 				System.out.println("선택된 상품의 order_no : " + val);
 			}
 		}
+		
 		String order_no[] = request.getParameterValues("order_no");
+		
 		model.addAttribute("list", ItemDao.orderFromBasket(order_no));
 		
 		
@@ -209,7 +213,7 @@ public class MainController
 	@RequestMapping("/list")
 	public String order_list(HttpServletRequest request, Model model)
 	{
-		HttpSession session = request.getSession();		
+		HttpSession session = request.getSession();
 		
 		String item_type = request.getParameter("item_type");
 		

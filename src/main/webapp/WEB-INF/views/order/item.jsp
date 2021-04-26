@@ -115,7 +115,7 @@
         </div>
         <c:if test="${user != null}">
         	<%-- <div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basket?user_no=${ user.user_no }"><input type="button" value="장바구니"/></a></div> --%>
-        	<div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basketAdd?user_no=${ user.user_no }&item_no=${ itemDto.item_no }&order_count=1"><input type="button" value="장바구니"/></a></div>
+        	<div id="basketButton" onclick="alert('장바구니로 이동합니다.')"><a href="basketAdd?user_no=${ user.user_no }&item_no=${ itemDto.item_no }&order_count=1&order_price=${ itemDto.item_price }"><input type="button" value="장바구니"/></a></div>
         </c:if>
         <c:if test="${user == null}">
         	<div id="basketButton" onclick="alert('로그인페이지로 이동합니다.')"><a href="login"><input type="button" value="장바구니"/></a></div>

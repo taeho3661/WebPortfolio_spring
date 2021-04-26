@@ -29,6 +29,7 @@
 
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
+
  <div class="wrap">      
     <div style="width: 1060px; height: 50PX; background-color: white; font-size: 20px; margin: 0 auto;">
       <div><h3>이용약관</h3></div>
