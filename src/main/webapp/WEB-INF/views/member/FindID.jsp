@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,26 +110,19 @@
   </div>
   
   <div class="login">
-    <form action="aaa.jsp" method="POST"></form>
+    <form action="findIdAction" method="POST">
       <div class="login_ID">
         <div class="login_IDbutton">
           <div class="login_text">이름</div>
-          <input type="text" class="login_input" placeholder="이름">
+          <input type="text" class="login_input" placeholder="이름" name="user_name">
         </div>
         <div class="login_IDbutton">
-          <div class="login_text">이메일 찾기</div>
-          <input type="password" class="login_input login_paasword" placeholder="이메일">
+          <div class="login_text">이메일</div>
+          <input type="text" class="login_input login_paasword" placeholder="이메일" name="user_email">
         </div>
       </div>
-    
-
     <div class="login_Member">
-      
-        
          <input type="submit" class="btn btn-secondary btn-lg " value="확인"></input>
-        
-        
-      
     </div>
 
     </form>
@@ -141,8 +134,6 @@
 </div>
 
 <jsp:include page="../main/footer.jsp" />
-
-
 </body>
 </html>
 

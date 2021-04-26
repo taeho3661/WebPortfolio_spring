@@ -23,5 +23,9 @@
 	<delete id="modifyDelete" parameterType="com.port.springboot.dto.UserDto">
 		delete from tb_user where user_no = #{user_no}
 	</delete>
+	
+	<select id="findIdAction" resultType="string">
+		select user_id from tb_user where user_name = #{user_name} and user_email = #{user_email}
+	</select>
 </mapper>
 
