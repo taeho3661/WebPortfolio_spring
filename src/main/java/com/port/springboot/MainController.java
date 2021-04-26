@@ -380,12 +380,55 @@ public class MainController
 	{
 		return "member/login";
 	}
+	
 	//아이디찾기
 	@RequestMapping("/FindID")
 	public String FindID()
 	{
 		return "member/FindID";
 	}
+	
+	//아이디찾기 액션
+	@RequestMapping("/findIdAction")
+	public String findIdAction(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String user_name = request.getParameter("user_name");
+		String user_email = request.getParameter("user_email");
+		
+		System.out.println(user_name);
+		
+		String user_id = UserDao.findIdAction(user_name, user_email);
+		
+		String msg;
+		
+		if(user_id!=null)
+		{
+			msg = "회원님의 아이디는"+user_id+"입니다.";
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('"+msg+"'); history.go(-2);</script>");
+			out.flush();
+		}
+		else
+		{
+			msg = "잘못된 정보입니다.";
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('"+msg+"'); history.go(-1);</script>");
+			out.flush();
+		}
+		
+		System.out.println(msg);
+		
+		
+		
+		
+		
+		return "redirect:/main";
+	}
+	
+	
+	
 	//비빌번호찾기
 	@RequestMapping("/FindPassword")
 	public String FindPasswor()

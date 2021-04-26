@@ -14,4 +14,5 @@ public interface IUserDao
 	public UserDto modifyView(int user_no);
 	public int modifyAction(UserDto dto);
 	public int modifyDelete(int user_no);
+	public String findIdAction(@Param("user_name") String user_name, @Param("user_email") String user_email);
 }
