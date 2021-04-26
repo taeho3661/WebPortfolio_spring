@@ -63,12 +63,21 @@ public class MainController
 	public String company_map(Model model)
 	{
 		return "company/map";
-	}
-	
+	}	
 	@RequestMapping("/introduce")
 	public String company_introduce(Model model)
 	{
 		return "company/introduce";
+	}
+	@RequestMapping("/agreement")
+	public String company_agreement(Model model)
+	{
+		return "company/agreement";
+	}
+	@RequestMapping("/guide")
+	public String company_guide(Model model)
+	{
+		return "company/guide";
 	}
 	
 	//service 페이지 
@@ -151,6 +160,7 @@ public class MainController
 		dto.setUser_no(Integer.parseInt(request.getParameter("user_no")));
 		dto.setItem_no(Integer.parseInt(request.getParameter("item_no")));
 		dto.setOrder_count(Integer.parseInt(request.getParameter("order_count")));
+		dto.setOrder_price(Integer.parseInt(request.getParameter("order_price")));
 		ItemDao.basketAdd(dto);
 		
 		tempUser_no = Integer.parseInt(request.getParameter("user_no"));

@@ -189,8 +189,8 @@
             <div>
             <a href="review">상품후기</a>
             <a href="inquiryList">상품문의</a>
-            <a href="#">이용약관</a>
-            <a href="#">개인정보</a>
+            <a href="agreement">이용약관</a>
+            <a href="guide">이용안내</a>
           </div>
           </div>
 

@@ -112,7 +112,7 @@
           <div style="width: 220px; height: 40px; line-height: 40px;">${ dto.item_name }</div>
           <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ dto.item_price }원</div>
         </div>
-      </c:forEach>      
+      </c:forEach>
     </div>
   </div>
 </div>

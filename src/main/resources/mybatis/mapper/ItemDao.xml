@@ -23,8 +23,8 @@
 	</select>
 	
 	<insert id="basketAdd" parameterType="com.port.springboot.dto.BasketDto">
-		INSERT INTO tb_order(order_no, user_no, item_no, order_count, order_state, order_date) 
-		values (tb_order_seq.nextval, #{user_no}, #{item_no}, #{order_count}, 1, sysdate)
+		INSERT INTO tb_order(order_no, user_no, item_no, order_count, order_state, order_price, order_date) 
+		values (tb_order_seq.nextval, #{user_no}, #{item_no}, #{order_count}, 1, #{order_price}, sysdate)
 	</insert>
 	
 	<delete id="basketDelete" parameterType="com.port.springboot.dto.BasketDto">
