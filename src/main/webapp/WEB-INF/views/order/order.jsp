@@ -10,6 +10,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구매페이지</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function fn_setCustomer(){
+		var settingName = $('.hidden_user_name').val();
+		var settingPhone = $('.hidden_user_phone').val();
+		var settingAdr1 = $('.hidden_user_adr1').val();
+		var settingAdr2 = $('.hidden_user_adr2').val();
+		var settingAdr3 = $('.hidden_user_adr3').val();
+		var settingAdr4 = $('.hidden_user_adr4').val();
+		//document.getElementById('tajooSet').value = settingName;
+		$('.hidden_user_name_set').val(settingName);
+		$('.hidden_user_phone_set').val(settingPhone);
+		$('.hidden_user_adr1_set').val(settingAdr1);
+		$('.hidden_user_adr2_set').val(settingAdr2);
+		$('.hidden_user_adr3_set').val(settingAdr3);
+		$('.hidden_user_adr4_set').val(settingAdr4);
+		
+		console.log(settingName);
+		console.log(settingPhone);
+		console.log(settingAdr1);
+		console.log(settingAdr2);
+		console.log(settingAdr3);
+		console.log(settingAdr4);
+	}
+</script>
 <style>
   *{
   padding: 0;
@@ -100,6 +125,13 @@
 <jsp:include page="../main/header.jsp" />
 
   <form method="POST" action="orderCompleted">
+  	<input class="hidden_user_name" type="hidden" value="${ user.user_name }">
+  	<input class="hidden_user_phone" type="hidden" value="${ user.user_phone }">
+  	<input class="hidden_user_adr1" type="hidden" value="${ user.user_adr1 }">
+  	<input class="hidden_user_adr2" type="hidden" value="${ user.user_adr2 }">
+  	<input class="hidden_user_adr3" type="hidden" value="${ user.user_adr3 }">
+  	<input class="hidden_user_adr4" type="hidden" value="${ user.user_adr4 }">
+  	  
 	  <div class="wrap">
 	    <div class="section1">
 	      <div class="section_con">
@@ -125,19 +157,19 @@
 	      </div>
 	      <div class="section_con" id="del_info">
 	        <h4>배송 정보</h4>
-	        <div style="font-size: 14px; margin-top: 10px;"><input type="checkbox" name="sameInfo" value=""> 주문자 정보와 동일</div>
-	        <input type="text" placeholder="수령인" style="width:25%; height:30px; margin-top: 10px;">
-	        <input type="text" placeholder="phone1 + phone2 + phone3" style="width:50%; height:30px; margin-top: 10px;"> <br>
+	        <div style="font-size: 14px; margin-top: 10px;"><input type="checkbox" onclick="fn_setCustomer()" name="sameInfo" value=""> 주문자 정보와 동일</div>
+	        <input type="text" class="hidden_user_name_set" placeholder="수령인" style="width:25%; height:30px; margin-top: 10px;">
+	        <input type="text" class="hidden_user_phone_set" placeholder="phone1 + phone2 + phone3" style="width:50%; height:30px; margin-top: 10px;"> <br>
 	
 	        <!-- ///////////////////////////////////////////////////////////////////////// -->
 	        <!-- ///////////////////////////// 다음 API 주소 ////////////////////////////// -->
 	        <!-- ///////////////////////////////////////////////////////////////////////// -->
 	
-	        <input type="text" name="order_adr1" id="sample2_postcode" placeholder="우편번호" style="width:15%; height:30px; margin-top: 10px;">
+	        <input type="text" name="order_adr1" class="hidden_user_adr1_set" id="sample2_postcode" placeholder="우편번호" style="width:15%; height:30px; margin-top: 10px;">
 	        <input type="button" onclick="sample2_execDaumPostcode()" value="주소 찾기" style="width:15%; height:30px; margin-top: 10px; padding: 0px;"><br>
-	        <input type="text" name="order_adr2" id="sample2_address" placeholder="주소" style="width:30%; height:30px; margin-top: 10px;"><br>
-	        <input type="text" name="order_adr3" id="sample2_detailAddress" placeholder="상세주소" style="width:30%; height:30px; margin-top: 10px;">
-	        <input type="text" name="order_adr4" id="sample2_extraAddress" placeholder="참고항목" style="width:20%; height:30px; margin-top: 10px;">
+	        <input type="text" name="order_adr2" class="hidden_user_adr2_set" id="sample2_address" placeholder="주소" style="width:30%; height:30px; margin-top: 10px;"><br>
+	        <input type="text" name="order_adr3" class="hidden_user_adr3_set" id="sample2_detailAddress" placeholder="상세주소" style="width:30%; height:30px; margin-top: 10px;">
+	        <input type="text" name="order_adr4" class="hidden_user_adr4_set" id="sample2_extraAddress" placeholder="참고항목" style="width:20%; height:30px; margin-top: 10px;">
 	
 	        <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 	        <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

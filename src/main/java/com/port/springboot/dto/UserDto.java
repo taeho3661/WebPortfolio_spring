@@ -10,10 +10,10 @@ public class UserDto
     private String 	user_pw;
     private String 	user_name;
     private int 	user_post;
-    private String 	adr1 ;
-    private String 	adr2;
-    private String 	adr3;
-    private String 	adr4;
+    private String 	user_adr1;
+    private String 	user_adr2;
+    private String 	user_adr3;
+    private String 	user_adr4;
     private String 	user_phone;
     private String 	user_email;
     private int 	user_email_yn;

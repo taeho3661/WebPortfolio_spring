@@ -471,10 +471,10 @@ public class MainController
 		dto.setUser_id(request.getParameter("user_id"));
 		dto.setUser_pw(request.getParameter("user_pw"));
 		dto.setUser_name(request.getParameter("user_name"));
-		dto.setAdr1(request.getParameter("adr1"));
-		dto.setAdr2(request.getParameter("adr2"));
-		dto.setAdr3(request.getParameter("adr3"));
-		dto.setAdr4(request.getParameter("adr4"));
+		dto.setUser_adr1(request.getParameter("user_adr1"));
+		dto.setUser_adr2(request.getParameter("user_adr2"));
+		dto.setUser_adr3(request.getParameter("user_adr3"));
+		dto.setUser_adr4(request.getParameter("user_adr4"));
 		dto.setUser_phone(request.getParameter("user_phone"));
 		dto.setUser_email(request.getParameter("user_email"));
 		UserDao.modifyAction(dto);
