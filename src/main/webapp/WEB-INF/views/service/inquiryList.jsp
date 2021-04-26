@@ -35,6 +35,10 @@
 .inquiry_table td {
   color: rgb(128, 122, 115);
 }
+.write_review {
+      font-size: 15px;
+      color:black;  
+    }
 </style>
 
 </head>
@@ -44,8 +48,13 @@
 <jsp:include page="../main/header.jsp" />
 
 
-  <h2 class="inquiry_title">1:1 문의</h2>
-
+  <h2 class="inquiry_title">상품 리뷰</h2>
+  
+	
+	<div>
+	
+   <a class="write_review" href="review">글쓰기</a>
+	</div>
   <table class="inquiry_table">
     <!-- th -->
     <tr>
@@ -60,14 +69,12 @@
       
       <c:forEach var="dto" items="${list}" >
 
-        <input type="hidden" name="item_no" value="${dto.item_no}">
-
         <tr>
-          <td>${dto.item_no}</td>
-          <td>${dto.board_title}</td>
+          <td>${dto.board_no}</td>
+          <td><a href="review_view?board_no=${dto.board_no }">${dto.board_name}</a></td>
           <td>${dto.board_writer}</td>
-          <td><fmt:formatDate value="${dto.board_date}" pattern="yyyy/MM/dd" /> </td>
-          <td>${dto.board_count}</td>
+          <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /> </td>
+          <td>${dto.board_hit}</td>
         </tr>
          
        </c:forEach>

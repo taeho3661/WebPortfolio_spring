@@ -43,6 +43,17 @@ public class MainController
 	@Autowired
 	private IBoardDao BoardDao;
 	
+	// 게시판관련
+		@RequestMapping("/inquiryList")
+		public String boardList(Model model)
+		{
+			model.addAttribute("list", BoardDao.boardList());
+			return "/service/inquiryList";
+		}
+		//
+		
+	
+	
 	@RequestMapping("/")
 	public String root() throws Exception {
 		return "redirect:main";
@@ -115,17 +126,26 @@ public class MainController
 		return "redirect:mypage";
 	}
 	
-	@RequestMapping("/inquiryList")
-	public String service_inquiryList(Model model)
-	{
-		return "service/inquiryList";
+	//상품후기 액션
+	@RequestMapping("/review_view")
+	public String review_view_action(HttpServletRequest request, Model model) {
+		
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		
+		model.addAttribute("dto", BoardDao.reviewView(board_no));
+		
+		return "/service/review_view";
 	}
+	
+	
+	
 	
 	@RequestMapping("/review")
 	public String service_review(Model model)
 	{
 		return "service/review";
 	}
+	
 	
 	
 	//order페이지

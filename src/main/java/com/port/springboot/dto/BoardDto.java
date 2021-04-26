@@ -9,10 +9,10 @@ public class BoardDto
 {
 	private int 	board_no;
 	private int 	board_kind;
-	private String 	item_name;
     private String 	board_name;
     private String 	board_writer;
 	private Date 	board_write_date;
+	private int     board_hit;
 	private int 	item_no;
 	private String 	board_content;
 	private String	board_reply;

@@ -8,14 +8,14 @@
 <html lang="en">
 <head>
 
-   <jsp:include page="../main/header.jsp" />
+   
  
   
   <title>Header</title>
   <style>
  .inquiry_table {
         border: 1px solid rgb(216, 174, 174);
-        width: 1000px;
+        width:  800px;
         padding: 50px;
         margin: 0 auto;
       }
@@ -52,8 +52,8 @@
   //높이와 넓이를 설정하지 않으면 화면이 작게 나오기때문에 설정해주어야 한다.
   $(function(){
       $("#description").summernote({
-          height : 400,
-          width : 800
+          height : 300,
+          width : 600
       });
   });
   </script>
@@ -63,18 +63,16 @@
     <form class="inquiry_table" name="form1" method="post"
         enctype="multipart/form-data">
     <table>
+    
         <tr>
             <td>상품명</td>
-            <td><input name="product_name" id="product_name"></td>
+            <td><input name="product_name" id="product_name" value="${ dto.board_name }"></td>
         </tr>
-        <tr>
-            <td>가격</td>
-            <td><input name="price" id="price"></td>
-        </tr>
+        
         <tr>
             <td>상품설명</td>
             <td><textarea rows="5" cols="60" 
-                name="description" id="description"></textarea>
+                name="description" id="description">${ dto.board_content }</textarea>
               
             </td>
         </tr>
@@ -89,14 +87,14 @@
                 <input type="button" value="등록" 
                     onclick="javascript:product_write()">
                 <input type="button" value="목록"
-    onclick="location.href='${path}/shop/product/list.do'">
+    			onclick="javascript:history.back()">
             </td>
         </tr>
+    
     </table>    
     </form>
   </div>
    
-
 
 
 </body>
