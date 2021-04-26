@@ -15,4 +15,8 @@ public interface IUserDao
 	public int modifyAction(UserDto dto);
 	public int modifyDelete(int user_no);
 	public String findIdAction(@Param("user_name") String user_name, @Param("user_email") String user_email);
+	public int registerAction(UserDto dto);
+	public int idCheck(String member_id);
 }
+
+

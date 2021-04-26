@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -168,6 +168,20 @@
       margin: 7px;
     }
   
+  
+  
+  /* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
+	
+	
   </style>
 
   
@@ -177,27 +191,28 @@
 
 <div class= "wrap">
   
-  <form action="aaa.jsp" method="POST">
+ <form action="registerAction" method="POST"> 
     <div class="join ">
       <div class="joinheader">필수항목입니다</div>
       <div class="join_ID main Line ">
         <div class="join_textside">아이디 </div>
-        <input type="text" class="form-control textbox">
-        <a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">아이디 중복체크</a>
+        <input type="text" class="form-control textbox" name="user_id" id="id">
+        <!-- <a href="#none" title="새창 열기" onclick="idCheck('/member/check_id.html')" id="join_ID_Check" name="idCheck" class="btn-secondary btn-lg ">아이디 중복체크</a>  -->
+        <button type="button"  class="btn btn-dark" onclick="idCheckFunc();" id="join_ID_Check" name="idCheck" class="btn-secondary btn-lg ">중복확인</button>
       </div>
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
-        <input type="text" class="form-control textbox" >
+        <input type="password" class="form-control textbox"  name="user_pw">
     
       </div>
       <div class="join_Passwordcheck main Line">
         <div class="join_textside">비빌번호 확인</div>
-        <input type="text" class="form-control textbox" >
+        <input type="password" class="form-control textbox" name="passwordCheck" >
       </div>
 
       <div class="join_Passwordcheck main Line">
         <div class="join_textside">이름</div>
-        <input type="text" class="form-control textbox" >
+        <input type="text" class="form-control textbox" name="user_name">
         
       </div>
 
@@ -214,11 +229,11 @@
           <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
           <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
           </div>
-          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;">
+          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="adr1">
         <input type="button" onclick="sample2_execDaumPostcode()" value="주소 찾기" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
-        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"><br>
-        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;">
-        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " >
+        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr2"><br>
+        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"name="adr3">
+        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="adr4">
 
         <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -321,13 +336,13 @@
 
       <div class="main Line phonetext">
         <div class="join_textside">휴대전화</div>
-        <input type="text" class="form-control textbox " >
+        <input type="text" class="form-control textbox "  name="user_phone">
       </div>
 
       <div class="main Line">
         <div class="join_textside">이메일</div>
         <div class="mb-3">
-          <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp" name="user_email">
         </div>
       </div>
       
@@ -370,13 +385,94 @@
 
     <div class="lastbutton">
       <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원가입"></input>
-      <a class="btn btn-secondary btn-lg" a href="main.jsp">가입 취소</a>
+      <a class="btn btn-secondary btn-lg" a href="main">가입 취소</a>
     </div>
 
 
     </div> <!-- join main 부분-->
-</form>
+</form> 
+
+
+<span class="id_input_re1">사용가능아이디입니다</span>
+<span class="id_input_re1">아이디입니다 사용불가</span>
+
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
+  <script type="text/javascript">
+
+  //<a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">아이디 중복체크</a>
+  
+	
+	
+	
+	
+	
+	
+	
+
+
+	function idCheckFunc() {
+		var user_id = $('#id').val();
+		if(!user_id){
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		// ajax 용도 : 화면 갱신(reload,redirect)가 없이
+		//            부분화면 갱신(통신)을 js에서 한다.
+		//           예)네이버 - 실시간검색어, 실시간날씨
+		// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+		$.ajax({
+  			url : 'http://localhost:8085/idCheckAjax?member_id='+ user_id,
+			type : 'post',
+			success : function(data) {
+				console.log("1 = 중복됨, 0 = 중복안됨 : "+ data);							
+				if (data == 1) {
+					// 1 : 아이디가 중복되는 문구
+					alert("아이디가 중복됩니다.");
+					$('#check_hidden').val("no");
+				} else {
+					// 0 : 아이디가 안됨.
+					alert("아이디가 사용가능합니다.");
+					$('#check_hidden').val("yes");
+				}
+			}, 
+			error : function() {
+					console.log("실패");
+			}
+		});
+	} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	function dlt()
+	{
+		var user_id = document.getElementById('user_id').value;
+		if(window.confirm('정말 탈퇴하시겠습니까?'))
+			{
+				window.location = '/modifyDelete';
+			}
+	}
+
+	
+ </script>
 </body>
 </html>

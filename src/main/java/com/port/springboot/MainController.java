@@ -1,5 +1,6 @@
 package com.port.springboot;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.port.springboot.dao.IBoardDao;
 import com.port.springboot.dao.IItemDao;
@@ -556,7 +558,7 @@ public class MainController
 	
 	//로그인 기능
 	@RequestMapping(value="/loginAction", method= RequestMethod.POST)
-	public String loginAction(HttpServletRequest request, HttpServletResponse response) throws IOException
+	public String loginAction(HttpServletRequest request,  HttpServletResponse response) throws IOException
 	{
 		HttpSession session = request.getSession();
 		String user_id = request.getParameter("user_id");
@@ -615,6 +617,9 @@ public class MainController
 		}
 	}
 	
+	
+	
+	
 	//로그아웃
 	@RequestMapping("/Logout")
 	public String Logout(HttpSession session)
@@ -625,8 +630,45 @@ public class MainController
 	
 	
 	@RequestMapping("/register")
-	public String register(Model model)
+	public String register()
 	{
 		return "member/register";
 	}
+	
+	
+	
+	
+	// 아이디 중복 검사
+	@RequestMapping(value = "/idCheckAjax", method = RequestMethod.POST)
+	@ResponseBody
+	public void idCheckAjax(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		System.out.print("진입ㄷㅈㄱㄷㅈㄱ");
+		
+		int result = 0;
+		try 
+		{
+			String member_id = request.getParameter("member_id");
+			System.out.println("insert id : "+member_id);
+			request.setAttribute("check_id", member_id);
+			
+			result = UserDao.idCheck(member_id);
+			//result = MemberDao.idCheck(request);
+	
+			System.out.println(result);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		if(result == 1) { //아이디 중복됨
+    		response.getWriter().print("1");
+    	} else { 
+    		response.getWriter().print("0");
+    	}
+		
+	} 
+ 
+    
+	
 }

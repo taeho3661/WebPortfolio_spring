@@ -361,6 +361,7 @@
       
 	<div class="lastbutton">
       <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정" ></input>
+      <a href=# onclick="modify();"><input type="button" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정"></input></a>
       <a class="btn btn-secondary btn-lg" href="mypage">취소</a>
       <div class="lastbutton_member2">
         <a href=# onclick="dlt();"><input type="button" class="btn btn-secondary btn-lg " value="회원탈퇴"></input></a>
@@ -376,28 +377,7 @@
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
  <script type="text/javascript">
-	function check()
-	{
-		var pw1 = document.getElementById('pw1').value;
-		var pw2 = document.getElementById('pw2').value;
-		if(!pw1 || !pw2)
-			{
-			alert("비밀번호를 입력 해 주세요");
-			}
-		else
-			{
-			if( pw1 != pw2 ) 
-					{
-		        		alert("비밀번호가 일치 하지 않습니다");
-		    		} 
-		    	else
-					{
-						alert("회원 정보를 수정 하였습니다")
-		        		document.modify_form.submit();
-		    		}
-			}
-		
-	}
+	
 	function dlt()
 	{
 		var user_id = document.getElementById('user_id').value;

@@ -20,12 +20,26 @@
 		where user_no = #{user_no}
 	</update>
 	
-	<delete id="modifyDelete" parameterType="com.port.springboot.dto.UserDto">
+	<delete id="modifyDelete" parameterType="com.port.springboot.dto.UserDto">    
 		delete from tb_user where user_no = #{user_no}
 	</delete>
 	
 	<select id="findIdAction" resultType="string">
 		select user_id from tb_user where user_name = #{user_name} and user_email = #{user_email}
 	</select>
+	
+	<insert id="registerAction" parameterType="com.port.springboot.dto.UserDto">
+		insert into tb_user (user_no, user_id, user_pw, user_name, user_adr1, user_adr2, user_adr3, user_adr4, user_phone, user_email, user_score, user_rank, user_login_type)
+		values (tb_user_seq.nextval, #{user_id}, #{user_pw}, #{user_name}, #{adr1}, #{adr2}, #{adr3}, #{adr4}, #{user_phone}, #{user_email}, '0','0','0')
+	</insert>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="idCheck" resultType="int">
+  		select count(*) from tb_user where user_id = #{member_id}
+
+  	</select>
+	
+	
+	
 </mapper>
 
