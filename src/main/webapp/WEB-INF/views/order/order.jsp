@@ -118,6 +118,14 @@
     color:thistle;
     /* padding-left: 10px; */
   }
+  #totalPriceAmount
+  {
+  	font-size: 18px;
+  }
+  #totalPaymentAmount
+  {
+  	font-size: 20px;
+  }
 </style>
 <body>
 
@@ -281,11 +289,32 @@
 	          <!-- th -->
 	          <tr>
 	            <td>상품가격</td>
-	            <td id="totalPriceAmount"></td>
+	            <td><span id="totalPriceAmount"></span>원</td>
 	          </tr>
 	          <tr>
 	            <td>할인율</td>
-	            <td>${ discount }</td>
+	            <td>
+	                <a href="#" class="popper" data-popbox="pop1"> <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+					<jsp:include page="../main/rankSystem.jsp" />  <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+						<span id="discountRate">
+			           		<c:if test="${user.user_score < '100000'}">
+						    	10
+						    </c:if>
+						    
+						    <c:if test="${user.user_score >= '100000' && user.user_score < '200000'}">
+						    	15
+						    </c:if>
+						    
+						    <c:if test="${user.user_score >= '200000' && user.user_score < '300000' }">
+						    	20
+						    </c:if>
+						    
+						    <c:if test="${user.user_score >= '300000' }">
+						    	25
+						    </c:if>						    
+					    </span>%
+				    </a>
+	            </td>
 	          </tr>
 	          <tr>
 	            <td>배송비</td>
@@ -293,7 +322,7 @@
 	          </tr>
 	          <tr>
 	            <td style="border-top: 1px solid rgb(238, 238, 238);">총 결제금액</td>
-	            <td style="border-top: 1px solid rgb(238, 238, 238);">+원</td>
+	            <td style="border-top: 1px solid rgb(238, 238, 238);" id="totalPaymentAmount"></td>
 	          </tr>
 	      
 	        </table>
@@ -312,8 +341,9 @@
 	  </div>
   </form>
   
-  <script>
+  <script> 
 	window.onload = function() {
+		/* 상품가격 더하는 스크립트 */
 		var arr = document.getElementsByClassName("order_price");
 
 		var sum = 0;
@@ -325,7 +355,18 @@
 
 		console.log("sum:" + sum);
 		document.getElementById('totalPriceAmount').innerText = sum;
-		
+
+		/* 상품가격에서 할인율 적용해서 나오는 총 결제금액 구하는 스크립트 */
+		var totalPriceAmount = document.getElementById("totalPriceAmount").innerText;
+		var discountRate = document.getElementById("discountRate").innerText;
+
+		var totalPaymentAmount = 0;
+		totalPaymentAmount = Number( totalPriceAmount ) - (Number( totalPriceAmount ) * Number ( discountRate ) * 0.01);
+
+		console.log("totalPriceAmount:" + totalPriceAmount);
+		console.log("discountRate:" + discountRate);
+		console.log("totalPaymentAmount:" + totalPaymentAmount);
+		document.getElementById('totalPaymentAmount').innerText = totalPaymentAmount + '원';	
 	};
   </script>
   

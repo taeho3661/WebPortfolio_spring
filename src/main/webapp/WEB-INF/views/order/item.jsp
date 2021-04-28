@@ -100,7 +100,6 @@
 
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
-
 <c:forEach var="itemDto" items="${ list }">
   <div class="wrap">
     <div class="item_info">
@@ -123,12 +122,33 @@
         <div id="orderButton" onclick="alert('구매 페이지로 이동합니다.')"><a href="./order"><input type="button" value="구매하기"/></a></div>        
         <div style="clear:both; padding-top: 30px; padding-bottom: 5px; margin-bottom: 20px; border-bottom: 1px solid rgb(133, 133, 133);">
         	<c:if test="${user != null}">
-        		${ user.user_name }님은 ${ user.user_rank }입니다.
+        		${ user.user_name }님은 [        		
+        		<a href="#" class="popper" data-popbox="pop1"> <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+				<jsp:include page="../main/rankSystem.jsp" />  <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+	        		<strong>
+					    <%--적립금에 따른 유저 등급 --%>
+					    <c:if test="${user.user_score < '100000'}">
+					    	브론즈
+					    </c:if>
+					    
+					    <c:if test="${user.user_score >= '100000' && user.user_score < '200000'}">
+					    	실버
+					    </c:if>
+					    
+					    <c:if test="${user.user_score >= '200000' && user.user_score < '300000' }">
+					    	골드
+					    </c:if>
+					    
+					    <c:if test="${user.user_score >= '300000' }">
+					    	다이아
+					    </c:if>			    
+				    </strong>
+			    </a>] 회원이십니다.			    
         	</c:if>
         </div>
         
       </div>
-    </div>
+    </div>    
     <div class="section3">
       <img alt="" src="/img/${ itemDto.item_info_img }">
     </div>
