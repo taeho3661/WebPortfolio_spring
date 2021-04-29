@@ -16,6 +16,8 @@ import com.port.springboot.dto.UserDto;
 public interface IItemDao {
 	
 	public List<ItemDto> itemTypeList(String item_type);
+	public List<ItemDto> itemTypeListSort(
+			@Param("item_type")String item_type, @Param("sort_point")String sort_point, @Param("sort_method")String sort_method);
 	public List<ItemDto> item(int item_no);
 	public List<BasketDto> basket(int user_no);
 	public int basketAdd(OrderDto dto);

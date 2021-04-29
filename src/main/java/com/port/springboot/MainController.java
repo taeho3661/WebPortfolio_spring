@@ -247,6 +247,22 @@ public class MainController
 		
 		return "order/list";
 	}
+	@RequestMapping("/listSort")
+	public String order_listSort(HttpServletRequest request, Model model)
+	{
+		
+		String item_type = request.getParameter("item_type");
+		String sort_point = request.getParameter("sort_point");
+		String sort_method = request.getParameter("sort_method");
+		
+		System.out.println("select item_type123123 : " + item_type);
+		System.out.println("select item_type123123 : " + sort_point);
+		System.out.println("select item_type123123 : " + sort_method);
+		
+		model.addAttribute("list", ItemDao.itemTypeListSort(item_type, sort_point, sort_method));
+		
+		return "order/list";
+	}
 	
 	//주문페이지 주소불러오기
 	@RequestMapping("/loadUserAdr")

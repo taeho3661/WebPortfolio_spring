@@ -92,10 +92,10 @@
   <div class="section1" style="margin-bottom: 60px;">
     <h4 style="font-size: 25px; margin-right: 70%;">${ item_type }</h4>
     <div>
-      <!-- 쿼리문으로 정렬처리해서 페이지 리다이렉트하면 될듯? -->
-      <a href="#">신상품</a>&nbsp;
-      <a href="#">낮은가격</a>&nbsp;
-      <a href="#">높은가격</a>&nbsp;
+      <!-- 신상품은 시퀀스 번호로 / 가격은 item_price로 / 인기상품은 ?? -->
+      <a href="listSort?item_type=${ item_type }&sort_point=item_no&sort_method=desc">신상품</a>&nbsp;
+      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=asc">낮은가격</a>&nbsp;
+      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=desc">높은가격</a>&nbsp;
       <a href="#">인기상품</a>
     </div>
   </div>

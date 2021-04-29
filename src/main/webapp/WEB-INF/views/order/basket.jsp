@@ -140,7 +140,28 @@ function selectAll(selectAll)  {
       <div>혜택정보</div>
       <div>
 	    <c:if test="${user != null}">
-	   		${ user.user_name }님은 ${ user.user_rank }입니다.
+	   		${ user.user_name }님은 
+   			<a href="#" class="popper" data-popbox="pop1"> <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+			<jsp:include page="../main/rankSystem.jsp" />  <!-- 이거추가하면 rankSystem 툴팁 적용됨 -->
+        		<strong>
+				    <%--적립금에 따른 유저 등급 --%>
+				    <c:if test="${user.user_score < '100000'}">
+				    	브론즈
+				    </c:if>
+				    
+				    <c:if test="${user.user_score >= '100000' && user.user_score < '200000'}">
+				    	실버
+				    </c:if>
+				    
+				    <c:if test="${user.user_score >= '200000' && user.user_score < '300000' }">
+				    	골드
+				    </c:if>
+				    
+				    <c:if test="${user.user_score >= '300000' }">
+				    	다이아
+				    </c:if>			    
+			    </strong>
+		    </a> 회원이십니다.		
 	   	</c:if>
 	  </div>
     </div>
