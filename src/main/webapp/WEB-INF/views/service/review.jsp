@@ -4,6 +4,9 @@
 
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,8 +48,7 @@
 
 
 <body>
-  
- 
+
 <script>
   //id가 description인 것을 summernote 방식으로 적용하라는 의미이다.
   //높이와 넓이를 설정하지 않으면 화면이 작게 나오기때문에 설정해주어야 한다.
@@ -60,19 +62,30 @@
    
   <div style="width: 1280px; margin: 0 auto; margin-top: 50px;">
     <h2 class="inquiry_h2">리뷰 등록</h2>
-    <form class="inquiry_table" name="form1" method="post"
+    <form class="inquiry_table" action="reviewAdd" name="form1" method="post"
         enctype="multipart/form-data">
     <table>
-    
+        <tr>
+            <td> 만족도 </td>
+        <td>
+            <select name="board_type">
+              <option value="excellent">매우 만족</option>
+              <option value="great">만족</option>
+              <option value="normal">보통</option>
+              <option value="bad">불만족</option>
+              <option value="terrible">매우 불만족</option>
+            </select>
+        </td>
+        </tr>
         <tr>
             <td>상품명</td>
-            <td><input name="product_name" id="product_name" value="${ dto.board_name }"></td>
+            <td><textarea rows="1" cols="20" name="board_name" id="product_name"></textarea></td>
         </tr>
         
         <tr>
             <td>상품설명</td>
             <td><textarea rows="5" cols="60" 
-                name="description" id="description">${ dto.board_content }</textarea>
+                name="board_content" id="description"></textarea>
               
             </td>
         </tr>
@@ -84,8 +97,8 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <input type="button" value="등록" 
-                    onclick="javascript:product_write()">
+                <input type="submit" value="등록" 
+                    >
                 <input type="button" value="목록"
     			onclick="javascript:history.back()">
             </td>

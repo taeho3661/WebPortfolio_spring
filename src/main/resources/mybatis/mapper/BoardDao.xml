@@ -19,6 +19,11 @@
 		select * from tb_board where board_no = #{board_no}
 	</select>
 	
+	<insert id="reviewAdd" parameterType="com.port.springboot.dto.BoardDto">
+		insert into tb_board (board_no, board_kind, board_name, board_content, board_writer, board_write_date, board_hit, board_secret_yn)
+		values (tb_board_seq.nextval, 2, #{board_name}, #{board_content}, #{board_writer}, sysdate, 0, 1)
+	</insert>
+	
 	
 	
 </mapper>

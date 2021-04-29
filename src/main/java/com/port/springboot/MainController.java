@@ -24,6 +24,7 @@ import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
 import com.port.springboot.dto.BoardDto;
+import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -44,11 +45,11 @@ public class MainController
 	private IBoardDao BoardDao;
 	
 	// 게시판관련
-		@RequestMapping("/inquiryList")
+		@RequestMapping("/reviewList")
 		public String boardList(Model model)
 		{
 			model.addAttribute("list", BoardDao.boardList());
-			return "/service/inquiryList";
+			return "/service/reviewList";
 		}
 		//
 		
@@ -125,6 +126,26 @@ public class MainController
 		
 		return "redirect:mypage";
 	}
+	//review등록 액션
+		@RequestMapping("/reviewAdd")
+		public String reviewAdd(HttpServletRequest request)
+		{
+			
+			BoardDto dto = new BoardDto();
+			
+			
+			dto.setBoard_name(request.getParameter("board_name"));
+			dto.setBoard_content(request.getParameter("board_content"));
+		
+			
+			BoardDao.reviewAdd(dto);
+			
+			return "redirect:reviewList";
+		}
+		
+	
+	
+	
 	
 	//상품후기 액션
 	@RequestMapping("/review_view")

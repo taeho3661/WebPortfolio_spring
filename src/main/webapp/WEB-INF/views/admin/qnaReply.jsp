@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1:1문의</title>
   <script type="text/javascript">
+  
 	  function send() 
 	  {
 		  var board_no = document.getElementsByName("board_no");
@@ -17,6 +18,7 @@
 		      opener.document.location.href=url;
 		  window.close();
 		}
+		
   </script>
 </head>
 <style>
