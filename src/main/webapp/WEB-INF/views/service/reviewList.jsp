@@ -13,17 +13,24 @@
   margin: 0;
   padding: 0;
   font-style: normal;
-  text-decoration: none;
   text-align: center;
 }
-.inquiry_title {
-  margin-top: 50px;
+.reviewList_wrap {
+ margin: 100px auto;
 }
+.inquiry_title {
+  margin: 40px auto;
+  	font-weight: bold;
+	color: #4e4e4e;
+	font-size: 40px;
+  
+}
+
 .inquiry_table {
   width:700px;
   border: 2px solid rgb(199, 180, 180);
-  margin: 50px auto;
-  padding: 5px;
+  margin: 20px auto;
+  padding: 10px;
 }
 .inquiry_name {
   width: 400px;
@@ -31,14 +38,34 @@
 .inquiry_table  th {
   border-bottom: 0.5px solid rgb(163, 163, 169);
   color: rgb(83, 69, 69);
+  background-color: lightpink;
 }
 .inquiry_table td {
   color: rgb(128, 122, 115);
+  padding: 6px;
+  border-bottom: 0.5px solid  rgb(243, 238, 238);
 }
 .write_review {
-      font-size: 15px;
-      color:black;  
-    }
+    font-size: 15px;
+    color:black;  
+	text-decoration:none;	
+	color: cornflowerblue;
+	padding-left: 600px;
+}
+.write_review:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+	
+.review_in {
+	text-decoration: none;
+	color: black;
+}
+.review_in:hover {
+	text-decoration: none;
+	color: lightcoral;
+}
+
 </style>
 
 </head>
@@ -46,8 +73,8 @@
 
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
-
-
+<div class="reviewList_wrap">
+	
   <h2 class="inquiry_title">상품 리뷰</h2>
   
 	
@@ -55,6 +82,7 @@
 	
    <a class="write_review" href="review">글쓰기</a>
 	</div>
+
   <table class="inquiry_table">
     <!-- th -->
     <tr>
@@ -71,7 +99,7 @@
 
         <tr>
           <td>${dto.board_no}</td>
-          <td><a href="review_view?board_no=${dto.board_no }">${dto.board_name}</a></td>
+          <td><a class="review_in" href="review_view?board_no=${dto.board_no }">${dto.board_name}</a></td>
           <td>${dto.board_writer}</td>
           <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /> </td>
           <td>${dto.board_hit}</td>
@@ -80,7 +108,7 @@
        </c:forEach>
     </form>
   </table>
-  
+  </div>
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />
 
