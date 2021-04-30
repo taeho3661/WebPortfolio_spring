@@ -31,6 +31,11 @@
     border-bottom: 0.5px solid lightgray;
     display: flex;
   }
+  .sortBox{
+  	position: absolute;
+  	left: 1250px;
+  	
+  }
   /* a */
   a{
     text-decoration: none;
@@ -89,16 +94,30 @@
 <jsp:include page="../main/header.jsp" />
 
 <div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; /* border:1px solid red; */">
-  <div class="section1" style="margin-bottom: 60px;">
-    <h4 style="font-size: 25px; margin-right: 70%;">${ item_type }</h4>
-    <div>
-      <!-- 신상품은 시퀀스 번호로 / 가격은 item_price로 / 인기상품은 ?? -->
-      <a href="listSort?item_type=${ item_type }&sort_point=item_no&sort_method=desc">신상품</a>&nbsp;
-      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=asc">낮은가격</a>&nbsp;
-      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=desc">높은가격</a>&nbsp;
-      <a href="#">인기상품</a>
-    </div>
-  </div>
+  <c:if test="${item_name != null}">
+	  <div class="section1" style="margin-bottom: 60px;">
+	    <h4 style="font-size: 25px; margin-right: 60%;">검색어 : <span style="color:gray;">${ item_name }</span></h4>
+	    <div class="sortBox">
+	      <!-- 신상품은 시퀀스 번호로 / 가격은 item_price로 / 인기상품은 ?? -->
+	      <a href="mainSearchSort?item_name=${ item_name }&sort_point=item_no&sort_method=desc">신상품</a>&nbsp;
+	      <a href="mainSearchSort?item_name=${ item_name }&sort_point=item_price&sort_method=asc">낮은가격</a>&nbsp;
+	      <a href="mainSearchSort?item_name=${ item_name }&sort_point=item_price&sort_method=desc">높은가격</a>&nbsp;
+	      <a href="#">인기상품</a>
+	    </div>
+	  </div>
+  </c:if>
+  <c:if test="${item_name == null}">
+	  <div class="section1" style="margin-bottom: 60px;">
+	    <h4 style="font-size: 25px; margin-right: 70%;"><span style="color:gray;">${ item_type }</span></h4>
+	    <div class="sortBox">
+	      <!-- 신상품은 시퀀스 번호로 / 가격은 item_price로 / 인기상품은 ?? -->
+	      <a href="listSort?item_type=${ item_type }&sort_point=item_no&sort_method=desc">신상품</a>&nbsp;
+	      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=asc">낮은가격</a>&nbsp;
+	      <a href="listSort?item_type=${ item_type }&sort_point=item_price&sort_method=desc">높은가격</a>&nbsp;
+	      <a href="#">인기상품</a>
+	    </div>
+	  </div>
+  </c:if>
   <div class="section2">
     <div class="section_content">
       <c:forEach var="dto" items="${ list }">

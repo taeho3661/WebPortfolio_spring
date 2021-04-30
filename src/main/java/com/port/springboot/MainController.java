@@ -255,8 +255,10 @@ public class MainController
 	}
 	@RequestMapping("/list")
 	public String order_list(HttpServletRequest request, Model model)
-	{
+	{		
 		HttpSession session = request.getSession();
+
+		session.setAttribute("item_name", null); // 검색어가 저장된 섹션은 null로 만들고,
 		
 		String item_type = request.getParameter("item_type");
 		
@@ -357,6 +359,28 @@ public class MainController
 		//
 		//session.setAttribute("searchWord", searchWord);		
 		////
+		
+		return "order/list";
+	}
+	
+	//메인 헤더의 검색기능
+	@RequestMapping("/mainSearchSort")
+	public String main_header_search_sort(HttpServletRequest request, Model model)
+	{
+		HttpSession session = request.getSession();
+		
+		String item_name = request.getParameter("item_name");			//		item_name = 검색어
+		String sort_point = request.getParameter("sort_point");			//		sort_point = 정렬 기준
+		String sort_method = request.getParameter("sort_method");		//		sort_method = 정렬 방법
+		
+		session.setAttribute("item_name", item_name);
+		
+		System.out.println("select item_name_Sort : " + item_name);
+	
+		System.out.println("select item_type_Sort : " + sort_point);	
+		System.out.println("select item_type_Sort : " + sort_method);	
+		
+		model.addAttribute("list", ItemDao.mainSearchSort(item_name, sort_point, sort_method));
 		
 		return "order/list";
 	}

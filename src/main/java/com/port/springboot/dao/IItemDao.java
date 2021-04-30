@@ -23,6 +23,8 @@ public interface IItemDao {
 	public int basketAdd(OrderDto dto);
 	public int basketDelete(int order_no);
 	public List<ItemDto> mainSearch(String item_name);
+	public List<ItemDto> mainSearchSort(
+			@Param("item_name")String item_name, @Param("sort_point")String sort_point, @Param("sort_method")String sort_method);
 	public List<BasketDto> orderFromBasket(String[] order_no);
 //	public int orderCompleted(String order_adr1, String[] order_no);
 	public int orderCompleted(@Param("order_adr1") String order_adr1, @Param("order_adr2") String order_adr2, 

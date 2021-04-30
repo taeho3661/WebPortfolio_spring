@@ -40,6 +40,10 @@
 		select * from tb_item where item_name like '%'||#{item_name}||'%'
 	</select>
 	
+	<select id="mainSearchSort" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item where item_name like '%'||#{item_name}||'%' order by ${sort_point} ${sort_method}
+	</select>
+	
 	<select id="orderFromBasket" resultType="com.port.springboot.dto.BasketDto">
 		select o.order_no, i.item_img, i.item_name, o.order_count, o.order_price
 		from tb_order o, tb_item i
