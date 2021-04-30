@@ -146,13 +146,27 @@
 	        <h4>주문 상품 정보</h4>
 	        <c:forEach var="dto" items="${ list }" >
 	        <input type="hidden" name="order_no" value="${ dto.order_no }" >
+	        <input type="hidden" name="item_name" value="${ dto.item_name }" >
+	        <input type="hidden" name="order_count" value="${ dto.order_count }" >
 	          <div class="item_info">
 	            <div class="item_con1">
 	              <div style="width: 100px;"><img src="/img/${ dto.item_img }" alt="" style="width: 85px;"></div>
 	            </div>
 	            <div class="item_con2">
 	              <div style="color:brown;"><h4>${ dto.item_name }</h4></div>
-	              <div style="font-weight: lighter;">${ dto.order_count }</div>
+	              <div style="font-weight: lighter;">
+	              	<span class="orderQuantity">${ dto.order_count }</span>개
+	              	
+	              	
+	              	<!-- //todo:: -->
+	              	<!-- 수량 조절 옵션 (수정중)-->
+	              	<input type='button' onclick='count("plus")' value='+'/>
+					<div id='result'>${ dto.order_count }</div>
+					<input type='button' onclick='count("minus")' value='-'/>
+					
+					
+					
+	              </div>
 	              <div style="font-weight: bolder;" class="order_price">${ dto.order_price }</div>
 	            </div>
 	          </div>
@@ -344,12 +358,14 @@
   <script> 
 	window.onload = function() {
 		/* 상품가격 더하는 스크립트 */
-		var arr = document.getElementsByClassName("order_price");
-
+		var Arr_order_price = document.getElementsByClassName("order_price");
+		var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
+		
 		var sum = 0;
-		for( var i = 0; i < arr.length; i++ )
+		for( var i = 0; i < Arr_order_price.length; i++ )
 		{ 
-			var innerText = arr[i].innerText;
+			var innerText = Arr_order_price[i].innerText * Arr_orderQuantity[i].innerText;
+			
 			sum = sum + Number( innerText );
 		}
 
@@ -368,6 +384,29 @@
 		console.log("totalPaymentAmount:" + totalPaymentAmount);
 		document.getElementById('totalPaymentAmount').innerText = totalPaymentAmount + '원';	
 	};
+
+	//todo::
+	function count(type) // 수량조절  
+	{
+		  // 결과를 표시할 element
+		  var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
+
+			for( var i = 0; i < Arr_orderQuantity.length; i++ )
+			{ 
+				  // 현재 화면에 표시된 값
+				  let number = Arr_orderQuantity[i].innerText;
+				  
+				  // 더하기/빼기 / '===' 이건 데이터 타입까지 같은지 비교함
+				  if(type === 'plus') {
+				    number = parseInt(number) + 1;
+				  }else if(type === 'minus')  {
+				    number = parseInt(number) - 1;
+				  }
+				  
+				  // 결과 출력
+				  Arr_orderQuantity[i].innerText = number;
+			}
+	}
   </script>
   
   

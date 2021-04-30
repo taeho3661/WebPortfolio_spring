@@ -54,6 +54,17 @@
         </foreach>
 	</select>
 	
+	<!-- todo:: 아직 적용 안시켜봄 -->
+	<update id="orderFromBasket_count" parameterType="com.port.springboot.dto.BasketDto">	
+		update tb_order
+		set order_count = #{order_count}
+        where order_no = #{order_no}
+	</update>
+		
+	<update id="itemStockMinusAction" parameterType="com.port.springboot.dto.ItemDto">	
+		update tb_item set item_stock = item_stock - #{order_count} where item_name = #{item_name}		
+	</update>
+	
 	<update id="orderCompleted" parameterType="com.port.springboot.dto.OrderDto">
         update tb_order
 		set order_state=2,

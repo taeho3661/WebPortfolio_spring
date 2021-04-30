@@ -250,7 +250,6 @@ public class MainController
 		
 		model.addAttribute("list", ItemDao.orderFromBasket(order_no));
 		
-		
 		return "order/order";
 	}
 	@RequestMapping("/list")
@@ -334,6 +333,41 @@ public class MainController
 		System.out.println(request.getParameter("order_memo"));
 		
 		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_memo, covToStringOrder_no);
+		
+
+//		//
+//		//
+//		//
+//		//
+//		//todo::
+//		//장바구니에서 물건 수량 - 쿼리문으로 보내서 처리하기
+//		String order_count[] = request.getParameterValues("order_count");
+//		//String order_no[] = request.getParameterValues("order_no");
+//		
+//		int index = 0;
+//		for(String val : order_no)		// 수량,이름
+//		{			
+//			System.out.println("order_count[index] : " + order_count[index]);
+//			//ItemDao.orderFromBasket_count(order_count[index], order_no[index]);
+//			index++;
+//		}
+//		//int item_no = Integer.parseInt(request.getParameter("item_no"));
+//		//ItemDao.itemStockMinusAction(order_count, item_no);
+				
+		
+		
+		//재고 수량 계산
+		String order_count[] = request.getParameterValues("order_count");
+		String item_name[] = request.getParameterValues("item_name");
+		
+		int index = 0;
+		for(String val : order_count)		// 수량,이름
+		{			
+			ItemDao.itemStockMinusAction(order_count[index], item_name[index]);
+			index++;
+		}
+		//int item_no = Integer.parseInt(request.getParameter("item_no"));
+		//ItemDao.itemStockMinusAction(order_count, item_no);
 		
 		return "/main/main";
 	}

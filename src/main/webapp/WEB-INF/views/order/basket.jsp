@@ -119,14 +119,15 @@
   }
 </style>
 <script>
-function selectAll(selectAll)  {
+function selectAll(selectAll)  /* 전체선택 */
+{
 	  const checkboxes 
 	       = document.getElementsByName('order_no');
 	  
 	  checkboxes.forEach((checkbox) => {
 	    checkbox.checked = selectAll.checked;
 	  })
-	}
+}
 </script>
 <body>
 
