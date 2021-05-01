@@ -24,6 +24,8 @@
 		values (tb_board_seq.nextval, 2, #{board_name}, #{board_content}, #{board_writer}, sysdate, 0, 1)
 	</insert>
 	
-	
+	<select id="inquiryList" resultType="com.port.springboot.dto.BoardDto">
+		select * from tb_board where board_writer = #{user_id} and board_kind = 2 order by board_no asc
+	</select>
 	
 </mapper>

@@ -24,7 +24,6 @@ import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
 import com.port.springboot.dto.BoardDto;
-import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -46,9 +45,15 @@ public class MainController
 	
 	// 게시판관련
 		@RequestMapping("/reviewList")
-		public String boardList(Model model)
+		public String boardList(Model model, HttpServletRequest request)
 		{
-			model.addAttribute("list", BoardDao.boardList());
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String user_id = user.getUser_id();
+			
+			System.out.println("writer id : "+user_id);
+			
+			model.addAttribute("list", BoardDao.inquiryList(user_id));
 			return "/service/reviewList";
 		}
 		//
@@ -597,7 +602,7 @@ public class MainController
 		}
 		else
 		{
-			msg = "잘못된 정보입니다.";
+			msg = "아이디를 찾을 수 없습니다.";
 			response.setContentType("text/html; charset=euc-kr");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('"+msg+"'); history.go(-1);</script>");
@@ -606,14 +611,8 @@ public class MainController
 		
 		System.out.println(msg);
 		
-		
-		
-		
-		
 		return "redirect:/main";
 	}
-	
-	
 	
 	//비빌번호찾기
 	@RequestMapping("/FindPassword")
