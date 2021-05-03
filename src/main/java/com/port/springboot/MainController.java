@@ -148,20 +148,20 @@ public class MainController
 			return "redirect:reviewList";
 		}
 		
-	
-	
-	
+
 	
 	//상품후기 액션
 	@RequestMapping("/review_view")
 	public String review_view_action(HttpServletRequest request, Model model) {
 		
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
+	
 		
 		model.addAttribute("dto", BoardDao.reviewView(board_no));
 		
 		return "/service/review_view";
 	}
+	
 	
 	
 	
