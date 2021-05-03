@@ -579,6 +579,8 @@ public class MainController
 		return "member/FindID";
 	}
 	
+
+	
 	//아이디찾기 액션
 	@RequestMapping("/findIdAction")
 	public String findIdAction(HttpServletRequest request, HttpServletResponse response) throws IOException
@@ -614,12 +616,54 @@ public class MainController
 		return "redirect:/main";
 	}
 	
-	//비빌번호찾기
+
+	//비번찾기
 	@RequestMapping("/FindPassword")
-	public String FindPasswor()
+	public String FindPassword()
 	{
 		return "member/FindPassword";
 	}
+	
+
+	//비빌번호찾기
+		@RequestMapping("/findpasswordAction")
+		public String findPasswordAction(HttpServletRequest request, HttpServletResponse response) throws IOException
+		{
+			String user_id = request.getParameter("user_id");
+			String user_name = request.getParameter("user_name");
+			String user_email = request.getParameter("user_email");
+			
+			System.out.println("ㅇㅇ");
+			
+			String user_password = UserDao.findPasswordAction(user_id,user_name, user_email);
+			
+			String msg2;
+			
+			if(user_password!=null)
+			{
+				msg2 = "회원님의 아이디는"+user_password+"입니다.";
+				response.setContentType("text/html; charset=euc-kr");
+				PrintWriter out2 = response.getWriter();
+				out2.println("<script>alert('"+msg2+"'); history.go(-2);</script>");
+				out2.flush();
+			}
+			else
+			{
+				msg2 = "잘못된 정보입니다.";
+				response.setContentType("text/html; charset=euc-kr");
+				PrintWriter out2 = response.getWriter();
+				out2.println("<script>alert('"+msg2+"'); history.go(-1);</script>");
+				out2.flush();
+				
+			}
+			
+			System.out.println(msg2);
+			
+
+			return "redirect:/main";
+		}
+
+
 	
 	//정보수정 페이지
 	@RequestMapping("/Modify")

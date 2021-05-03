@@ -17,6 +17,8 @@ public interface IUserDao
 	public String findIdAction(@Param("user_name") String user_name, @Param("user_email") String user_email);
 	public int registerAction(UserDto dto);
 	public int idCheck(String member_id);
+	
+	public String findPasswordAction(@Param("user_id")String user_id,@Param("user_name") String user_name, @Param("user_email") String user_email);
 }
 
 

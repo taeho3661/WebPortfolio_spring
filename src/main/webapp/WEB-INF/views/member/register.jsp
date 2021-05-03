@@ -202,12 +202,12 @@
       </div>
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
-        <input type="password" class="form-control textbox"  name="user_pw">
+        <input type="password" class="form-control textbox"  name="user_pw" id="pw">
     
       </div>
       <div class="join_Passwordcheck main Line">
         <div class="join_textside">비빌번호 확인</div>
-        <input type="password" class="form-control textbox" name="passwordCheck" >
+        <input type="password" class="form-control textbox" name="passwordCheck" id="pw2" >
       </div>
 
       <div class="join_Passwordcheck main Line">
@@ -393,8 +393,7 @@
 </form> 
 
 
-<span class="id_input_re1">사용가능아이디입니다</span>
-<span class="id_input_re1">아이디입니다 사용불가</span>
+
 
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
@@ -446,20 +445,23 @@
 
 
 
+	$(function(){
+
+		//비밀번호 확인
+			$('#pw2').blur(function(){
+			   if($('#pw').val() != $('#pw2').val()){
+			    	if($('#pw2').val()!=''){
+				    alert("비밀번호가 일치하지 않습니다.");
+			    	    $('#pw2').val('');
+			          $('#pw2').focus();
+			       }
+			    }
+			})  	   
+		});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+		
 
 	
 	

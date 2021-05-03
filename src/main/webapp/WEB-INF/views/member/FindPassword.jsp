@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
 </head>
 <body>
   <style>
@@ -25,9 +24,7 @@
       color:black;
     }
 
-    .header{
-      
-    }
+    
     .login{
       margin-top: 200px;
       font-size: 30px;
@@ -103,19 +100,19 @@
   </div>
   
   <div class="login">
-    <form action="aaa.jsp" method="POST">
+    <form action="findpasswordAction" method="POST">
       <div class="login_ID">
         <div class="login_IDbutton">
           <div class="login_text">아이디</div>
-          <input type="text" class="login_input" placeholder="">
+          <input type="text" class="login_input" placeholder="아이디" name="user_id">
         </div>
         <div class="login_IDbutton">
           <div class="login_text">이름</div>
-          <input type="text" class="login_input" placeholder="">
+          <input type="text" class="login_input" placeholder="이름" name="user_name">
         </div>
         <div class="login_IDbutton">
           <div class="login_text">이메일 찾기</div>
-          <input type="email" class="login_input" placeholder="">
+          <input type="text" class="login_input" placeholder="이메일" name="user_email">
         </div>
       </div>
     
