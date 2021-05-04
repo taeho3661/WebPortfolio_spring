@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="mainList" resultType="com.port.springboot.dto.ItemDto">
-		select * from tb_item 
+		select * from tb_item  where 8 >= item_no
 	</select>
 	
 	<select id="itemTypeListSort" resultType="com.port.springboot.dto.ItemDto">	

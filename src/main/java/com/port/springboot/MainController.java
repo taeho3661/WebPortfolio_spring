@@ -82,8 +82,12 @@ public class MainController
 	@RequestMapping("/main")
 	public String main_main(Model model)
 	{
+		//상품나열
+		model.addAttribute("list", ItemDao.mainList());
 		return "main/main";
 	}
+	
+	
 	
 	@RequestMapping("/header")
 	public String main_header(Model model)
@@ -273,15 +277,7 @@ public class MainController
 			
 	}
 	
-	//main 상품나열
-	@RequestMapping("/mainlist")
-	public String main_list( Model model)
-	{  
-		
-		model.addAttribute("list", ItemDao.mainList());
-		
-		return "main/main";
-	}
+
 	
 	
 	

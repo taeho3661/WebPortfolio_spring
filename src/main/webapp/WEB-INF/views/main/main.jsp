@@ -141,7 +141,7 @@
 <div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; /* border:1px solid red; */">
 <div class="section2">
     <div class="section_content">
-      <c:forEach var="items" items="${ list }">
+      <c:forEach var="dto" items="${ list }">
         <div class="section_content_div">
           <div class="img_tool">
             <a href="item?item_no=${ dto.item_no }"><img alt="" src="/img/${ dto.item_img }"></a>

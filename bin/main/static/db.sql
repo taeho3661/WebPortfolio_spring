@@ -255,10 +255,10 @@ select i.item_name, b.board_name, b.board_writer, b.board_write_date, b.board_no
 from tb_item i, tb_board b
 where i.item_no = b.item_no;
 
-select TO_CHAR(write_date,'YYYYMMDD') from tb_board;
+---select TO_CHAR(write_date,'YYYYMMDD') from tb_board;
 
-select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id;
-select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYY/MM/DD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id;
+--select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id;
+--select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYY/MM/DD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id;
 ----------
 ----------
 ----------------------------------------------------------------------------------------------------
