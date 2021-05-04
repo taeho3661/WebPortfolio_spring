@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,8 @@ pageEncoding="UTF-8"%>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>문의리스트</title>
+  
+ 
 <style>
 *{
   margin: 0;
@@ -76,13 +78,10 @@ pageEncoding="UTF-8"%>
 <jsp:include page="../main/header.jsp" />
 <div class="reviewList_wrap">
 	
-  <h2 class="inquiry_title">나의 문의</h2>
+  <h2 class="inquiry_title">1:1 문의</h2>
   
 	
-	<div>
 	
-   <!--<a class="write_review" href="inquiry">글쓰기</a>-->
-	</div>
 
   <table class="inquiry_table">
     <!-- th -->
@@ -105,6 +104,11 @@ pageEncoding="UTF-8"%>
        </c:forEach>
   </table>
   </div>
+  
+  <div>
+   <a href="inquiry">문의하기</a>
+  </div>
+  
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />
 

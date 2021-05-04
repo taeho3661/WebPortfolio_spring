@@ -44,17 +44,31 @@ public class MainController
 	private IBoardDao BoardDao;
 	
 	// 게시판관련
-		@RequestMapping("/reviewList")
+		@RequestMapping("/inquiryList")
 		public String boardList(Model model, HttpServletRequest request)
 		{
 			HttpSession session = request.getSession();
-			UserDto user = (UserDto) session.getAttribute("user");
-			String user_id = user.getUser_id();
 			
-			System.out.println("writer id : "+user_id);
+			System.out.println("session : "+session.getId());
 			
-			model.addAttribute("list", BoardDao.inquiryList(user_id));
-			return "/service/reviewList";
+			UserDto user = (UserDto) session.getAttribute("user");	
+		
+			
+			if (user != null) {
+				String user_id = user.getUser_id();
+				
+				if(user_id != null ) {
+				System.out.println("writer id : "+user_id);
+				model.addAttribute("list", BoardDao.inquiryList(user_id));
+				return "/service/inquiryList";
+				
+				}else {
+					return "member/login";
+				}
+				
+			}else {
+			 return "member/login"; }
+			
 		}
 		//
 		
@@ -68,8 +82,12 @@ public class MainController
 	@RequestMapping("/main")
 	public String main_main(Model model)
 	{
+		//상품나열
+		model.addAttribute("list", ItemDao.mainList());
 		return "main/main";
 	}
+	
+	
 	
 	@RequestMapping("/header")
 	public String main_header(Model model)
@@ -132,31 +150,34 @@ public class MainController
 		return "redirect:mypage";
 	}
 	//review등록 액션
-		@RequestMapping("/reviewAdd")
-		public String reviewAdd(HttpServletRequest request)
+		@RequestMapping("/inquiryAdd")
+		public String inquiryAdd(HttpServletRequest request) throws IOException
 		{
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");	
+			String board_writer = user.getUser_id();
 			
 			BoardDto dto = new BoardDto();
 			
 			
 			dto.setBoard_name(request.getParameter("board_name"));
 			dto.setBoard_content(request.getParameter("board_content"));
-		
+			dto.setBoard_writer(board_writer);
 			
-			BoardDao.reviewAdd(dto);
 			
-			return "redirect:reviewList";
+			BoardDao.inquiryAdd(dto);
+			
+			return "redirect:inquiryList";
 		}
 		
-	
-	
-	
+
 	
 	//상품후기 액션
 	@RequestMapping("/review_view")
 	public String review_view_action(HttpServletRequest request, Model model) {
 		
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
+	
 		
 		model.addAttribute("dto", BoardDao.reviewView(board_no));
 		
@@ -166,11 +187,7 @@ public class MainController
 	
 	
 	
-	@RequestMapping("/review")
-	public String service_review(Model model)
-	{
-		return "service/review";
-	}
+	
 	
 	
 	
@@ -256,7 +273,17 @@ public class MainController
 		model.addAttribute("list", ItemDao.orderFromBasket(order_no));
 		
 		return "order/order";
+		
+			
 	}
+	
+
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/list")
 	public String order_list(HttpServletRequest request, Model model)
 	{		
@@ -340,26 +367,7 @@ public class MainController
 		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_memo, covToStringOrder_no);
 		
 
-//		//
-//		//
-//		//
-//		//
-//		//todo::
-//		//장바구니에서 물건 수량 - 쿼리문으로 보내서 처리하기
-//		String order_count[] = request.getParameterValues("order_count");
-//		//String order_no[] = request.getParameterValues("order_no");
-//		
-//		int index = 0;
-//		for(String val : order_no)		// 수량,이름
-//		{			
-//			System.out.println("order_count[index] : " + order_count[index]);
-//			//ItemDao.orderFromBasket_count(order_count[index], order_no[index]);
-//			index++;
-//		}
-//		//int item_no = Integer.parseInt(request.getParameter("item_no"));
-//		//ItemDao.itemStockMinusAction(order_count, item_no);
-				
-		
+		//todo::
 		
 		//재고 수량 계산
 		String order_count[] = request.getParameterValues("order_count");
@@ -368,6 +376,8 @@ public class MainController
 		int index = 0;
 		for(String val : order_count)		// 수량,이름
 		{			
+			System.out.println(order_count[index]);
+			System.out.println(item_name[index]);
 			ItemDao.itemStockMinusAction(order_count[index], item_name[index]);
 			index++;
 		}

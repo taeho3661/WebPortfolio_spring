@@ -126,6 +126,21 @@
   {
   	font-size: 20px;
   }
+  #order_count_input_css
+  {
+  	width: 32px;
+  	border: none;
+  }
+  #order_count_button_css
+  {
+  	width: 30px;
+  	height 30px;
+  	color: white;  	
+  	background-color: brown;
+  	border: none;
+  	
+  	padding: 0;
+  }
 </style>
 <body>
 
@@ -144,10 +159,10 @@
 	    <div class="section1">
 	      <div class="section_con">
 	        <h4>주문 상품 정보</h4>
-	        <c:forEach var="dto" items="${ list }" >
+	        <c:forEach var="dto" items="${ list }" varStatus="status">
 	        <input type="hidden" name="order_no" value="${ dto.order_no }" >
 	        <input type="hidden" name="item_name" value="${ dto.item_name }" >
-	        <input type="hidden" name="order_count" value="${ dto.order_count }" >
+	        <%-- <input type="hidden" name="order_count" value="${ dto.order_count }" > --%>
 	          <div class="item_info">
 	            <div class="item_con1">
 	              <div style="width: 100px;"><img src="/img/${ dto.item_img }" alt="" style="width: 85px;"></div>
@@ -155,14 +170,13 @@
 	            <div class="item_con2">
 	              <div style="color:brown;"><h4>${ dto.item_name }</h4></div>
 	              <div style="font-weight: lighter;">
-	              	<span class="orderQuantity">${ dto.order_count }</span>개
 	              	
-	              	
-	              	<!-- //todo:: -->
-	              	<!-- 수량 조절 옵션 (수정중)-->
-	              	<input type='button' onclick='count("plus")' value='+'/>
-					<div id='result'>${ dto.order_count }</div>
-					<input type='button' onclick='count("minus")' value='-'/>
+	              	<!-- 수량 조절 옵션 (수정중)-->	              	
+	              	<input type='button' id="order_count_button_css" onclick='count("plus",${status.index})' value='+'/>
+	              	<%-- <span class="orderQuantity">${ dto.order_count }</span>개 --%>
+	              	<input type="text" id="order_count_input_css" name="order_count" class="orderQuantity" value="${ dto.order_count }" readonly>개
+					<input type='button' id="order_count_button_css" onclick='count("minus",${status.index})' value='-'/>
+					<%-- <div id='result'>${ dto.order_count }</div> --%>
 					
 					
 					
@@ -357,6 +371,36 @@
   
   <script> 
 	window.onload = function() {
+		calcPrice(); //결제금액계산함수
+	};
+
+	function count(type, index) // 수량조절  
+	{		
+		// 결과를 표시할 element
+		var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
+
+		// 현재 화면에 표시된 값
+		var number = Arr_orderQuantity[index].value;
+		  
+		// 더하기/빼기 / '===' 이건 데이터 타입까지 같은지 비교함
+		if(type === 'plus'  && number < 10) 
+		{
+		  number = parseInt(number) + 1;
+		}
+		else if(type === 'minus' && number > 0)  
+		{
+		  number = parseInt(number) - 1;
+		}
+
+		// 결과 출력
+		Arr_orderQuantity[index].value = number;
+		
+		calcPrice(); //결제금액계산함수	
+	};
+	
+	//결제금액계산함수
+	function calcPrice()
+	{
 		/* 상품가격 더하는 스크립트 */
 		var Arr_order_price = document.getElementsByClassName("order_price");
 		var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
@@ -364,7 +408,7 @@
 		var sum = 0;
 		for( var i = 0; i < Arr_order_price.length; i++ )
 		{ 
-			var innerText = Arr_order_price[i].innerText * Arr_orderQuantity[i].innerText;
+			var innerText = Arr_order_price[i].innerText * Arr_orderQuantity[i].value;
 			
 			sum = sum + Number( innerText );
 		}
@@ -384,29 +428,6 @@
 		console.log("totalPaymentAmount:" + totalPaymentAmount);
 		document.getElementById('totalPaymentAmount').innerText = totalPaymentAmount + '원';	
 	};
-
-	//todo::
-	function count(type) // 수량조절  
-	{
-		  // 결과를 표시할 element
-		  var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
-
-			for( var i = 0; i < Arr_orderQuantity.length; i++ )
-			{ 
-				  // 현재 화면에 표시된 값
-				  let number = Arr_orderQuantity[i].innerText;
-				  
-				  // 더하기/빼기 / '===' 이건 데이터 타입까지 같은지 비교함
-				  if(type === 'plus') {
-				    number = parseInt(number) + 1;
-				  }else if(type === 'minus')  {
-				    number = parseInt(number) - 1;
-				  }
-				  
-				  // 결과 출력
-				  Arr_orderQuantity[i].innerText = number;
-			}
-	}
   </script>
   
   

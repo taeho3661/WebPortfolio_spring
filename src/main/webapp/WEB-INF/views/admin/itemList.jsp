@@ -135,7 +135,7 @@
               <td>${ dto.item_name }</td>
               <td>${ dto.item_price }</td>
               <td>판매량</td>
-              <td>${ dto.item_stock }</td>
+              <td class="item_stock">${ dto.item_stock }</td>
               <td id="buttons" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px;">
                 <a href="itemModify?item_no=${dto.item_no }"><button id="btn1">변경</button></a>
                 <a href="itemDelete?item_no=${dto.item_no }"><button id="btn2">삭제</button></a>
@@ -147,4 +147,29 @@
     </div>
   </div>
 </body>
+
+<script>
+window.onload = function() {
+	var Arr_item_stock = document.getElementsByClassName('item_stock');
+	
+	for( var i = 0; i < Arr_item_stock.length; i++ )
+	{ 
+		var innerText = Arr_item_stock[i].innerText;
+
+		console.log(innerText);
+
+		if(innerText <= 10)
+		{
+			Arr_item_stock[i].style.color = "red";
+		}
+		else
+		{
+			Arr_item_stock[i].style.color = "black";
+		}
+	}
+
+};
+</script>
+
+
 </html>
