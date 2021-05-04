@@ -172,10 +172,10 @@
         <table class="table">
           <!-- th -->
           <tr>
-            <th>칼럼1</th>
-            <th>칼럼2</th>
-            <th>칼럼3</th>
-            <th>칼럼4</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성일</th>
           </tr>
           <!-- tr -->
           <c:forEach var="dto" items="${ boardList }" begin="1" end="4">
