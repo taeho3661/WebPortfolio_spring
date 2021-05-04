@@ -47,7 +47,7 @@
     }
     /* header nav 시작 */
     .header_nav {
-      height: 35px;
+      height: 43px;
       background-color: #F27078;
       display: flex;
       flex-flow: row nowrap;
@@ -71,13 +71,15 @@
     display: inline-block;
   display: flex;
   flex-flow: row nowrap;
+
 }
 .dropdown a{
   color: rgb(59, 56, 56);
+  font-size: 25px;
 }
 .dropdown-content {
     display: none;
-    margin-top: 35px;
+    margin-top: 43px;
     position: absolute;
     background-color: rgb(127, 138, 211);
     border: 0.05px solid rgb(228, 219, 219);
@@ -88,12 +90,15 @@
   flex-flow: row nowrap;
 }
 .content div {
-  width: 148px;
+  margin-top: 10px;
+  width: 172px;
+  height: 130px;
 }
 .dropdown-content a {
-  font-size: 14px;
+  font-size: 18px;
+  padding-top: 1px;
   text-decoration: none;
-  color: rgb(59, 56, 56);
+  color: rgb(118, 112, 112);
 }
 .dropdown:hover .dropdown-content {
   display: block;
@@ -114,7 +119,7 @@
 /* search */
 .header_serch {
   padding: 5px;
-  height: 28px;
+  height: 30px;
   border: none;
   border-right: none;
   background-color: rgb(231, 218, 218);
@@ -124,12 +129,13 @@
 }
 .header_searchButton {
   width: 35px;
-  height: 28px;
+  height: 32px;
   border: none;
   border-left: none;
   background: rgb(231, 218, 218);
   color: rgb(135, 135, 152);
   border-radius: 0 10px 10px 0 ; 
+  margin-top: 3px;
 }
 
  </style>
@@ -169,7 +175,7 @@
             <a href="#">공지사항</a>
             <a href="introduce">회사소개</a>
             <a href="map">오시는길</a>
-            <a href="#">이벤트</a>
+            
             </div>
               
             <div>
