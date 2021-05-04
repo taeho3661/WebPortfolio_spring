@@ -111,7 +111,7 @@
           <input type="text" class="login_input" placeholder="이름" name="user_name">
         </div>
         <div class="login_IDbutton">
-          <div class="login_text">이메일 찾기</div>
+          <div class="login_text">이메일</div>
           <input type="text" class="login_input" placeholder="이메일" name="user_email">
         </div>
       </div>

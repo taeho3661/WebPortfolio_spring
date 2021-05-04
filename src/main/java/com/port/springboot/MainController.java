@@ -657,7 +657,7 @@ public class MainController
 		
 		if(user_password!=null)
 		{
-			msg2 = "회원님의 아이디는"+user_password+"입니다.";
+			msg2 = "회원님의 비밀번호는"+user_password+"입니다.";
 			response.setContentType("text/html; charset=euc-kr");
 			PrintWriter out2 = response.getWriter();
 			out2.println("<script>alert('"+msg2+"'); history.go(-2);</script>");

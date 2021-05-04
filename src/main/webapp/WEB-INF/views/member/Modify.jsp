@@ -216,7 +216,7 @@
       </div>
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
-        <input type="password" class="form-control textbox" name="user_pw" id="pw1">
+        <input type="password" class="form-control textbox" name="user_pw" id="pw">
     
       </div>
       <div class="join_Passwordcheck main Line">

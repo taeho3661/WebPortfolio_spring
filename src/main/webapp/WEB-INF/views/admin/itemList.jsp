@@ -155,7 +155,7 @@ window.onload = function() {
 	for( var i = 0; i < Arr_item_stock.length; i++ )
 	{ 
 		var innerText = Arr_item_stock[i].innerText;
-
+		
 		console.log(innerText);
 
 		if(innerText <= 10)
