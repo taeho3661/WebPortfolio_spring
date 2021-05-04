@@ -25,6 +25,7 @@
       color:black;
       height: auto;
       width: 1200px;
+      
     }
 
  
@@ -229,11 +230,11 @@
           <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
           <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
           </div>
-          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="adr1">
+          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="user_adr1">
         <input type="button" onclick="sample2_execDaumPostcode()" value="주소 찾기" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
-        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr2"><br>
-        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"name="adr3">
-        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="adr4">
+        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="user_adr2"><br>
+        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"name="user_adr3">
+        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="user_adr4">
 
         <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -384,7 +385,7 @@
       <p class="check"><span>이용약관에 동의하십니까?</span> <input id="agree_service_check0" name="agree_service_check[]" fw-filter="/1/" fw-label="이용약관 동의" fw-msg="이용약관에 동의 하세요" class="ec-base-chk" value="1" type="checkbox"><label for="agree_service_check0">동의함</label></p>
 
     <div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원가입"></input>
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원가입" onclick="alert('가입되었습니다.')"></input>
       <a class="btn btn-secondary btn-lg" a href="main">가입 취소</a>
     </div>
 

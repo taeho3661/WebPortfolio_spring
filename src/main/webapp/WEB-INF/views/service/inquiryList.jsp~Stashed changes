@@ -78,7 +78,11 @@
 <jsp:include page="../main/header.jsp" />
 <div class="reviewList_wrap">
 	
+<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/service/reviewList.jsp
   <h2 class="inquiry_title">상품 리뷰</h2>
+=======
+  <h2 class="inquiry_title">1:1 문의</h2>
+>>>>>>> Stashed changes:src/main/webapp/WEB-INF/views/service/inquiryList.jsp
   
 	
 	
@@ -107,9 +111,15 @@
   </table>
   </div>
   
+<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/service/reviewList.jsp
   <!-- <div>
    <a href="inquiry">문의하기</a>
   </div> -->
+=======
+  <div>
+   <a href="inquiry">문의하기</a>
+  </div>
+>>>>>>> Stashed changes:src/main/webapp/WEB-INF/views/service/inquiryList.jsp
   
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />

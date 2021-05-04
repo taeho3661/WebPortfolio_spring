@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -186,10 +187,10 @@
       justify-content: flex-end;
       
     }
-    .lastbutton_member2 > input{
+    .lastbutton_member2 > a{
       margin: 7px 7px 7px 7px;
       background-color: darkgrey;
-      
+      border-radius : 5px;
       
     }
   	#email{
@@ -360,10 +361,7 @@
       </div>
       
 	<div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정" ></input>
-      <!--
-      <a href=# onclick="modify();"><input type="button" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정"></input></a>
-      -->
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" onclick="alert('변경되었습니다.')" value="회원정보 수정" ></input>
       <a class="btn btn-secondary btn-lg" href="mypage">취소</a>
       <div class="lastbutton_member2">
         <a href=# onclick="dlt();"><input type="button" class="btn btn-secondary btn-lg " value="회원탈퇴"></input></a>
@@ -379,6 +377,35 @@
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
  <script type="text/javascript">
+
+
+
+
+	$(function(){
+
+		//비밀번호 확인
+			$('#pw2').blur(function(){
+			   if($('#pw').val() != $('#pw2').val()){
+			    	if($('#pw2').val()!=''){
+				    alert("비밀번호가 일치하지 않습니다.");
+			    	    $('#pw2').val('');
+			          $('#pw2').focus();
+			       }
+			    }
+			})  	   
+		});
+
+
+
+		
+	
+
+
+
+
+
+
+
 	
 	function dlt()
 	{

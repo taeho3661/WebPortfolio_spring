@@ -24,6 +24,7 @@ import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
 import com.port.springboot.dto.BoardDto;
+import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -70,6 +71,7 @@ public class MainController
 			 return "member/login"; }
 			
 		}
+		//
 		
 	
 	
@@ -87,8 +89,6 @@ public class MainController
 	}
 	
 	
-
-
 	
 	@RequestMapping("/header")
 	public String main_header(Model model)
@@ -155,7 +155,7 @@ public class MainController
 		
 		return "redirect:mypage";
 	}
-	//inquiry등록 액션
+	//review등록 액션
 		@RequestMapping("/inquiryAdd")
 		public String inquiryAdd(HttpServletRequest request) throws IOException
 		{
@@ -176,29 +176,6 @@ public class MainController
 			return "redirect:inquiryList";
 		}
 		
-		
-		
-
-		//review 등록 액션
-		@RequestMapping("/reviewAdd")
-		
-		public String reviewAdd(HttpServletRequest request) throws IOException
-		{	
-			HttpSession session = request.getSession();
-			UserDto user = (UserDto) session.getAttribute("user");	
-			String board_writer = user.getUser_id();
-			
-			
-			BoardDto dto = new BoardDto();
-			dto.setBoard_name(request.getParameter("board_name"));
-			dto.setBoard_content(request.getParameter("board_content"));
-			dto.setBoard_writer(board_writer);
-			
-			
-			return "redirect:reviewList";
-			
-		}
-		
 
 	
 	//상품후기 액션
@@ -217,6 +194,9 @@ public class MainController
 	
 	
 	
+	
+	
+	
 	//order페이지
 	@RequestMapping("/item")
 	public String order_item(HttpServletRequest request, Model model)
@@ -225,25 +205,10 @@ public class MainController
 		
 		System.out.println("select item_type : " + item_no);
 		
-		model.addAttribute("list", ItemDao.item(item_no));	
-		
-		model.addAttribute( "boardList" , BoardDao.reviewList());
+		model.addAttribute("list", ItemDao.item(item_no));
 		
 		return "order/item";
-			
 	}
-	
-	
-	
-	
-	@RequestMapping("/reviewList")
-	public String reviewList( Model model)
-	{	
-		model.addAttribute( "reviewList" , BoardDao.reviewList());
-		
-		return "/service/reviewList";
-	}
-	
 	
 //	@RequestMapping("/basket") // basket이랑 basketAdd합치기
 //	public String order_basket(HttpServletRequest request, Model model)
@@ -677,43 +642,62 @@ public class MainController
 	
 
 	//비빌번호찾기
-		@RequestMapping("/findpasswordAction")
-		public String findPasswordAction(HttpServletRequest request, HttpServletResponse response) throws IOException
+	@RequestMapping("/findpasswordAction")
+	public String findPasswordAction(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String user_id = request.getParameter("user_id");
+		String user_name = request.getParameter("user_name");
+		String user_email = request.getParameter("user_email");
+		
+		System.out.println("ㅇㅇ");
+		
+		String user_password = UserDao.findpasswordAction(user_id,user_name, user_email);
+		
+		String msg2;
+		
+		if(user_password!=null)
 		{
-			String user_id = request.getParameter("user_id");
-			String user_name = request.getParameter("user_name");
-			String user_email = request.getParameter("user_email");
-			
-			System.out.println("ㅇㅇ");
-			
-			String user_password = UserDao.findPasswordAction(user_id,user_name, user_email);
-			
-			String msg2;
-			
-			if(user_password!=null)
-			{
-				msg2 = "회원님의 아이디는"+user_password+"입니다.";
-				response.setContentType("text/html; charset=euc-kr");
-				PrintWriter out2 = response.getWriter();
-				out2.println("<script>alert('"+msg2+"'); history.go(-2);</script>");
-				out2.flush();
-			}
-			else
-			{
-				msg2 = "잘못된 정보입니다.";
-				response.setContentType("text/html; charset=euc-kr");
-				PrintWriter out2 = response.getWriter();
-				out2.println("<script>alert('"+msg2+"'); history.go(-1);</script>");
-				out2.flush();
-				
-			}
-			
-			System.out.println(msg2);
-			
-
-			return "redirect:/main";
+			msg2 = "회원님의 아이디는"+user_password+"입니다.";
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out2 = response.getWriter();
+			out2.println("<script>alert('"+msg2+"'); history.go(-2);</script>");
+			out2.flush();
 		}
+		else
+		{
+			msg2 = "잘못된 정보입니다.";
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out2 = response.getWriter();
+			out2.println("<script>alert('"+msg2+"'); history.go(-1);</script>");
+			out2.flush();
+			
+		}
+		
+		System.out.println(msg2);
+		
 
+		return "redirect:/main";
+	}
+	
+	//회원가입
+	@RequestMapping("/registerAction")
+	public String registerAction(HttpServletRequest request, Model model)
+	{
+		UserDto dto = new UserDto();
+		
+		dto.setUser_id(request.getParameter("user_id"));
+		dto.setUser_pw(request.getParameter("user_pw"));
+		dto.setUser_name(request.getParameter("user_name"));
+		dto.setUser_adr1(request.getParameter("user_adr1"));
+		dto.setUser_adr2(request.getParameter("user_adr2"));
+		dto.setUser_adr3(request.getParameter("user_adr3"));
+		dto.setUser_adr4(request.getParameter("user_adr4"));
+		dto.setUser_phone(request.getParameter("user_phone"));
+		dto.setUser_email(request.getParameter("user_email"));
+		UserDao.registerAction(dto);
+		return "/main/main";
+	}
+	
 
 	
 	//정보수정 페이지
@@ -745,8 +729,12 @@ public class MainController
 		dto.setUser_adr4(request.getParameter("user_adr4"));
 		dto.setUser_phone(request.getParameter("user_phone"));
 		dto.setUser_email(request.getParameter("user_email"));
+		
+		System.out.println(request.getParameter("user_adr1"));
+		
+		
 		UserDao.modifyAction(dto);
-		session.invalidate();
+		//session.invalidate();
 		return "/main/main";
 	}
 	
