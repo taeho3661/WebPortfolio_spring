@@ -75,7 +75,7 @@
 }
 .dropdown a{
   color: rgb(59, 56, 56);
-  font-size: 25px;
+  font-size: 23px;
 }
 .dropdown-content {
     display: none;
@@ -91,11 +91,11 @@
 }
 .content div {
   margin-top: 10px;
-  width: 172px;
+  width: 164.5px;
   height: 130px;
 }
 .dropdown-content a {
-  font-size: 18px;
+  font-size: 17px;
   padding-top: 1px;
   text-decoration: none;
   color: rgb(118, 112, 112);
