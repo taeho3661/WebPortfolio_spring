@@ -235,11 +235,11 @@ select * from tb_board;
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 2, '샌드위치 맛있나요?', '샌드위치 얼마나 맛있나요?', 
-'아이디1', sysdate, 1, 1, null);
+'hong', sysdate, 1, 1, null);
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 2, '문의입니다.', '테스트~~~~~', 
-'아이디1', sysdate, 1, 1, null);
+'test', sysdate, 1, 1, null);
 
 
 --수정

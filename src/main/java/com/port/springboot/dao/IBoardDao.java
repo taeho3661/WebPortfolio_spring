@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import com.port.springboot.dto.BoardDto;
-import com.port.springboot.dto.ItemDto;
+
 
 
 
