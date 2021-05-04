@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -186,10 +187,10 @@
       justify-content: flex-end;
       
     }
-    .lastbutton_member2 > input{
+    .lastbutton_member2 > a{
       margin: 7px 7px 7px 7px;
       background-color: darkgrey;
-      
+      border-radius : 5px;
       
     }
   	#email{
@@ -242,11 +243,11 @@
           <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
           <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
           </div>
-          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="adr1">
+          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="user_adr1">
         <input type="button" onclick="sample2_execDaumPostcode()" value="주소 찾기" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
-        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr2"><br>
-        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="adr3">
-        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="adr4">
+        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="user_adr2"><br>
+        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="user_adr3">
+        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="user_adr4">
 
         <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -360,8 +361,7 @@
       </div>
       
 	<div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정" ></input>
-      <a href=# onclick="modify();"><input type="button" class="btn btn-secondary btn-lg lastbutton_member" value="회원정보 수정"></input></a>
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" onclick="alert('변경되었습니다.')" value="회원정보 수정" ></input>
       <a class="btn btn-secondary btn-lg" href="mypage">취소</a>
       <div class="lastbutton_member2">
         <a href=# onclick="dlt();"><input type="button" class="btn btn-secondary btn-lg " value="회원탈퇴"></input></a>
@@ -377,6 +377,35 @@
 </div> <!-- wrap-->
  <jsp:include page="../main/footer.jsp" />
  <script type="text/javascript">
+
+
+
+
+	$(function(){
+
+		//비밀번호 확인
+			$('#pw2').blur(function(){
+			   if($('#pw').val() != $('#pw2').val()){
+			    	if($('#pw2').val()!=''){
+				    alert("비밀번호가 일치하지 않습니다.");
+			    	    $('#pw2').val('');
+			          $('#pw2').focus();
+			       }
+			    }
+			})  	   
+		});
+
+
+
+		
+	
+
+
+
+
+
+
+
 	
 	function dlt()
 	{
