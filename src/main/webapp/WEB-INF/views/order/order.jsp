@@ -126,6 +126,21 @@
   {
   	font-size: 20px;
   }
+  #order_count_input_css
+  {
+  	width: 32px;
+  	border: none;
+  }
+  #order_count_button_css
+  {
+  	width: 30px;
+  	height 30px;
+  	color: white;  	
+  	background-color: brown;
+  	border: none;
+  	
+  	padding: 0;
+  }
 </style>
 <body>
 
@@ -147,7 +162,7 @@
 	        <c:forEach var="dto" items="${ list }" varStatus="status">
 	        <input type="hidden" name="order_no" value="${ dto.order_no }" >
 	        <input type="hidden" name="item_name" value="${ dto.item_name }" >
-	        <input type="hidden" name="order_count" value="${ dto.order_count }" >
+	        <%-- <input type="hidden" name="order_count" value="${ dto.order_count }" > --%>
 	          <div class="item_info">
 	            <div class="item_con1">
 	              <div style="width: 100px;"><img src="/img/${ dto.item_img }" alt="" style="width: 85px;"></div>
@@ -157,9 +172,10 @@
 	              <div style="font-weight: lighter;">
 	              	
 	              	<!-- 수량 조절 옵션 (수정중)-->	              	
-	              	<input type='button' onclick='count("plus",${status.index})' value='+'/>
-	              	<span class="orderQuantity">${ dto.order_count }</span>개
-					<input type='button' onclick='count("minus",${status.index})' value='-'/>
+	              	<input type='button' id="order_count_button_css" onclick='count("plus",${status.index})' value='+'/>
+	              	<%-- <span class="orderQuantity">${ dto.order_count }</span>개 --%>
+	              	<input type="text" id="order_count_input_css" name="order_count" class="orderQuantity" value="${ dto.order_count }" readonly>개
+					<input type='button' id="order_count_button_css" onclick='count("minus",${status.index})' value='-'/>
 					<%-- <div id='result'>${ dto.order_count }</div> --%>
 					
 					
@@ -364,7 +380,7 @@
 		var Arr_orderQuantity = document.getElementsByClassName("orderQuantity");
 
 		// 현재 화면에 표시된 값
-		var number = Arr_orderQuantity[index].innerText;
+		var number = Arr_orderQuantity[index].value;
 		  
 		// 더하기/빼기 / '===' 이건 데이터 타입까지 같은지 비교함
 		if(type === 'plus'  && number < 10) 
@@ -377,7 +393,7 @@
 		}
 
 		// 결과 출력
-		Arr_orderQuantity[index].innerText = number;
+		Arr_orderQuantity[index].value = number;
 		
 		calcPrice(); //결제금액계산함수	
 	};
@@ -392,7 +408,7 @@
 		var sum = 0;
 		for( var i = 0; i < Arr_order_price.length; i++ )
 		{ 
-			var innerText = Arr_order_price[i].innerText * Arr_orderQuantity[i].innerText;
+			var innerText = Arr_order_price[i].innerText * Arr_orderQuantity[i].value;
 			
 			sum = sum + Number( innerText );
 		}
