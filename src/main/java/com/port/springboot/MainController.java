@@ -44,17 +44,31 @@ public class MainController
 	private IBoardDao BoardDao;
 	
 	// 게시판관련
-		@RequestMapping("/reviewList")
+		@RequestMapping("/inquiryList")
 		public String boardList(Model model, HttpServletRequest request)
 		{
 			HttpSession session = request.getSession();
-			UserDto user = (UserDto) session.getAttribute("user");
-			String user_id = user.getUser_id();
 			
-			System.out.println("writer id : "+user_id);
+			System.out.println("session : "+session.getId());
 			
-			model.addAttribute("list", BoardDao.inquiryList(user_id));
-			return "/service/reviewList";
+			UserDto user = (UserDto) session.getAttribute("user");	
+		
+			
+			if (user != null) {
+				String user_id = user.getUser_id();
+				
+				if(user_id != null ) {
+				System.out.println("writer id : "+user_id);
+				model.addAttribute("list", BoardDao.inquiryList(user_id));
+				return "/service/inquiryList";
+				
+				}else {
+					return "member/login";
+				}
+				
+			}else {
+			 return "member/login"; }
+			
 		}
 		//
 		
@@ -132,20 +146,24 @@ public class MainController
 		return "redirect:mypage";
 	}
 	//review등록 액션
-		@RequestMapping("/reviewAdd")
-		public String reviewAdd(HttpServletRequest request)
+		@RequestMapping("/inquiryAdd")
+		public String inquiryAdd(HttpServletRequest request) throws IOException
 		{
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");	
+			String board_writer = user.getUser_id();
 			
 			BoardDto dto = new BoardDto();
 			
 			
 			dto.setBoard_name(request.getParameter("board_name"));
 			dto.setBoard_content(request.getParameter("board_content"));
-		
+			dto.setBoard_writer(board_writer);
 			
-			BoardDao.reviewAdd(dto);
 			
-			return "redirect:reviewList";
+			BoardDao.inquiryAdd(dto);
+			
+			return "redirect:inquiryList";
 		}
 		
 
@@ -166,11 +184,6 @@ public class MainController
 	
 	
 	
-	@RequestMapping("/review")
-	public String service_review(Model model)
-	{
-		return "service/review";
-	}
 	
 	
 	
@@ -256,7 +269,25 @@ public class MainController
 		model.addAttribute("list", ItemDao.orderFromBasket(order_no));
 		
 		return "order/order";
+		
+			
 	}
+	
+	//main 상품나열
+	@RequestMapping("/mainlist")
+	public String main_list( Model model)
+	{  
+		
+		model.addAttribute("list", ItemDao.mainList());
+		
+		return "main/main";
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/list")
 	public String order_list(HttpServletRequest request, Model model)
 	{		

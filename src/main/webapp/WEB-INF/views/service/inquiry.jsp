@@ -4,7 +4,7 @@
 
 
 
-
+<jsp:include page="../main/header.jsp" />
 
 
 <!DOCTYPE html>
@@ -61,11 +61,22 @@
   </script>
    
   <div style="width: 1280px; margin: 0 auto; margin-top: 50px;">
-    <h2 class="inquiry_h2">1:1문의</h2>
-    <form class="inquiry_table"  name="form1" method="post"
+    <h2 class="inquiry_h2">1:1 문의</h2>
+    <form class="inquiry_table" action="inquiryAdd" name="form1" method="post"
         enctype="multipart/form-data">
     <table>
-       
+        <tr>
+            <td> 만족도 </td>
+        <td>
+            <select name="board_type">
+              <option value="excellent">매우 만족</option>
+              <option value="great">만족</option>
+              <option value="normal">보통</option>
+              <option value="bad">불만족</option>
+              <option value="terrible">매우 불만족</option>
+            </select>
+        </td>
+        </tr>
         <tr>
             <td>상품명</td>
             <td><textarea rows="1" cols="20" name="board_name" id="product_name"></textarea></td>
@@ -87,7 +98,7 @@
         <tr>
             <td colspan="2" align="center">
                 <input type="submit" value="등록" 
-                    >
+              			 >
                 <input type="button" value="목록"
     			onclick="javascript:history.back()">
             </td>
@@ -101,3 +112,5 @@
 
 </body>
 </html>
+
+<jsp:include page="../main/footer.jsp" />

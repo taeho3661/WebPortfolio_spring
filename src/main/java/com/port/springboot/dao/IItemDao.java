@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import com.port.springboot.dto.BasketDto;
+import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
@@ -33,4 +34,5 @@ public interface IItemDao {
 			@Param("order_adr3") String order_adr3, @Param("order_adr4") String order_adr4, 
 			@Param("order_price") String order_price, @Param("order_memo") String order_memo, 
 			@Param("covToStringOrder_no") String covToStringOrder_no);
+	public List<ItemDto> mainList();
 }

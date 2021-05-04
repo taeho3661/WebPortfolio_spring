@@ -10,6 +10,10 @@
 		select * from tb_item where item_type = #{item_type}
 	</select>
 	
+	<select id="mainList" resultType="com.port.springboot.dto.ItemDto">
+		select * from tb_item 
+	</select>
+	
 	<select id="itemTypeListSort" resultType="com.port.springboot.dto.ItemDto">	
 														<!-- ${sort_point} - 정렬기준 / ${sort_method} - 정렬방법 -->
 		select * from tb_item where item_type = #{item_type} order by ${sort_point} ${sort_method}

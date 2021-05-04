@@ -14,7 +14,7 @@
     
 /* 캐러셀 */
 .car {
-  width: 1520px;
+  width: 100%;
   margin: 0 auto;
 }
 /* section1 */
@@ -31,57 +31,49 @@
   width: 100%;
   height: 100px;
 }
-.best {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  padding: 20px;
-  padding-top: 100px;
 
-}
-.best_one {
-  width: 260px;
-  text-align: left;
-  padding: 10px;
 
-}
-.best_one img {
-  width: 240px;
-}
+/* section 2 */
+ .section_content
+  {
+    width: 1280px;
+  }
+  .section_content_div{
+    width: 280px;
+    height: 480px;
+    margin: 0 18px 80px 18px;
+    border : .5px solid rgb(220, 220, 220);
+    /* float하는이유 : 4개가 넘어가면 자동으로 아래에 붙게하기위해 */
+    float : left; 
 
-.best_one a{
-  text-decoration: none;
-  color: black;
-}
-.price {
-  border: 1px solid darkgray;
-  font-size: 13px;
-}
-.price > p {
-  font-weight: bold;
-}
 
-/* section2 */
-.section2 {
-  width: 100%;
-  height: 1000px;
-  /* border: 1px solid red;  */
-}
-.font2 {
-  text-align: center;
-  font-size: 30px;
-  color: #F27078;
-}
-.event {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-.event img {
-  width: 1000px;
-  margin-top: 30px;
-}
-
+    /* 내부컨텐츠 정렬 */
+    display: flex;
+    flex-direction: column;    
+  }
+  .section_content > div > p{
+    padding-top: 10px;
+  }
+  /* 이미지를 가둬놓기위한 툴 */
+  .section_content div .img_tool{
+    /* width: 275px; */
+    width: 100%;
+    height: 280px;
+    
+    overflow: hidden;
+    /* border: 1px solid #F27078; */
+  }
+  .section_content div img{
+    width: 280px;
+    height: 280px;    
+  }
+  .section_content div img:hover{    
+    /* 필터 */
+    filter: brightness(1.08);
+    /* 사이즈 */
+    transform: scale(1.1, 1.1);
+    transition: all .5s ease-in-out;  
+  }
 
  </style>
 </head>
@@ -143,81 +135,28 @@
 <div class="section1">
     <div class="bestmenu">
       <h1 style="color: darkgreen;">인기 메뉴</h1> 
-    </div>
-  
-    <div class="best">
-      <div class="best_one">
-        <a href="#">
-          <div><img src="https://ifh.cc/g/yzuf7h.jpg" alt=""></div>
-          <div class="price">캐롯 케이크 95g X 5조각(개당 2,520원)<br><hr> 즐거운 달콤한 캐롯 케이크<p>12,600원</p></div>
-        </a>
-      </div>
-
-      <div class="best_one">
-        <a href="#">
-          <div><img src="https://ifh.cc/g/WYS9of.jpg" alt=""></div>
-          <div class="price">레인보우 케이크 5ea(조각당 2,900원)<br><hr>보는 즐거움과 먹는 즐거움<p>14,500원</p></div>
-        </a>
-      </div>
-
-      <div class="best_one">
-        <a href="#">
-          <div><img src="https://ifh.cc/g/M3BA7p.jpg" alt=""></div>
-          <div class="price">디럭스초코크레이프케이크(조각) 85g<br><hr>카페의 시그니처 케이크가 될 아이...<p>13,200원</p></div>
-        </a>
-      </div>
-
-      <div class="best_one">
-        <a href="#">
-          <div><img src="https://ifh.cc/g/irbqb7.jpg" alt=""></div>
-          <div class="price">블루베리 베이글 110g x 6ea (개당 883원)<br><hr>블루베리의 상큼함과 베이글의 만남...<p>5,300원</p></div>
-        </a>
-    </div>
-    <div class="best_one">
-      <a href="#">
-        <div><img src="https://ifh.cc/g/cFLc8f.jpg" alt=""></div>
-        <div class="price">폴리치즈케이크 90g x 5ea <br><hr>최고급 우유가 만들어내는 시그니처...<p>11,000원</p></div>
-      </a>
+    </div>    
   </div>
 
-  <div class="best_one">
-    <a href="#">
-      <div><img src="https://ifh.cc/g/bapdXW.png" alt=""></div>
-      <div class="price">에멘탈 치즈 케이크 150g x 6ea <br><hr>요즘 트렌드 케이크<p>18,600원</p></div>
-    </a>
-</div>
-
-  <div class="best_one">
-    <a href="#">
-      <div><img src="https://ifh.cc/g/anb4tD.jpg" alt=""></div>
-      <div class="price">레드벨벳 케이크 90g x 5ea  <br><hr>촉촉한 와인시트와 고소한 버터크림...<p>12,600원</p></div>
-    </a>
-  </div>
-
-  <div class="best_one">
-    <a href="#">
-      <div><img src="https://ifh.cc/g/CdXYpb.png" alt=""></div>
-      <div class="price">허니버터볼 200g x 4ea <br><hr>바게트 통채로 구운 후 허니버터...<p>13,500원</p></div>
-    </a>
-  </div>
-
-    </div>
-
-    
-  </div>
-
-<!-- section2 -->
+<div style="width:1280px; height:1200px; margin: 0 auto; margin-top: 50px; /* border:1px solid red; */">
 <div class="section2">
-<div class="font2">
-  <p>EVENT</p>
+    <div class="section_content">
+      <c:forEach var="items" items="${ list }">
+        <div class="section_content_div">
+          <div class="img_tool">
+            <a href="item?item_no=${ dto.item_no }"><img alt="" src="/img/${ dto.item_img }"></a>
+          </div><br>
+          <div style="width: 240px; height: 80px; line-height: 80px; border-bottom:.5px solid rgb(220, 220, 220); padding-left: 10px;">
+            <h3 style="font-size: 25px">${ dto.item_name }</h3>
+          </div>
+          <div style="width: 220px; height: 40px; line-height: 40px;">${ dto.item_name }</div>
+          <div style="width: 220px; height: 40px; line-height: 40px; text-align: right;">${ dto.item_price }원</div>
+        </div>
+      </c:forEach>
+    </div>
+  </div>
 </div>
-<div class="event">
-  <a href=""><img src="https://ifh.cc/g/NggSmr.jpg" alt=""></a>
-  <a href=""><img src="https://ifh.cc/g/NggSmr.jpg" alt=""></a>
-  <a href=""><img src="https://ifh.cc/g/NggSmr.jpg" alt=""></a>
 </div>
-</div>
-
 
 <jsp:include page="footer.jsp" />
 

@@ -17,7 +17,7 @@ public interface IBoardDao
 	public int inquiryAction(BoardDto dto );
 	public List<BoardDto> boardList();
 	public BoardDto reviewView(int board_no);
-	public int reviewAdd(BoardDto dto);
-	public BoardDto inquiryList(String user_id);
+	public int inquiryAdd(BoardDto dto);
+	public List<BoardDto> inquiryList(String user_id);
 
 }

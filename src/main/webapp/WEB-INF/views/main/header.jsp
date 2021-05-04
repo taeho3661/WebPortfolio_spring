@@ -187,8 +187,7 @@
          </div>
             
             <div>
-            <a href="reviewList">나의문의</a>
-            <a href="inquiry">상품문의</a>
+            <a href="inquiryList">상품문의</a>
             <a href="agreement">이용약관</a>
             <a href="guide">개인정보</a>
           </div>
