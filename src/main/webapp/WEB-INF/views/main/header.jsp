@@ -172,7 +172,7 @@
           <div class="dropdown-content">
             <div class="content">
             <div>
-            <a href="#">공지사항</a>
+            <a href="announcement">공지사항</a>
             <a href="introduce">회사소개</a>
             <a href="map">오시는길</a>
             

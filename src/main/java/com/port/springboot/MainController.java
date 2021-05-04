@@ -102,6 +102,11 @@ public class MainController
 	{
 		return "company/map";
 	}	
+	@RequestMapping("/announcement")
+	public String company_announcement(Model model)
+	{
+		return "company/announcement";
+	}
 	@RequestMapping("/introduce")
 	public String company_introduce(Model model)
 	{
