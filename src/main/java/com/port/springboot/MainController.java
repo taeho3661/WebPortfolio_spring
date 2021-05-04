@@ -191,6 +191,14 @@ public class MainController
 	}
 	
 	
+	@RequestMapping("/reviewList")
+	public String reviewList( Model model)
+	{	
+		model.addAttribute( "reviewList" , BoardDao.reviewList());
+		
+		return "/service/reviewList";
+	}
+	
 	
 	
 	
@@ -206,6 +214,7 @@ public class MainController
 		System.out.println("select item_type : " + item_no);
 		
 		model.addAttribute("list", ItemDao.item(item_no));
+		model.addAttribute( "boardList" , BoardDao.reviewList());
 		
 		return "order/item";
 	}
