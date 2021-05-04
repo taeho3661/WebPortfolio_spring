@@ -240,14 +240,33 @@ insert into tb_board(board_no, board_kind, board_name, board_content,
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 2, '문의입니다.', '테스트~~~~~', 
 '아이디1', sysdate, 1, 1, null);
+
+
+--수정
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
-values (tb_board_seq.nextval, 1, '후기입니다.', '후기내용입니다~', 
-'아이디2', sysdate, 1, 1, null);
+values (tb_board_seq.nextval, 1, '케이크가', '완전 맛있어요~', 
+'최진솔', sysdate, 1, 1, null);
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
-values (tb_board_seq.nextval, 1, '후기입니다22.', '후기내용입니다~22', 
-'아이디2', sysdate, 1, 2, null);
+values (tb_board_seq.nextval, 1, 'tea 가', '아주깔끔해요~', 
+'황현영', sysdate, 1, 2, null);
+
+-- 추가
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '머핀이', '너무 달아요', 
+'이태호', sysdate, 1, 1, null);
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '크레이프가', '너무맛있어요', 
+'이관우', sysdate, 1, 1, null);
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '베이글이', '부드러워요', 
+'김재현', sysdate, 1, 1, null);
+
+
 
 
 --테스트

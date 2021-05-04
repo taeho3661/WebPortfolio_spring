@@ -11,8 +11,8 @@
 		values (tb_board_seq.nextval, 2, #{board_name}, #{board_content}, #{board_writer}, sysdate, 0, 1)
 	</insert>
 
-	<select id="boardList" resultType="com.port.springboot.dto.BoardDto">
-		select * from tb_board
+	<select id="reviewList" resultType="com.port.springboot.dto.BoardDto">
+		select * from tb_board where board_kind = 1 
 	</select>
 	
 	<select id="reviewView" resultType="com.port.springboot.dto.BoardDto">

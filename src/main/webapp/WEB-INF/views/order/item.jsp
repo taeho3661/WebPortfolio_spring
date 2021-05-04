@@ -100,6 +100,7 @@
 
 <!-- 헤더 인클루드 -->
 <jsp:include page="../main/header.jsp" />
+
 <c:forEach var="itemDto" items="${ list }">
   <div class="wrap">
     <div class="item_info">
@@ -157,11 +158,15 @@
     <div class="section3">
       <img alt="" src="/img/${ itemDto.item_info_img }">
     </div>
+    
+    
+   
+   
     <div class="section4">
       <h4>리뷰</h4>
       <div class="buttonArea">
-        <div onclick="alert('리뷰페이지로 이동합니다.')"><a href="#"><input type="button" value="모두보기"/></a></div>
-        <div onclick="alert('리뷰 작성 페이지로 이동합니다.')"><a href="#"><input type="button" value="후기쓰기"/></a></div> 
+        <div onclick="alert('리뷰페이지로 이동합니다.')"><a href="reviewList"><input type="button" value="모두보기"/></a></div>
+        <!-- <div onclick="alert('리뷰 작성 페이지로 이동합니다.')"><a href=""><input type="button" value="후기쓰기"/></a></div>  -->
       </div>
       <div class="tableArea">
         <table class="table">
@@ -173,18 +178,19 @@
             <th>칼럼4</th>
           </tr>
           <!-- tr -->
-          <c:forEach var="dto" items="${ list }">
+          <c:forEach var="dto" items="${ boardList }" begin="1" end="4">
               <tr>
-                <td>${ dto }</td>
-                <td>${ dto }</td>
-                <td>${ dto }</td>
-                <td>${ dto }</td>
+                <td>${ dto.board_writer }</td>
+                <td>${ dto.board_name }</td>
+                <td>${ dto.board_content }</td>
+                <td>${ dto.board_write_date }</td>
               </tr>            
           </c:forEach>     
         </table>
       </div>
     </div>
-    <div class="section5">
+ 
+    <%-- <div class="section5">
       <h4>상품문의</h4>
       <div class="buttonArea">
         <div onclick="alert('문의페이지로 이동합니다.')"><a href="#"><input type="button" value="모두보기"/></a></div>
@@ -210,10 +216,11 @@
           </c:forEach>     
         </table>
       </div>
-    </div>
+    </div> --%>
 
-  </div>
-</c:forEach>
+</div>
+   </c:forEach>
+
 <!-- 푸터 인클루드 -->
 <jsp:include page="../main/footer.jsp" />
 </body>

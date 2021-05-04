@@ -70,7 +70,6 @@ public class MainController
 			 return "member/login"; }
 			
 		}
-		//
 		
 	
 	
@@ -88,6 +87,8 @@ public class MainController
 	}
 	
 	
+
+
 	
 	@RequestMapping("/header")
 	public String main_header(Model model)
@@ -149,7 +150,7 @@ public class MainController
 		
 		return "redirect:mypage";
 	}
-	//review등록 액션
+	//inquiry등록 액션
 		@RequestMapping("/inquiryAdd")
 		public String inquiryAdd(HttpServletRequest request) throws IOException
 		{
@@ -170,6 +171,29 @@ public class MainController
 			return "redirect:inquiryList";
 		}
 		
+		
+		
+
+		//review 등록 액션
+		@RequestMapping("/reviewAdd")
+		
+		public String reviewAdd(HttpServletRequest request) throws IOException
+		{	
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");	
+			String board_writer = user.getUser_id();
+			
+			
+			BoardDto dto = new BoardDto();
+			dto.setBoard_name(request.getParameter("board_name"));
+			dto.setBoard_content(request.getParameter("board_content"));
+			dto.setBoard_writer(board_writer);
+			
+			
+			return "redirect:reviewList";
+			
+		}
+		
 
 	
 	//상품후기 액션
@@ -188,9 +212,6 @@ public class MainController
 	
 	
 	
-	
-	
-	
 	//order페이지
 	@RequestMapping("/item")
 	public String order_item(HttpServletRequest request, Model model)
@@ -199,10 +220,25 @@ public class MainController
 		
 		System.out.println("select item_type : " + item_no);
 		
-		model.addAttribute("list", ItemDao.item(item_no));
+		model.addAttribute("list", ItemDao.item(item_no));	
+		
+		model.addAttribute( "boardList" , BoardDao.reviewList());
 		
 		return "order/item";
+			
 	}
+	
+	
+	
+	
+	@RequestMapping("/reviewList")
+	public String reviewList( Model model)
+	{	
+		model.addAttribute( "reviewList" , BoardDao.reviewList());
+		
+		return "/service/reviewList";
+	}
+	
 	
 //	@RequestMapping("/basket") // basket이랑 basketAdd합치기
 //	public String order_basket(HttpServletRequest request, Model model)
