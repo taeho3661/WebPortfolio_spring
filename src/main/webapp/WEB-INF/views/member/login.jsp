@@ -99,7 +99,7 @@
 				<div class="login_ID">
 					<div class="login_IDbutton">
 						<input type="text" class="form-control" placeholder="Id" name="user_id">
-						<input type="password" class="form-control login_paasword" placeholder="paasword" name="user_pw">
+						<input type="password" class="form-control login_paasword" placeholder="password" name="user_pw">
 					</div>
 					<div>
 						<input type="submit" class="btn btn-secondary btn-lg login_IDlogin" value="로그인"></input>

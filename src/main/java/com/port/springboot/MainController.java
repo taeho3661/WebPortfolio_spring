@@ -647,7 +647,7 @@ public class MainController
 		
 		if(user_id!=null)
 		{
-			msg = "회원님의 아이디는"+user_id+"입니다.";
+			msg = "회원님의 아이디는 "+user_id+"입니다.";
 			response.setContentType("text/html; charset=euc-kr");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('"+msg+"'); history.go(-2);</script>");
