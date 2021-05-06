@@ -62,12 +62,10 @@ a {
 .section {
 	margin-top: 20px;
 	width: 1100px;
-	background-color: lavender;
 	height: 800px;
 }
 
 .sectionTitle {
-	background-color: lavenderblush;
 	height: 80px;
 	border: 1px solid gray;
 	/* 글자 정렬 */
@@ -109,8 +107,9 @@ a {
 #productAddSubmitButton {
 	width: 80px;
 	height: 30px;
-	border: 1px solid skyblue;
-	color: skyblue;
+	border: 1px solid lightsalmon;
+	color: lightsalmon;
+	background-color: white;
 	padding: 5px;
 	margin-right: 20px;
 	border-radius: 10px;
@@ -118,7 +117,13 @@ a {
 
 #productAddSubmitButton:hover {
 	color: white;
-	background-color: skyblue;
+	background-color: lightsalmon;
+}
+.itemAdd_kategorie
+{
+	height: 40px;
+	font-size: 15px;
+	padding-left: 5px;
 }
 </style>
 <body>
@@ -142,15 +147,21 @@ a {
 							상품번호
 						</td>
 						<td>
-							<input type="text" name="item_no" value="${dto.item_no }" readonly>
+							<input type="text" name="item_no" value="${dto.item_no }" class="inputBox" style="width: 40px;" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td>카테고리</td>
 						<td>
-							<select name="item_type">
-							  <option value="디저트">디저트</option>
-							  <option value="음료">음료</option>
+							<select name="item_type" class="itemAdd_kategorie">
+							  <option value="crepe">crepe</option>
+							  <option value="muffin">muffin</option>
+							  <option value="bagel">bagel</option>
+							  <option value="cake">cake</option>
+							  <option value="tea">tea</option>
+							  <option value="cheong">cheong</option>
+							  <option value="coffee">coffee</option>
+							  <option value="smoothie">smoothie</option>
 							</select>
 						</td>
 					</tr>
