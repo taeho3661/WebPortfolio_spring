@@ -361,7 +361,7 @@
       </div>
       
 	<div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" onclick="alert('변경되었습니다.')" value="회원정보 수정" ></input>
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member"  value="회원정보 수정" ></input>
       <a class="btn btn-secondary btn-lg" href="mypage">취소</a>
       <div class="lastbutton_member2">
         <a href=# onclick="dlt();"><input type="button" class="btn btn-secondary btn-lg " value="회원탈퇴"></input></a>
@@ -399,9 +399,43 @@
 
 		
 	
+    // input_check_func는 회원가입에 필요한 3가지 문항을 전부다 채워 넣었는지 check 해준다
+    // 이는 form onsubmit에 의해 발동되며 return 값이 false 일 경우 페이지의 데이터가 action= 좌표로 넘어가지 않게된다
+    function input_check_func() {
+        var id = document.getElementById('id').value;
+        var pw = document.getElementById('pw').value;
+        var pw2 = document.getElementById('pw2').value;
+        var name = document.getElementById('name').value;
+        var user_adr1 = document.getElementById('user_adr1').value;
+        var user_adr2 = document.getElementById('user_adr2').value;
+        var user_adr3 = document.getElementById('user_adr3').value;
+        var user_adr4 = document.getElementById('user_adr4').value;
+        var user_phone = document.getElementById('user_phone').value;
+        var exampleInputEmail1 = document.getElementById('exampleInputEmail1').value;
+        var agree_service_check0 = document.getElementById('agree_service_check0').value;
+        var agree_service_check1 = document.getElementById('agree_service_check1').value;
 
+        
 
-
+        
+        if(id == null || pw == null || pw2 == null ||
+         	id == ""   || pw == ""   || pw2 == "" || 
+         	name == null || user_adr1 == null || user_adr2 == null ||
+         	name == ""   || user_adr1 == ""   || user_adr2 == ""       	
+         	user_adr3 == null || user_adr4 == null || user_phone == null ||
+         	user_adr3 == ""   || user_adr4 == ""   || user_phone == ""  ||
+         	exampleInputEmail1 == null || 
+         	exampleInputEmail1 == ""  
+             	) {
+            alert("공백은 허용치 않는다");
+            return false;
+        } else {
+        	onclick="alert('변경되었습니다.')"
+            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
+            return true;
+        }
+    }    
+	
 
 
 
