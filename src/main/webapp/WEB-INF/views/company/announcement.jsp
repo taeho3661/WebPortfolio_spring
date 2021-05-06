@@ -94,10 +94,10 @@ pageEncoding="UTF-8"%>
       <!--<th>Hit</th>-->
     </tr>
     <!-- tr -->
-      <c:forEach var="dto" items="${list}" >
+      <c:forEach var="dto" items="${announList}" >
         <tr>
           <td>${dto.board_no}</td>
-          <td><a class="review_in" href="review_view?board_no=${dto.board_no }">${dto.board_name}</a></td>
+          <td>${dto.board_name}</td>
           <td>${dto.board_writer}</td>
           <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /> </td>
           <!--<td>${dto.board_hit}</td>-->

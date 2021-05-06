@@ -266,6 +266,15 @@ board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '베이글이', '부드러워요', 
 '김재현', sysdate, 1, 1, null);
 
+-- 공지사항 추가
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 3, '[설날배송공지] 설 배송 안내', '테스트~~~~~', 
+'관리자', sysdate, 1, 1, null);
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 3, '[가격변동] 일부상품 변동', '테스트~~~~~', 
+'관리자', sysdate, 1, 1, null);
 
 
 

@@ -105,8 +105,11 @@ public class MainController
 	@RequestMapping("/announcement")
 	public String company_announcement(Model model)
 	{
+		model.addAttribute("announList" , BoardDao.announList());
 		return "company/announcement";
 	}
+	
+	
 	@RequestMapping("/introduce")
 	public String company_introduce(Model model)
 	{

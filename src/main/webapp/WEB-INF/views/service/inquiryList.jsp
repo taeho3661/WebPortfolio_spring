@@ -68,6 +68,10 @@
 	text-decoration: none;
 	color: lightcoral;
 }
+.inauiryButton {
+	text-decoration: none;
+	color: darkgrey;	
+}
 
 </style>
 
@@ -106,7 +110,7 @@
   </div>
   
   <div>
-   <a href="inquiry">문의하기</a>
+   <a class="inauiryButton" href="inquiry">문의하기</a>
   </div>
   
 <!-- 푸터 인클루드 -->

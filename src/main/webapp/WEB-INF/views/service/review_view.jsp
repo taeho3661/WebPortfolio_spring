@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:include page="../main/header.jsp" />
-    
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,11 +58,11 @@
     <td class="writer">${dto.board_writer}</td>
   </tr>
   <tr class="board_content">
-    <td>내용</td>
-    <td>${dto.board_write_date}</td>
-  </tr>
+    <td>내용<hr></td>
+    <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /><hr></td>
+  </tr> 
   <tr class="content">
-     <td>${dto.board_content}</td>
+   <td>${dto.board_content}</td>
   </tr>
 </table>
 

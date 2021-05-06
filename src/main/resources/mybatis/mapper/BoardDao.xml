@@ -27,5 +27,9 @@
 	<select id="inquiryList" resultType="com.port.springboot.dto.BoardDto">
 		select * from tb_board where board_writer = #{user_id} and board_kind = 2 order by board_no asc
 	</select>
+	<!-- 공지사항 -->
+	<select id="announList" resultType="com.port.springboot.dto.BoardDto">
+		select * from tb_board where  board_kind = 3
+	</select>
 	
 </mapper>
