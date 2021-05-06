@@ -57,11 +57,9 @@
   .section{
   	margin-top: 20px;
     width: 1100px;
-    background-color: lavender;
     height: 800px;
   }
   .sectionTitle{
-    background-color: lavenderblush;
     height: 80px;
     border: 1px solid gray;
 
@@ -83,15 +81,16 @@
     width: 80px;
     height: 30px;
 
-    border: 1px solid skyblue; 
-    color: skyblue; 
+    border: 1px solid lightsalmon; 
+    color: lightsalmon; 
+    background-color: white;
     padding: 5px;
     margin-right: 20px;
     border-radius: 10px;
   }
   #memberListDeleteButton:hover{
     color:white; 
-    background-color: skyblue;
+    background-color: lightsalmon;
   }
 </style>
 <body>

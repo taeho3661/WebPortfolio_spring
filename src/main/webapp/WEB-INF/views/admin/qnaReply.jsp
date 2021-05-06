@@ -69,15 +69,16 @@
     width: 80px;
     height: 30px;
 
-    border: 1px solid skyblue; 
-    color: skyblue; 
+    border: 1px solid lightsalmon; 
+    color: lightsalmon; 
+    background-color: white;
     padding: 5px;
     margin-right: 20px;
     border-radius: 10px;
   }
   #productAddSubmitButton:hover{
     color:white; 
-    background-color: skyblue;
+    background-color: lightsalmon;
   }
 
 </style>
@@ -86,26 +87,26 @@
     <div class="qnaTitle">
       <h1>상품 문의</h1>
     </div>
-    <table class="table">
-      <form method="post" name="send_form">
+    <form method="post" name="send_form">
+      <table class="table">
         <tr>
-          <td>상품명</td>
+          <td style="background-color: lightgray;">상품명</td>
           <td>${dto.item_name} </td>
         </tr>
         <tr>
-          <td>문의제목</td>
+          <td style="background-color: lightgray;">문의제목</td>
           <td>${dto.board_name}</td>
         </tr>
         <tr>
-          <td>문의자</td>
+          <td style="background-color: lightgray;">문의자</td>
           <td>${dto.board_writer }</td>
         </tr>
         <tr>
-          <td>내용</td>
+          <td style="background-color: lightgray;">내용</td>
           <td><textarea  id="productAddTextarea" placeholder="${dto.board_content }" readonly></textarea></td>
         </tr>
         <tr>
-          <td>답변</td>
+          <td style="background-color: lightgray;">답변</td>
           <!-- <td><input type="textarea" name ="product_info" placeholder="세부 내용을 입력해주세요." class="inputBox"></td> -->
           <td><textarea name ="board_reply" placeholder="답변 내용을 입력해주세요." id="productAddTextarea"></textarea></td>
         </tr>
@@ -115,8 +116,8 @@
             <input type="button" value="답변하기" id="productAddSubmitButton" onclick="send()">
           </td>
         </tr>		
-      </form>
-    </table>
+      </table>
+    </form>
   </div>
 </body>
 </html>

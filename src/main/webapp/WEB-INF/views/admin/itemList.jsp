@@ -58,10 +58,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    background-color: lavender;
   }
   .sectionTitle{
-    background-color: lavenderblush;
     height: 80px;
     border: 1px solid gray;
 
@@ -89,15 +87,16 @@
     border-radius: 5px;
   }
   #buttons button{
-    border: 1px solid skyblue;
-    color: skyblue; 
+    border: 1px solid lightsalmon;
+    color: lightsalmon;
+    background-color: white;
     padding: 5px;
     margin: 2px;
     width: 50px;
   }
   #buttons button:hover{
     color:white; 
-    background-color: skyblue;
+    background-color: lightsalmon;
   }
 
 </style>

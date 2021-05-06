@@ -135,8 +135,8 @@
   {
   	width: 30px;
   	height 30px;
-  	color: white;  	
-  	background-color: brown;
+  	color: brown;  	
+  	background-color: rgb(238, 238, 238);
   	border: none;
   	
   	padding: 0;
@@ -414,8 +414,9 @@
 		}
 
 		console.log("sum:" + sum);
-		document.getElementById('totalPriceAmount').innerText = sum;
 
+		document.getElementById('totalPriceAmount').innerText = sum;
+		
 		/* 상품가격에서 할인율 적용해서 나오는 총 결제금액 구하는 스크립트 */
 		var totalPriceAmount = document.getElementById("totalPriceAmount").innerText;
 		var discountRate = document.getElementById("discountRate").innerText;
@@ -426,8 +427,17 @@
 		console.log("totalPriceAmount:" + totalPriceAmount);
 		console.log("discountRate:" + discountRate);
 		console.log("totalPaymentAmount:" + totalPaymentAmount);
-		document.getElementById('totalPaymentAmount').innerText = totalPaymentAmount + '원';	
+
+		/* 콤마찍는 포멧 적용해서 출력 */
+		document.getElementById('totalPaymentAmount').innerText = numberWithCommas(totalPaymentAmount) + '원';	
+		document.getElementById('totalPriceAmount').innerText = numberWithCommas(sum);
 	};
+
+	/* 정규식을 이용해서 콤마찍는 함수 */
+	function numberWithCommas(x) 
+	{
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
   </script>
   
   
