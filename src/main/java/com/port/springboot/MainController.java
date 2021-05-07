@@ -347,9 +347,10 @@ public class MainController
 //		System.out.println(order_no);
 		return "redirect:order";
 	}
+	
 	@RequestMapping("/orderCompleted")
 	public String orderCompleted(HttpServletRequest request, Model model)
-	{
+	{		
 		String order_adr1 = request.getParameter("order_adr1");
 		String order_adr2 = request.getParameter("order_adr2");
 		String order_adr3 = request.getParameter("order_adr3");
@@ -385,7 +386,14 @@ public class MainController
 		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_memo, covToStringOrder_no);
 		
 
-		//todo::
+		//scoreUpdate 누적금액설정
+
+		int payment = Integer.parseInt(request.getParameter("payment"));
+		System.out.println("payment : " + payment);
+		int user_no = Integer.parseInt(request.getParameter("user_no"));
+		System.out.println("user_no : " + user_no);
+		
+		ItemDao.scoreUpdate(payment, user_no);
 		
 		//재고 수량 계산
 		String order_count[] = request.getParameterValues("order_count");

@@ -34,5 +34,6 @@ public interface IItemDao {
 			@Param("order_adr3") String order_adr3, @Param("order_adr4") String order_adr4, 
 			@Param("order_price") String order_price, @Param("order_memo") String order_memo, 
 			@Param("covToStringOrder_no") String covToStringOrder_no);
+	public int scoreUpdate(@Param("payment") int payment, @Param("user_no") int user_no);
 	public List<ItemDto> mainList();
 }

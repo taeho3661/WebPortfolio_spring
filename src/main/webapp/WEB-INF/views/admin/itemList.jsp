@@ -122,7 +122,6 @@
           <th style="width:10%;"></th>
           <th style="width:20%;">상품이름</th>
           <th style="width:10%;">가격</th>
-          <th style="width:10%;">판매량</th>
           <th style="width:10%;">재고</th>
           <th style="width:10%;"></th>
         </tr>
@@ -133,7 +132,6 @@
               <td><img alt="" src="/img/${ dto.item_img }"></td>
               <td>${ dto.item_name }</td>
               <td>${ dto.item_price }</td>
-              <td>판매량</td>
               <td class="item_stock">${ dto.item_stock }</td>
               <td id="buttons" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px;">
                 <a href="itemModify?item_no=${dto.item_no }"><button id="btn1">변경</button></a>

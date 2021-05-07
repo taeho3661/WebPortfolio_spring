@@ -79,5 +79,11 @@
             #{order_no}
         </foreach> -->
 	</update>
+	
+	<update id="scoreUpdate" parameterType="com.port.springboot.dto.OrderDto">
+		update tb_user set user_score = ( user_score + ${payment} ) where user_no = #{user_no}
+	</update>
+	
+
 
 </mapper>

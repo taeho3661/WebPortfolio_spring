@@ -36,6 +36,17 @@
   	left: 1250px;
   	
   }
+  /* a */
+  .sortBox a{
+    text-decoration: none;
+    color: gray;
+  }
+  .sortBox a:hover{
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: wheat;
+    color:sienna;
+  }
   /*  */
   .section_content
   {

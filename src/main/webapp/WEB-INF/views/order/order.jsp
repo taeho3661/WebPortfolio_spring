@@ -312,7 +312,7 @@
 	    <div class="section2">
 	      <div class="section_con">
 	        <h4>최종 결제금액</h4>
-          	<input type="hidden" name="order_price" value="134">
+          	<!-- <input type="hidden" name="order_price" value="134"> -->
 	        <table class="table">
 	          <!-- th -->
 	          <tr>
@@ -351,9 +351,10 @@
 	          <tr>
 	            <td style="border-top: 1px solid rgb(238, 238, 238);">총 결제금액</td>
 	            <td style="border-top: 1px solid rgb(238, 238, 238);" id="totalPaymentAmount"></td>
-	          </tr>
-	      
+	          </tr>	      
 	        </table>
+            <input type="hidden" name="payment" value="">
+            <input type="hidden" name="user_no" value="${user.user_no}">
 	      </div>
 	      <div class="section_con">결제방법</div>
 	      <div class="section_con">
@@ -424,6 +425,10 @@
 		var totalPaymentAmount = 0;
 		totalPaymentAmount = Number( totalPriceAmount ) - (Number( totalPriceAmount ) * Number ( discountRate ) * 0.01);
 
+		/* 구매금액 넘기기 */
+		$('input[name=payment]').attr('value',totalPaymentAmount);
+		/*  */
+		
 		console.log("totalPriceAmount:" + totalPriceAmount);
 		console.log("discountRate:" + discountRate);
 		console.log("totalPaymentAmount:" + totalPaymentAmount);
@@ -431,6 +436,8 @@
 		/* 콤마찍는 포멧 적용해서 출력 */
 		document.getElementById('totalPaymentAmount').innerText = numberWithCommas(totalPaymentAmount) + '원';	
 		document.getElementById('totalPriceAmount').innerText = numberWithCommas(sum);
+
+
 	};
 
 	/* 정규식을 이용해서 콤마찍는 함수 */

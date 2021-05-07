@@ -34,10 +34,19 @@
       border-bottom: 0.5px solid rgb(235, 238, 235);
       border-top: 2px solid rgb(184, 186, 184);
       text-align: center;
+      color: gray;
+      padding: 10px 5px;
     }
     .mypage_table1 th {
       width: 160px;
       padding-bottom: 10px;
+    }
+    .mypage_table1 td {
+      padding-bottom: 5px;
+    }
+    .mypage_table1 td:last-child{
+      text-align: left;
+      padding-left: 20px;
     }
     .mypage_table2 {
       margin-top: 20px;
@@ -82,22 +91,38 @@
     </c:if>
     
     </strong>] 회원이십니다.</p>
+	 회원님의 누적 총 금액은 <b>${user.user_score }원</b> 입니다.    
   </div>
+  
    <div class="mypage_table1">
+	 <h2 style="padding:10px;">회원등급에 따른 할인혜택 정보</h2>
      <table>
-       <tr>
-         <th>가용적립금</th>
-         <th>총적립금</th>
-         <th>사용적립금</th>
-         <th>총주문</th>
-       </tr>
+      	<tr>
+      		<th>등급</th>
+      		<th>할인율</th>
+      		<th style="width: 50%">조건</th>
+       	</tr>
+    	<tr>
+			<td>다이아</td>
+			<td><b>25%</b></td>
+			<td>총 누적금 300,000이상</td>
+		</tr>
+		<tr>
+			<td>골&nbsp;&nbsp;&nbsp;&nbsp;드</td>
+			<td><b>20%</b></td>
+			<td>총 누적금 200,000이상 300,000미만</td>
+		</tr>
+		<tr>
+			<td>실&nbsp;&nbsp;&nbsp;&nbsp;버</td>
+			<td><b>15%</b></td>
+			<td>총 누적금 100,000이상 200,000미만</td>
+		</tr>
+		<tr>
+			<td>브론즈</td>
+			<td><b>10%</b></td>
+			<td>총 누적금 100,000미만</td>
+		</tr>
 
-       <tr>
-        <td>0원</td>
-        <td>0원</td>
-        <td>0원</td>
-        <td>${user.user_score }원</td>
-      </tr>
      </table>
    </div>
 
