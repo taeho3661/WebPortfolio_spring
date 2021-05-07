@@ -36,16 +36,6 @@
   	left: 1250px;
   	
   }
-  /* a */
-  a{
-    text-decoration: none;
-    color: black;
-  }
-  a:hover{
-    border-radius: 20px;
-    background-color: wheat;
-    color:sienna;
-  }
   /*  */
   .section_content
   {
