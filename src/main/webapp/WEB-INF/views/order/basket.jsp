@@ -101,21 +101,13 @@
     height: 50px;
     border: 1px solid gray;
   }
-  #totalOrderButton{
+  #selectOrderButton{
     background-color: rgb(85, 85, 85);
     color: white;
-  }
-  #selectOrderButton{
-    background-color: rgb(161, 161, 161);
-    color: rgb(255, 255, 255);
   }
   #turnToShopping{
     background-color: white;
     color: rgb(82, 82, 82);
-  }
-  .section3{
-    height: 300px;
-    border: 1px solid red;
   }
 </style>
 <script>
@@ -198,14 +190,10 @@ function selectAll(selectAll)  /* 전체선택 */
 	      </c:forEach>  
 	    </table>
 	    <div class="section2_buttonArea">
-	      <a href=""><input type="submit" value="전체상품주문" id="totalOrderButton"/></a>
 	      <a href=""><input type="submit" value="선택상품주문" id="selectOrderButton"/></a>
 	      <a href="./main"><input type="button" value="쇼핑계속하기" id="turnToShopping"/></a>
 	    </div>
   	</form>
-  </div>
-  <div class="section3">
-    <div>이용안내</div>
   </div>
 </div>
 
