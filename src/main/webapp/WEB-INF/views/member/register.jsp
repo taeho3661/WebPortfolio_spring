@@ -163,10 +163,11 @@
       
     }
     .lastbutton > a{
-      margin: 7px;
+      margin:0 7px 7px 7px;
     }
     .lastbutton_member{
-      
+      width:118.5px;
+      height:48px;
     }
   
     .check{
@@ -185,7 +186,7 @@
 
 <div class= "wrap">
   
- <form action="registerAction" method="POST" onsubmit="return input_check_func()"> 
+ <form action="registerAction" method="POST" onSubmit="return input_check_func();"> 
     <div class="join ">
       <div class="joinheader">필수항목입니다</div>
       <div class="join_ID main Line ">
@@ -223,11 +224,11 @@
           <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
           <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
           </div>
-          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="user_adr1" id="user_adr1">
+          <input type="text" id="sample2_postcode" placeholder="우편번호" style="width:200px; height:30px;  margin-left: 15px;" name="user_adr1" >
         <input type="button" onclick="sample2_execDaumPostcode()" value="주소 찾기" style="width:80px; height:30px;  margin-left: 5px; padding: 0px; "><br>
-        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="user_adr2" id="user_adr2"><br>
-        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"name="user_adr3" id="user_adr3">
-        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="user_adr4" id="user_adr4">
+        <input type="text" id="sample2_address" placeholder="주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;" name="user_adr2" ><br>
+        <input type="text" id="sample2_detailAddress" placeholder="상세주소" style="width:200px; height:30px; margin-top: 10px; margin-left: 15px;"name="user_adr3" >
+        <input type="text" id="sample2_extraAddress" placeholder="참고항목" style="width:80px; height:30px; margin-top: 10px; margin-left: 5px; " name="user_adr4" >
 
         <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -378,8 +379,9 @@
       <p class="check"><span>이용약관에 동의하십니까?</span> <input id="agree_service_check1" name="agree_service_check[]" fw-filter="/1/" fw-label="이용약관 동의" fw-msg="이용약관에 동의 하세요" class="ec-base-chk" value="1" type="checkbox"><label for="agree_service_check0">동의함</label></p>
 
     <div class="lastbutton">
-      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원가입" ></input>
-      <a class="btn btn-secondary btn-lg" a href="main">가입 취소</a>
+      <input type="submit" class="btn btn-secondary btn-lg lastbutton_member" value="회원가입"  ></input>
+      <a class="btn btn-secondary btn-lg" href="main">가입 취소</a>
+      
     </div>
 
 
@@ -435,46 +437,45 @@
 		});
 	} 
 
-	
-    // input_check_func는 회원가입에 필요한 3가지 문항을 전부다 채워 넣었는지 check 해준다
-    // 이는 form onsubmit에 의해 발동되며 return 값이 false 일 경우 페이지의 데이터가 action= 좌표로 넘어가지 않게된다
-    function input_check_func() {
-        var id = document.getElementById('id').value;
-        var pw = document.getElementById('pw').value;
-        
-        var pw2 = document.getElementById('pw2').value;
-        var name = document.getElementById('name').value;
-      //  var user_adr1 = document.getElementById('user_adr1').value;
-      //  var user_adr2 = document.getElementById('user_adr2').value;
-      //  var user_adr3 = document.getElementById('user_adr3').value;
-      //  var user_adr4 = document.getElementById('user_adr4').value;
-      //  var user_phone = document.getElementById('user_phone').value;
-      //  var exampleInputEmail1 = document.getElementById('exampleInputEmail1').value;
-      //  var agree_service_check0 = document.getElementById('agree_service_check0').value;
-      //  var agree_service_check1 = document.getElementById('agree_service_check1').value;
 
-        
-       
-       
-        
-        if(id == null || pw == null || pw2 == null ||
-         	id == ""   || pw == ""   || pw2 == ""  ||
-         	name == null || user_adr1 == null || user_adr2 == null ||
-         	name == ""   || user_adr1 == ""   || user_adr2 == ""    ||   	
-         	user_adr3 == null || user_adr4 == null || user_phone == null ||
-         	user_adr3 == ""   || user_adr4 == ""   || user_phone == ""  ||
-         	exampleInputEmail1 == null || agree_service_check0 == null || agree_service_check1 == null ||
-         	exampleInputEmail1 == ""   || agree_service_check0 == ""   || agree_service_check1 == ""
-             	) {
-            alert("빈칸을 입력해주세요.");
-            return false;
-        } else {
-        	onclick="alert('회원가입되었습니다.')"
-        		
-            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
-            return true;
-        }
-    }    
+
+	
+	  function input_check_func() {
+		    var id = document.getElementById('id').value;
+	        var pw = document.getElementById('pw').value;
+	        var pw2 = document.getElementById('pw2').value;
+	        var name = document.getElementById('name').value;
+	        var user_phone = document.getElementById('user_phone').value;
+	        var sample2_postcode = document.getElementById('sample2_postcode').value;
+	        var sample2_address = document.getElementById('sample2_address').value;
+	        var sample2_detailAddress = document.getElementById('sample2_detailAddress').value;
+	        var sample2_extraAddress = document.getElementById('sample2_extraAddress').value;
+	        var agree_service_check0 = document.getElementById('agree_service_check0').value;
+	        var agree_service_check1 = document.getElementById('agree_service_check1').value;
+	      
+	        if	(id == null || pw == null || pw2 == null || 
+	             id == ""   || pw == ""   || pw2 == ""  || 
+	             name == null || 
+	             name == ""   || 	 
+	             sample2_postcode == null    || user_phone == null || 
+	             sample2_postcode == ""      || user_phone == ""  || 
+	             sample2_extraAddress == null || sample2_detailAddress == null || sample2_address == null || 
+	             sample2_extraAddress == ""   || sample2_detailAddress == ""   || sample2_address == ""  || 
+	             agree_service_check0 == null || 
+	             agree_service_check0 == ""   || 
+	             agree_service_check1 == null || 
+	             agree_service_check1 == ""   
+	                 	) { 
+	            alert("빈칸을 입력해주세요."); 
+	            return false; 
+	        }
+             	  else {
+	        	
+	            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
+	            return true;
+	        }
+	    }    
+		
 
 
 

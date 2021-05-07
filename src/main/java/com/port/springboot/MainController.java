@@ -707,6 +707,9 @@ public class MainController
 		dto.setUser_phone(request.getParameter("user_phone"));
 		dto.setUser_email(request.getParameter("user_email"));
 		UserDao.registerAction(dto);
+		
+		model.addAttribute("alert", "회원가입을 완료했습니다.");
+		
 		return "/main/main";
 	}
 	

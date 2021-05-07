@@ -109,9 +109,9 @@
 			</form>
 
 			<div class="login_Member">
-				<a class="btn btn-secondary btn-lg" a href="register">회원가입</a> <a
-					class="btn btn-secondary btn-lg" a href="FindID">아이디 찾기</a> <a
-					class="btn btn-secondary btn-lg" a href="FindPassword">비번 찾기</a>
+				<a class="btn btn-secondary btn-lg" href="register">회원가입</a> 
+				<a class="btn btn-secondary btn-lg" href="FindID">아이디 찾기</a> 
+				<a class="btn btn-secondary btn-lg" href="FindPassword">비번 찾기</a>
 			</div>
 		</div>
 	</div>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -206,13 +206,12 @@
 
 <div class= "wrap">
   
-  <form method="POST" name="modify_form" onSubmit="check()" action="modifyAction">
+  <form method="POST"  action="modifyAction" onsubmit="return input_check_func()">
     <div class="join ">
       <div class="joinheader">필수항목입니다</div>
       <div class="join_ID main Line ">
         <div class="join_textside">아이디 </div>
         <input type="text" class="form-control textbox" name="user_id" value="${dto.user_id }" readonly id="user_id">
-        <a href="#none" title="새창 열기" onclick="checkIdLayer('/member/check_id.html')" id="join_ID_Check" class="btn-secondary btn-lg ">아이디 중복체크</a>
       </div>
       <div class="join_Password main Line">
         <div class="join_textside">비빌번호</div>
@@ -401,43 +400,39 @@
 	
     // input_check_func는 회원가입에 필요한 3가지 문항을 전부다 채워 넣었는지 check 해준다
     // 이는 form onsubmit에 의해 발동되며 return 값이 false 일 경우 페이지의 데이터가 action= 좌표로 넘어가지 않게된다
-    function input_check_func() {
-        var id = document.getElementById('id').value;
-        var pw = document.getElementById('pw').value;
-        var pw2 = document.getElementById('pw2').value;
-        var name = document.getElementById('name').value;
-        var user_adr1 = document.getElementById('user_adr1').value;
-        var user_adr2 = document.getElementById('user_adr2').value;
-        var user_adr3 = document.getElementById('user_adr3').value;
-        var user_adr4 = document.getElementById('user_adr4').value;
-        var user_phone = document.getElementById('user_phone').value;
-        var exampleInputEmail1 = document.getElementById('exampleInputEmail1').value;
-        var agree_service_check0 = document.getElementById('agree_service_check0').value;
-        var agree_service_check1 = document.getElementById('agree_service_check1').value;
+   
+	  function input_check_func() {
+		    
+	        var pw = document.getElementById('pw').value;
+	        var pw2 = document.getElementById('pw2').value;
+	        var name = document.getElementById('name').value;
+	        var user_phone = document.getElementById('user_phone').value;
+	      //  var sample2_postcode = document.getElementById('sample2_postcode').value;
+	      //  var sample2_address = document.getElementById('sample2_address').value;
+	      //  var sample2_detailAddress = document.getElementById('sample2_detailAddress').value;
+	     //   var sample2_extraAddress = document.getElementById('sample2_extraAddress').value;
 
-        
-
-        
-        if(id == null || pw == null || pw2 == null ||
-         	id == ""   || pw == ""   || pw2 == "" || 
-         	name == null || user_adr1 == null || user_adr2 == null ||
-         	name == ""   || user_adr1 == ""   || user_adr2 == ""       	
-         	user_adr3 == null || user_adr4 == null || user_phone == null ||
-         	user_adr3 == ""   || user_adr4 == ""   || user_phone == ""  ||
-         	exampleInputEmail1 == null || 
-         	exampleInputEmail1 == ""  
-             	) {
-            alert("공백은 허용치 않는다");
-            return false;
-        } else {
-        	onclick="alert('변경되었습니다.')"
-            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
-            return true;
-        }
-    }    
-	
-
-
+	      
+	        if	( pw == null || pw2 == null || 
+	               pw == ""   || pw2 == ""  || 
+	             name == null || 
+	             name == ""   	 
+	       //      sample2_postcode == null    || user_phone == null || 
+	       //      sample2_postcode == ""      || user_phone == ""  || 
+	      //       sample2_extraAddress == null || sample2_detailAddress == null || sample2_address == null || 
+	     //        sample2_extraAddress == ""   || sample2_detailAddress == ""   || sample2_address == ""  || 
+	         
+	                 	) { 
+	            alert("빈칸을 입력해주세요."); 
+	            return false; 
+	        }
+             	  else {
+	        	
+	            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
+	            return true;
+	        }
+	    }    
+		
 
 
 	
