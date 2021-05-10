@@ -158,7 +158,7 @@ public class MainController
 		
 		return "redirect:mypage";
 	}
-	//review등록 액션
+	//inquiry등록 액션
 		@RequestMapping("/inquiryAdd")
 		public String inquiryAdd(HttpServletRequest request) throws IOException
 		{
@@ -179,29 +179,61 @@ public class MainController
 			return "redirect:inquiryList";
 		}
 		
+	//review등록 액션
+		@RequestMapping("/reviewAdd")
+		
+		
+		public String reviewAdd(HttpServletRequest request) throws IOException
+		{		
+			
+			BoardDto dto = new BoardDto();
+			
+			
+			dto.setBoard_content(request.getParameter("review_content"));			
+			
+			BoardDao.reviewAdd(dto);
+			
+			return "redirect:reviewList";
+		}
 
 	
 	//상품후기 액션
-	@RequestMapping("/review_view")
-	public String review_view_action(HttpServletRequest request, Model model) {
+	@RequestMapping("/inquiry_view")
+	public String inquiry_view_action(HttpServletRequest request, Model model) {
 		
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
 	
 		
 		model.addAttribute("dto", BoardDao.reviewView(board_no));
 		
+		return "/service/inquiry_view";
+	}
+	
+	//리뷰보기
+	@RequestMapping("/reviewList")
+	public String reviewList( HttpServletRequest request, Model model)
+	{	
+		String item_name = request.getParameter("item_name");
+		
+		model.addAttribute( "reviewList" , BoardDao.review_List(item_name));
+		
+		
+		return "redirect:orderHistory";
+	}
+	
+	
+	
+	
+	//리뷰 쓰기
+	@RequestMapping("/review_view")
+	public String review_view( HttpServletRequest request, Model model)
+	{	
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		
+		model.addAttribute( "list" , OrderDao.review_view(order_no));
+		
 		return "/service/review_view";
 	}
-	
-	
-	@RequestMapping("/reviewList")
-	public String reviewList( Model model)
-	{	
-		model.addAttribute( "reviewList" , BoardDao.reviewList());
-		
-		return "/service/reviewList";
-	}
-	
 	
 	
 	
@@ -217,7 +249,7 @@ public class MainController
 		System.out.println("select item_type : " + item_no);
 		
 		model.addAttribute("list", ItemDao.item(item_no));
-		model.addAttribute( "boardList" , BoardDao.reviewList());
+		model.addAttribute( "boardList" , BoardDao.reviewList(item_no));
 		
 		return "order/item";
 	}
@@ -410,7 +442,7 @@ public class MainController
 		//int item_no = Integer.parseInt(request.getParameter("item_no"));
 		//ItemDao.itemStockMinusAction(order_count, item_no);
 		
-		return "/main/main";
+		return "redirect:main";
 	}
 	
 	

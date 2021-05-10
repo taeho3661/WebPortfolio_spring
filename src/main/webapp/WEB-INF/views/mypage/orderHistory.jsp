@@ -169,9 +169,24 @@
 							</c:when>
 							</c:choose>
            </td> <!-- tb_bil -->
-           <td><a href="orderDelete?order_no=${list.order_no }"><button id="orderButton" 
+           <c:choose>
+           	<c:when test="${list.order_state ==  '4' }">
+           	<td><a href="review_view?order_no=${list.order_no}"><button id="orderButton" 
+             style="margin: 0 auto; border-radius: 20px; background-color: white; 
+             border: 1px solid lightgray; width: 70%; height: 30px;">리뷰쓰기</button></a></td>
+             
+           	</c:when>
+           	
+           	<c:otherwise>
+           	 <td><a href="orderDelete?order_no=${list.order_no }"><button id="orderButton" 
              style="margin: 0 auto; border-radius: 20px; background-color: white; 
              border: 1px solid lightgray; width: 50%; height: 30px;">삭제</button></a></td>
+           
+           	</c:otherwise>
+           
+           </c:choose>
+           
+        
          </tr>
      </c:forEach>
      

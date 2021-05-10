@@ -1,7 +1,12 @@
+<jsp:include page="../main/header.jsp" />
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:include page="../main/header.jsp" />
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,36 +20,34 @@
   .review_wrap {
     padding: 10px;
     width: 630px;
-    height: 300px;
-    margin:  100px auto;
+    height: 500px;
+    margin:  110px auto;
     border: 1px solid rgb(66, 62, 63);
     display: flex;
     flex-flow: column nowrap;
     background-color: rgb(240, 233, 233);
   }
   .review_table {
-    width: 600px;
-    height: 495px;
-    
+    width: 600px; 
+     height: 450px;
   }
   .board_name {
-   	width: 500px;
-    height: 40px;
-    background-color:#ee9da2;
-   	overflow: hidden;
+    height: 160px;
   }
-  .boardName {
-    width: 350px;
+  .board_content {
+    height: 200px;
   }
-  .board_content {   
-    height: 40px;
+  .Binput {
+   width : 90px;
+   height: 35px;
+   margin: 7px;
+   border: 1px solid rgb(169, 162, 162);
+   background-color: white;
+   border-radius: 5px;
   }
-  .content {
-   
-    vertical-align: top;
-  }
-  .writer {
-    width: 50px;
+  .Binput:hover {
+  	background-color:  rgb(243, 192, 192);
+  	color:white;
   }
 </style>
 
@@ -52,20 +55,32 @@
 <body>
   <div class="review_wrap">
 
+<form action="reviewAdd" name="form3" method="POST"> 
+<input type="hidden" name="item_name" value="${ list.item_name }">
 <table class="review_table" >
-  <tr class="board_name">
-    <td class="boardName">제목 : ${dto.board_name}</td>
-    <td class="writer">${dto.board_writer}</td>
-  </tr>
-  <tr class="board_content">
-    <td>내용<hr></td>
-    <td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /><hr></td>
-  </tr> 
-  <tr class="content">
-   <td>${dto.board_content}</td>
-  </tr>
-</table>
 
+  <tr class="board_name">
+    <td class="order_date" ><img src="/img/${ list.item_img }" style="width: 70px; height: 70px; line-height: 70px;">${list.item_name}</td>
+    <td class="item_name" >주문날짜 <fmt:formatDate value="${list.order_date}" pattern="yyyy/MM/dd" /></td>
+  </tr>
+
+  <tr >
+    <td>내용<hr></td>
+    <td><textarea class="board_content" name="review_content" cols="50" rows="10"></textarea></td>
+  </tr> 
+   
+  
+     <tr >
+      <td  colspan="3" align="center">
+          <input class="Binput" type="submit" value="등록" 
+               >
+          <input class="Binput" type="button" value="취소"
+    onclick="javascript:history.back()">
+      </td>
+    </tr>
+  </table>
+</form>  
+  
 
  </div>
 

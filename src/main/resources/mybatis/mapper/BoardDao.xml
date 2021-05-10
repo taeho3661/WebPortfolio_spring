@@ -12,7 +12,17 @@
 	</insert>
 
 	<select id="reviewList" resultType="com.port.springboot.dto.BoardDto">
-		select * from tb_board where board_kind = 1 
+		select * from tb_board b, tb_item i 
+        where i.item_no = #{item_no}
+        and board_kind = 1
+        and i.item_no = b.item_no
+	</select>
+	
+	<select id="review_List" resultType="com.port.springboot.dto.BoardDto">
+		select * from tb_board b, tb_item i 
+        where i.item_name = #{item_name}
+        and board_kind = 1
+        and i.item_no = b.item_no
 	</select>
 	
 	<select id="reviewView" resultType="com.port.springboot.dto.BoardDto">
@@ -31,5 +41,13 @@
 	<select id="announList" resultType="com.port.springboot.dto.BoardDto">
 		select * from tb_board where  board_kind = 3
 	</select>
+	
+	<insert id="reviewAdd" parameterType="com.port.springboot.dto.BoardDto">
+		insert into tb_board (board_no, board_kind, board_name, board_content, board_writer, board_write_date, board_hit, board_secret_yn,item_no)
+		values (tb_board_seq.nextval, 1, #{board_name}, #{board_content}, #{board_writer}, sysdate, 0, 1,#{item_no})
+	</insert>
+	
+	
+	
 	
 </mapper>

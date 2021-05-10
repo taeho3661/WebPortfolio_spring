@@ -24,6 +24,14 @@
 	<delete id="orderDelete" parameterType="com.port.springboot.dto.OrderDto">
 		delete from tb_order where order_no = #{order_no}
 	</delete>
+	
+	<select id="review_view" resultType="com.port.springboot.dto.UserOrderDto">
+		select o.order_date,i.item_name, i.item_img,o.order_count, o.order_price, o.order_state, o.order_no
+		from tb_order o, tb_item i
+		where o.order_no =#{order_no}
+		and o.item_no = i.item_no
+	</select>
+	
 
 </mapper>
 

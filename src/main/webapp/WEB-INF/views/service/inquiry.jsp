@@ -87,7 +87,7 @@
     <form class="inquiry_form" action="inquiryAdd" name="form1" method="post"
         enctype="multipart/form-data">
     <table class="inquiry_table">
-        <tr >
+        <!-- <tr >
             <td > 카테고리 </td>
             <td >
                 <select class="Bselect" name="board_type">
@@ -100,7 +100,7 @@
                   <option value="smoothie">smoothie</option>
                 </select>
             </td>
-        </tr>
+        </tr> -->
         <tr >
             <td >제목</td>
             <td ><textarea class="Bname" rows="1" cols="20" name="board_name" id="product_name"></textarea></td>
