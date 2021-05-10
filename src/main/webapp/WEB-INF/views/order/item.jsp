@@ -166,7 +166,7 @@
     <div class="section4">
       <h4>리뷰</h4>
       <div class="buttonArea">
-        <div onclick="alert('리뷰페이지로 이동합니다.')"><a href="reviewList"><input type="button" value="모두보기"/></a></div>
+        <div><a href="reviewList"><input type="button" value="모두보기"/></a></div>
         <!-- <div onclick="alert('리뷰 작성 페이지로 이동합니다.')"><a href=""><input type="button" value="후기쓰기"/></a></div>  -->
       </div>
       <div class="tableArea">
@@ -179,7 +179,7 @@
             <th>작성일</th>
           </tr>
           <!-- tr -->
-          <c:forEach var="dto" items="${ boardList }" begin="1" end="4">
+          <c:forEach var="dto" items="${ boardList }" begin="0" end="3">
               <tr>
                 <td>${ dto.board_writer }</td>
                 <td>${ dto.board_name }</td>

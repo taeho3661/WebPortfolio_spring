@@ -246,25 +246,89 @@ values (tb_board_seq.nextval, 2, '문의입니다.', '테스트~~~~~',
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '케이크가', '완전 맛있어요~', 
-'최진솔', sysdate, 1, 1, null);
+'최진솔', sysdate, 1, 26, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '케이크가', '완전 달아요~', 
+'홍길동', sysdate, 1, 26, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '케이크', '부드러워요', 
+'홍길동', sysdate, 1, 26, null);
+
+
+
+
+
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, 'tea 가', '아주깔끔해요~', 
-'황현영', sysdate, 1, 2, null);
+'황현영', sysdate, 1, 20, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '차가', '향이 좋아요', 
+'홍길동', sysdate, 1, 20, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '차','색이 진해요', 
+'홍길동', sysdate, 1, 21, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '차', '색이 이뻐요', 
+'홍길동', sysdate, 1, 20, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '차', '건강해지는 기분이에요', 
+'홍길동', sysdate, 1, 20, null);
 
 -- 추가
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '머핀이', '너무 달아요', 
-'이태호', sysdate, 1, 1, null);
+'이태호', sysdate, 1, 17, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '머핀이', '너무맛있어요 ', 
+'홍길동', sysdate, 1, 17, null);
+
+
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '크레이프가', '너무맛있어요', 
-'이관우', sysdate, 1, 1, null);
+'이관우', sysdate, 1, 14, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '크레이프', '달아요', 
+'홍길동', sysdate, 1, 14, null);
+
+
 insert into tb_board(board_no, board_kind, board_name, board_content, 
 board_writer, board_write_date, board_secret_yn, item_no, board_reply)
 values (tb_board_seq.nextval, 1, '베이글이', '부드러워요', 
 '김재현', sysdate, 1, 1, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '베이글이', '너무맛있어요', 
+'홍길동', sysdate, 1, 1, null);
+
+insert into tb_board(board_no, board_kind, board_name, board_content, 
+board_writer, board_write_date, board_secret_yn, item_no, board_reply)
+values (tb_board_seq.nextval, 1, '베이글이', '달아요', 
+'홍길동', sysdate, 1, 1, null);
+
+
+
+
+
 
 -- 공지사항 추가
 insert into tb_board(board_no, board_kind, board_name, board_content, 

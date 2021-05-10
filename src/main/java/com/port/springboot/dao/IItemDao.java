@@ -7,10 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import com.port.springboot.dto.BasketDto;
-import com.port.springboot.dto.BoardDto;
 import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
-import com.port.springboot.dto.UserDto;
 
 @Mapper
 @Component

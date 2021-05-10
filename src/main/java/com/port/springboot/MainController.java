@@ -24,7 +24,6 @@ import com.port.springboot.dao.IItemDao;
 import com.port.springboot.dao.IOrderDao;
 import com.port.springboot.dao.IUserDao;
 import com.port.springboot.dto.BoardDto;
-import com.port.springboot.dto.ItemDto;
 import com.port.springboot.dto.OrderDto;
 import com.port.springboot.dto.UserDto;
 
@@ -71,9 +70,19 @@ public class MainController
 			 return "member/login"; }
 			
 		}
-		//
+		
+		
+		//리뷰보기
+		@RequestMapping("/reviewList")
+		public String reviewList(  Model model)
+		{				
+			model.addAttribute("reviewList", BoardDao.review_List());
+			
+			return "/service/reviewList";
+		}
 		
 	
+		
 	
 	@RequestMapping("/")
 	public String root() throws Exception {
@@ -183,21 +192,24 @@ public class MainController
 		@RequestMapping("/reviewAdd")
 		
 		
-		public String reviewAdd(HttpServletRequest request) throws IOException
-		{		
+		public String reviewAdd(HttpServletRequest request,  Model model) throws IOException
+		{			
+		
 			
 			BoardDto dto = new BoardDto();
 			
 			
+			dto.setBoard_name(request.getParameter("review_name"));
 			dto.setBoard_content(request.getParameter("review_content"));			
 			
 			BoardDao.reviewAdd(dto);
+			
 			
 			return "redirect:reviewList";
 		}
 
 	
-	//상품후기 액션
+	//상품문의 액션
 	@RequestMapping("/inquiry_view")
 	public String inquiry_view_action(HttpServletRequest request, Model model) {
 		
@@ -209,17 +221,6 @@ public class MainController
 		return "/service/inquiry_view";
 	}
 	
-	//리뷰보기
-	@RequestMapping("/reviewList")
-	public String reviewList( HttpServletRequest request, Model model)
-	{	
-		String item_name = request.getParameter("item_name");
-		
-		model.addAttribute( "reviewList" , BoardDao.review_List(item_name));
-		
-		
-		return "redirect:orderHistory";
-	}
 	
 	
 	
@@ -229,6 +230,7 @@ public class MainController
 	public String review_view( HttpServletRequest request, Model model)
 	{	
 		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		
 		
 		model.addAttribute( "list" , OrderDao.review_view(order_no));
 		
@@ -244,11 +246,12 @@ public class MainController
 	@RequestMapping("/item")
 	public String order_item(HttpServletRequest request, Model model)
 	{		
-		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		int item_no =Integer.parseInt(request.getParameter("item_no"));
 		
 		System.out.println("select item_type : " + item_no);
 		
 		model.addAttribute("list", ItemDao.item(item_no));
+		
 		model.addAttribute( "boardList" , BoardDao.reviewList(item_no));
 		
 		return "order/item";

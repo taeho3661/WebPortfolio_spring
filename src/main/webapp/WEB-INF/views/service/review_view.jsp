@@ -18,7 +18,7 @@
 
 <style>
   .review_wrap {
-    padding: 10px;
+    padding: 20px;
     width: 630px;
     height: 500px;
     margin:  110px auto;
@@ -28,11 +28,12 @@
     background-color: rgb(240, 233, 233);
   }
   .review_table {
+  	
     width: 600px; 
      height: 450px;
   }
   .board_name {
-    height: 160px;
+    height: 80px;
   }
   .board_content {
     height: 200px;
@@ -49,6 +50,7 @@
   	background-color:  rgb(243, 192, 192);
   	color:white;
   }
+ 
 </style>
 
 
@@ -60,9 +62,23 @@
 <table class="review_table" >
 
   <tr class="board_name">
-    <td class="order_date" ><img src="/img/${ list.item_img }" style="width: 70px; height: 70px; line-height: 70px;">${list.item_name}</td>
-    <td class="item_name" >주문날짜 <fmt:formatDate value="${list.order_date}" pattern="yyyy/MM/dd" /></td>
+  
+ 	 <td>주문날짜 </td>
+   	<td class="item_name" ><fmt:formatDate value="${list.order_date}" pattern="yyyy/MM/dd" /></td>
   </tr>
+  
+   <tr>
+   
+  	 <td class="order_date" ><img src="/img/${ list.item_img }" style="width: 70px; height: 70px; line-height: 70px;"></td>
+     <td>${list.item_name}</td>
+   
+  </tr>
+  
+   <tr class="review_name">
+    <td>제목<hr></td>
+    <td><textarea  name="review_name" cols="50" rows="1"></textarea></td>
+  </tr> 
+
 
   <tr >
     <td>내용<hr></td>
