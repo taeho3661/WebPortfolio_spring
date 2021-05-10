@@ -59,6 +59,8 @@
 
 <form action="reviewAdd" name="form3" method="POST"> 
 <input type="hidden" name="item_name" value="${ list.item_name }">
+<input type="hidden" name="item_no" value="${ list.item_no }">
+<input type="hidden" name="board_writer" value="${user.user_name}">
 <table class="review_table" >
 
   <tr class="board_name">

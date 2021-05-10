@@ -189,18 +189,19 @@ public class MainController
 		}
 		
 	//review등록 액션
-		@RequestMapping("/reviewAdd")
-		
-		
+		@RequestMapping("/reviewAdd")		
 		public String reviewAdd(HttpServletRequest request,  Model model) throws IOException
 		{			
 		
 			
 			BoardDto dto = new BoardDto();
 			
-			
+			dto.setBoard_writer(request.getParameter("board_writer"));
 			dto.setBoard_name(request.getParameter("review_name"));
 			dto.setBoard_content(request.getParameter("review_content"));			
+			dto.setItem_no(Integer.parseInt(request.getParameter("item_no")));
+			
+			System.out.println("reviewAdd에서 추가된 item_no값 확인 : " + request.getParameter("item_no"));
 			
 			BoardDao.reviewAdd(dto);
 			
@@ -248,7 +249,7 @@ public class MainController
 	{		
 		int item_no =Integer.parseInt(request.getParameter("item_no"));
 		
-		System.out.println("select item_type : " + item_no);
+		System.out.println("select item_no : " + item_no);
 		
 		model.addAttribute("list", ItemDao.item(item_no));
 		

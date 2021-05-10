@@ -15,4 +15,5 @@ public class UserOrderDto
 	private int order_count;
 	private int order_price;
 	private int order_state;
+	private int item_no;
 }
