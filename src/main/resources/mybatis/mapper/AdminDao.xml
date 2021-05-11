@@ -31,7 +31,8 @@
 	</select>
 	
 	<select id="itemQna" resultType="com.port.springboot.dto.BoardDto">
-		select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_kind = 2
+		<!-- select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_kind = 2 -->
+		select * from tb_board where board_kind = 2
 		<!-- select i.item_nm, q.board_nm, q.writer, TO_CHAR(q.write_date,'YYYYMMDD'), q.board_no from tb_item i, tb_board q where i.item_id = q.item_id -->
 	</select>
 	

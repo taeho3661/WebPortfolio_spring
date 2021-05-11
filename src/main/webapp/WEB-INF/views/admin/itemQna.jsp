@@ -119,7 +119,7 @@ a {
 			<table class="table">
 				<!-- th -->
 				<tr>
-					<th>문의상품</th>
+					<!-- <th>문의상품</th> -->
 					<th>문의제목</th>
 					<th>문의자</th>
 					<th>날짜</th>
@@ -130,7 +130,7 @@ a {
 							<input type="hidden" name="board_no" value="${dto.board_no}" />
 							<input type="hidden" name="board_reply" value="${dto.board_reply }" id="board_reply">
 							<tr>
-								<td>${ dto.item_name }</td>
+								<%-- <td>${ dto.item_name }</td> --%>
 								<td>${ dto.board_name }</td>
 								<td>${ dto.board_writer }</td>
 								<td><fmt:formatDate value="${dto.board_write_date}" pattern="yyyy/MM/dd" /></td>
