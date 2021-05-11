@@ -140,7 +140,7 @@
        <th style="width: 10%;">이미지</th>
        <th style="width: 30%;">상품정보</th>
        <th>수량</th>
-       <th style="width: 12%;">상품구매금액</th>
+       <!-- <th style="width: 12%;">상품구매금액</th> -->
        <th>주문처리상태</th>
        <th>주문취소</th>
      </tr>
@@ -151,7 +151,7 @@
            <td><img src="/img/${ list.item_img }" alt="${list.item_img}" style="width: 70px; height: 70px; line-height: 70px;"></td> <!-- tb_item -->
            <td style="text-align: left;">${ list.item_name }</td> <!-- tb_item :: cart_id <-> bil_id로 연결 -->
            <td>${ list.order_count }개</td> <!-- tb_cart -->
-           <td>${ list.order_price }원</td> <!-- tb_bil -->
+           <%-- <td>${ list.order_price }원</td> <!-- tb_bil --> --%>
            <td>
            
            <c:choose>

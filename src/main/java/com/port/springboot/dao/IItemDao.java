@@ -30,7 +30,7 @@ public interface IItemDao {
 //	public int orderCompleted(String order_adr1, String[] order_no);
 	public int orderCompleted(@Param("order_adr1") String order_adr1, @Param("order_adr2") String order_adr2, 
 			@Param("order_adr3") String order_adr3, @Param("order_adr4") String order_adr4, 
-			@Param("order_price") String order_price, @Param("order_memo") String order_memo, 
+			@Param("order_price") String order_price, @Param("order_count") String order_count, @Param("order_memo") String order_memo, 
 			@Param("covToStringOrder_no") String covToStringOrder_no);
 	public int scoreUpdate(@Param("payment") int payment, @Param("user_no") int user_no);
 	public List<ItemDto> mainList();

@@ -392,6 +392,7 @@ public class MainController
 		String order_adr3 = request.getParameter("order_adr3");
 		String order_adr4 = request.getParameter("order_adr4");
 		String order_price = request.getParameter("order_price");
+		String order_count1 = request.getParameter("order_count");
 		String order_memo = request.getParameter("order_memo");
 		
 		String order_no[] = request.getParameterValues("order_no");
@@ -412,14 +413,15 @@ public class MainController
 		///////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////
 		
-		System.out.println(request.getParameter("order_adr1"));
-		System.out.println(request.getParameter("order_adr2"));
-		System.out.println(request.getParameter("order_adr3"));
-		System.out.println(request.getParameter("order_adr4"));
-		System.out.println(request.getParameter("order_price"));
-		System.out.println(request.getParameter("order_memo"));
+		System.out.println("1" + request.getParameter("order_adr1"));
+		System.out.println("2" + request.getParameter("order_adr2"));
+		System.out.println("3" + request.getParameter("order_adr3"));
+		System.out.println("4" + request.getParameter("order_adr4"));
+		System.out.println("5" + request.getParameter("order_price"));
+		System.out.println("6" + request.getParameter("order_count1"));
+		System.out.println("7" + request.getParameter("order_memo"));
 		
-		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_memo, covToStringOrder_no);
+		ItemDao.orderCompleted(order_adr1, order_adr2, order_adr3, order_adr4, order_price, order_count1, order_memo, covToStringOrder_no);
 		
 
 		//scoreUpdate 누적금액설정
@@ -428,9 +430,8 @@ public class MainController
 		System.out.println("payment : " + payment);
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		System.out.println("user_no : " + user_no);
-		
 		ItemDao.scoreUpdate(payment, user_no);
-		
+
 		//재고 수량 계산
 		String order_count[] = request.getParameterValues("order_count");
 		String item_name[] = request.getParameterValues("item_name");
