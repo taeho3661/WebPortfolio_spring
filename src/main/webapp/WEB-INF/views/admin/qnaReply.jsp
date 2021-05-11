@@ -89,10 +89,10 @@
     </div>
     <form method="post" name="send_form">
       <table class="table">
-        <tr>
+<%--         <tr>
           <td style="background-color: lightgray;">상품명</td>
           <td>${dto.item_name} </td>
-        </tr>
+        </tr> --%>
         <tr>
           <td style="background-color: lightgray;">문의제목</td>
           <td>${dto.board_name}</td>

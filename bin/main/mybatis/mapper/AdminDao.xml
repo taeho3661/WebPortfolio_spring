@@ -54,7 +54,8 @@
 	</update>
 	
 	<select id="qnaView" resultType="com.port.springboot.dto.BoardDto">
-		select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_no = #{board_no}
+		<!-- select board.*, item.item_name from tb_board board, tb_item item where board.item_no = item.item_no and board.board_no = #{board_no} -->
+		select * from tb_board where board_no = #{board_no}
 	</select>
 	
 	<update id="replySend" parameterType="com.port.springboot.dto.BoardDto">
